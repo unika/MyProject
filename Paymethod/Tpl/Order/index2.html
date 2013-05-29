@@ -1,0 +1,50 @@
+<include file="public:header" />
+<body>
+	<form id="form1" action="https://payment.payitrust.com/Payment/PayPage.aspx">
+		<volist name="goods" id="vo">
+			<div class="goods">
+				<label> {$vo.id}</label>
+
+				<label>{$vo.name}
+					<foreach name="vo.attr" key="key" item="sub">
+						<span>{$sub}</span>
+					</foreach> </label>
+				<label>{$vo.price}</label>
+				<label>{$vo.number}</label>
+				<label>{$vo.discount}</label>
+
+			</div>
+		</volist>
+		<div>
+			总数:<span class="total_number">{$total_number}</span>
+			总价:<span class="total_price">{$total_price}</span>
+			优惠:<span class="coupon_price">{$coupon_price}</span>
+			优惠券:<span class="coupon">{$coupon}</span>
+		</div>
+		<foreach name="info" key="key" item="vo">
+			<switch name="key">
+				<case value="remark">
+					<foreach name="vo" item="subvo" key="subkey">
+						<input type="hidden" name="{$subkey}" value="{$subvo}" />
+					</foreach>
+				</case>
+				<case value="product">
+					<foreach name="vo" item="subvo" key="subkey">
+						<input type="hidden" name="{$subkey}" value="{$subvo}" />
+					</foreach>
+				</case>
+				<default />
+				<input type="hidden" name="{$key}" value="{$vo}" />
+
+			</switch>
+
+		</foreach>
+
+		<div>
+			<button>
+				确认支付
+			</button>
+		</div>
+	</form>
+</body>
+</html>

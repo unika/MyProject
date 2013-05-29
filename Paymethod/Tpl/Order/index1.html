@@ -1,0 +1,44 @@
+<include file="public:header" />
+<style>
+	h3 {
+		background: none repeat scroll 0 0 #CCCCCC;
+		font-size: 16px;
+		font-weight: normal;
+		height: 26px;
+		line-height: 26px;
+		margin: 0;
+		padding: 2px;
+		text-align: left;
+	}
+	p {
+		margin: 5px;
+		text-align: left;
+	}
+
+</style>
+<body>
+
+	<form id="form2" method="post" action="__URL__/index2">
+		<h3>请选择物流公司</h3>
+		<volist name="delivery" id="vo">
+			<p>
+				<input type="radio" name="delivery" id="delivery" value="{$vo.id}" />
+				{$vo.name}
+				{$vo.price}RMB
+			</p>
+		</volist>
+		<h3>付款方式</h3>
+		<volist name="paymethod" id="vo">
+			<p>
+				<input type="radio" name="paymethod" id="paymethod" value="{$vo.id}" />
+				{$vo.name}
+			</p>
+		</volist>
+		<foreach name="info" item="vo" key="key">
+			<input type="hidden" name="{$key}" value="{$vo}" />
+		</foreach>
+		<input type="submit" value="下一步" />
+	</form>
+
+</body>
+</html>
