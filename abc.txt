@@ -1,7 +1,5 @@
-aslslslslsl
+<?php
 
-ssssssssssssssssssssssss
-sssssssssssssssssssssssss
-ssssssssssssssssssssss
-ss
-d lkakfldkdlfkssssssssssss
+
+	phpinfo();
+?>
