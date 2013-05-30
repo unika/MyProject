@@ -18,6 +18,7 @@ Class Cart {
 	public $total_price;
 	//商品所属活动
 	public $discount;
+	//是否参与了活动
 	public $isCoupon = false;
 	//购物车构造函数
 	public function __construct() {
@@ -28,9 +29,7 @@ Class Cart {
 		$this -> coupon_price = $_SESSION['cart']['coupon_price'];
 		$this -> total_number = $_SESSION['cart']['total_number'];
 		$this -> total_price = $_SESSION['cart']['total_price'];
-
 	}
-
 	//添加商品到购物车
 	public function addGoods($array) {
 		if ($this -> goods == null) {
@@ -49,7 +48,6 @@ Class Cart {
 		}
 		$this -> total_number += $array['number'];
 		$this -> total_price += number_format($array['price'] * $array['number'], 2);
-
 		$this -> restCart();
 		if (!empty($this -> goods)) {
 			return true;
@@ -57,58 +55,47 @@ Class Cart {
 			return false;
 		}
 	}
-
 	//返回产品总数
 	public function total_Num() {
 		return $this -> total_number;
 	}
-
 	//返回产品总价
 	public function total_Pri() {
 		return $this -> total_price;
 	}
-
 	//返回产品列表
 	public function goods_List() {
 		return $this -> goods;
 	}
-
-	//方法isCoupon
+	
 	//实现功能
 	//是 否已经使用过
-	//值初始化为false，未使用过
-	//true已经使用
+	//值初始化为false，未使用过,true已经使用
 	public function checkCoupon() {
-
 		return $this -> isCoupon;
 	}
-
 	//如果输入优惠券
-	public function setCoupon($data) {
+	public function setCoupon($data) {           
 		$this -> total_price -= $data['coupon_price'];
 		$this -> coupon_price = $data['coupon_price'];
 		$this -> coupon = $data['coupon'];
-		return $this -> restCart();
+	
 	}
-
-	public function delGood($key, $number) {
-		//减掉的商品数
+	//递减指定的商品数量
+	public function delGood($key, $number) {		
 		$num = $this -> goods[$key]['number'] - $number;
 		$this -> goods[$key]['number'] = $number;
 		$this -> total_number -= $num;
 		$this -> total_price -= $num * $this -> goods[$key]['price'];
-		return $this -> restCart();
+	
 
 	}
-
-	public function addGood($key, $number) {
-		//减掉的商品数
+	//递增指定商品数量
+	public function addGood($key, $number) {	
 		$num = $number - $this -> goods[$key]['number'];
 		$this -> goods[$key]['number'] = $number;
 		$this -> total_number += $num;
 		$this -> total_price += $num * $this -> goods[$key]['price'];
-		return $this -> restCart();
-
 	}
 
 	public function restCart() {
@@ -126,7 +113,7 @@ Class Cart {
 		unset($this -> goods[$key]);
 		//unset($_SESSION['cart']['goods'][$key]);
 		if (!isset($this -> goods[$key])) {
-			return $this -> restCart();
+			return true;
 		} else {
 			return false;
 		}
@@ -139,9 +126,7 @@ Class Cart {
 		} else {
 			unset($_SESSION['cart']);
 			return true;
-
 		}
-
 	}
 
 	//检查商品是否已存在,不存在返回商品的$key+1;
@@ -156,12 +141,9 @@ Class Cart {
 				$result = FALSE;
 
 			}
-
 		}
 		$index = $result ? $keys : count($this -> goods);
 		return array("boolean" => $result, "key" => $index);
-
 	}
-
 }
 ?>
