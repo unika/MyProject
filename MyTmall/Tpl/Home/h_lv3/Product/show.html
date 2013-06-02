@@ -1,0 +1,332 @@
+<include file="Public:header" />
+<div id="main">
+	<div id="path">
+		{:W("Category",array("count"=>10,"Display"=>"nav"))}
+		<!-- <a target="_top" href="/">Home</a> &gt; <a target="_top" href="#">Oakley</a> &gt; <a target="_top" href="#">Mask</a> -->
+	</div>
+	<div class="left">
+		<div id="left">
+			<b>categories</b>
+			<div class="">
+				<!--产品分类Widget开始--->
+				<ul>
+					{:W("Category",array("count"=>10,"Display"=>"tree"))}
+				</ul>
+				<!--产品分类Widget结束--->
+			</div>
+		</div>
+		<div class="adv1">
+			{:W("Ad",array("count"=>1,"Display"=>"single","width"=>"169px","height"=>"209px"))}
+		</div>
+		<div class="index_hot">
+			{:W("Product",array("count"=>10,"type"=>"promotion"))}
+		</div>
+		<!-- 客服挂件 -->
+		<div class="Chat_Online">
+			<b>Chat Online</b>
+			<a href="msnim:chat?contact=" target="_top" rel="nofollow">MSN: Click Here</a>
+			<a target="_top" href="mailto:amyonlineoutlet24hours@hotmail.com" rel="nofollow">Email: Click Here</a>
+		</div>
+	</div>
+
+	<script src="__PUBLIC__/Js/raty/jquery.raty.min.js" type="text/javascript"></script>
+	<link href="__PUBLIC__/Js/raty/css/demo.css" rel="stylesheet" type="text/css" />
+	<div class="right">
+		<script>          
+            $(document).ready(function() {
+                //评论星星
+                $('#star').raty({
+                    path : '__PUBLIC__/Js/raty/Img'
+                });  
+                //tab切换
+                $("#index ul li").click(function() {
+                    var tmp;
+                    $(this).addClass("hover");
+                    $(this).parents("ul").find("li").not(this).removeClass("hover");
+                    tmp = $(this).index();
+                    $(this).parents("ol").find("li").removeClass("hover");
+                    $("#index ol li").each(function() {
+                        if ($(this).index() == tmp) {
+                            $(this).addClass("hover");
+                        } else {
+                            $(this).removeClass("hover");
+                        }
+                    });
+                });
+                //用户评论
+                $(".comment").click(function() {
+                    $.post("__URL__/addComment", $("#comment").serialize(), function(data) {
+                        $.alert(data.info);
+                    }, 'json');
+
+                });
+                $(".colorb").click(function() {
+                    $(this).toggleClass("colorA");
+                    $(this).parent().find("span").not(this).removeClass("colorA");
+                });
+
+            })
+         
+		</script>
+		<style>
+			.attrValue {
+				background: none repeat scroll 0 0 #C9FFC9;
+				border: 1px solid #CCCCCC;
+			}
+			.colorA {
+				background: none repeat scroll 0 0 #F5DEB3;
+				color: #FF4500;
+			}
+		</style>
+
+		<div id="proshow">
+			<div id="proinfo">
+				<div class="img">
+					<div class="main_img">
+						<foreach name="Img" key="key" item="vo">
+							<eq name="vo.UseType" value="1">
+								<a target="_top" class="jqzoom" href="{$Img}"> <img src="{$vo.Img}" id="minImage" alt="{$Name}" width="400" /></a>
+							</eq>
+						</foreach>
+					</div>
+					<div class="min_img">
+						<foreach name="Img" key="key" item="vo">
+							<neq name="vo.UseType" value="1">
+								<a target="_top" class="jqzoom" href="#"> <img src="{$vo.Img}" id="minImage" alt="{$Name}" width="90" /></a>
+							</neq>
+						</foreach>
+					</div>
+				</div>
+				<div class="info">
+					<div class="pro_con">
+						<h2 id="sys_pn">{$Name}</h2>
+						<div style=" width:160px;">
+							<empty name="score">
+								Review: <img style=" margin-top:1px;" src="__MYSTYLE__Images/1star.jpg" alt="{$Name}">
+								<else />
+								Review: <img style=" margin-top:1px;" src="__MYSTYLE__Images/{$score}star.jpg" alt="{$Name}">
+							</empty>
+						</div>
+						<div style="padding:6px 0">
+							Availability:
+							<!--库存-->
+							<eq name="DbNum" value="0">
+								out of stock
+								<else/>
+								In Stock
+							</eq>
+						</div>
+						<form method="post" onsubmit="return false;" id="buyfrom">
+							<!--属性循环-->
+							<div style="background: none repeat scroll 0px 0px rgb(201, 255, 201); border: 1px solid rgb(204, 204, 204); padding: 5px;">
+								<foreach name="AttrValue" key="keys" item="vo">
+									<p style="width: 80%; clear: both; padding-left: 10px; margin:2px 0px 10px 0px;">
+										<span style="margin-right: 6px; font-weight: bold; color: rgb(129, 105, 87); padding: 3px;" >{$keys}:</span>
+										<volist name="vo" id="subvo">
+											<span name="{$keys}" value="{$subvo}" class="colorb" style="cursor: pointer;margin: 2px 2px 0px 2px; display: block; border: 1px solid rgb(204, 204, 204); text-align: center; font-size: 14px;padding: 3px">{$subvo}</span>
+										</volist>
+									</p>
+								</foreach>
+								<div class="clear"></div>
+							</div>
+							<!--属性循环-->
+							<div class="price">
+								<span>Price:</span>
+								<b class="sys_cur big_font">$</b><b class="sys_p big_font curprice" id="price">{$Price}</b>
+								<div class="clear"></div>
+							</div>
+
+							<div class="qty">
+								<font>Qty : </font>
+								<input id="qty" name="buyNum" value="1" size="5">
+								<div style="padding-bottom: 2px">
+									<a href="javascript:void(0);" class="addgoods1" onclick="addgoods('qty')"  style="display: block;"> <img src="__MYSTYLE__Images/good_detail_up.gif" style="cursor: pointer;" /></a>
+									<a href="javascript:void(0);"  class="delgoods" onclick="delgoods('qty')" style="display: block;"> <img src="__MYSTYLE__Images/good_detail_down.gif" style="cursor: pointer;" /></a>
+								</div>
+							</div>
+							<!--社会化插件开始-->
+							<div id="social">
+								<a target="_top" href="" rel="nofollow"> <img src="__MYSTYLE__Images/icon_email_friend.png"></a>
+								<a href="http://www.twitter.com/" target="_top"><img title="Twitter" alt="Twitter" src="__MYSTYLE__Images/icon_twitter.png" border="0"></a>
+								<a href="http://pinterest.com/" target="_top"><img alt="pinterest" src="__MYSTYLE__Images/pinit6.png" border="0"></a>
+								<a href="http://www.facebook.com/" target="_top"><img alt="Facebook" src="__MYSTYLE__Images/icon_facebook.png" border="0"></a>
+							</div>
+
+							<!--社会化插件结束-->
+							<div class="clear"></div>
+							<input type="hidden" id="id" value="{$Id}" />
+							<input value="" class="addCart" onclick="addCart(this)" aid="{$Id}" src="__MYSTYLE__Images/add.jpg" type="image">
+							<div id="add"></div>
+						</form>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div id="index">
+				<ul>
+					<li class="hover">
+						Product Details
+					</li>
+					<li>
+						Shipping &amp; Return
+					</li>
+					<li>
+						Online Security
+					</li>
+					<li>
+						Writer A Review
+					</li>
+				</ul>
+				<ol>
+					<li class="hover" id="review">
+						{$Des}
+					</li>
+					<li>
+						Shipping &amp; Return
+
+					</li>
+
+					<li class="">
+						Online Security
+					</li>
+					<li>
+						<form id="comment" action="" onsubmit="return false;" method="post">
+							<table>
+								<tr>
+									<td>Title:</td>
+									<td>
+									<input type="text" name="Name" style="width: 300px; height: 24px; line-height: 24px;" />
+									</td>
+								</tr>
+								<tr>
+									<td>Star:</td>
+									<td><div id="star" name="Star"></div></td>
+								</tr>
+								<tr>
+									<td>Comment:</td>
+									<td>									<textarea name="Comment" style="width: 464px; height: 120px;"> </textarea></td>
+								</tr>
+
+								<tr>
+									<td>
+									<input type="hidden" name="ProductTypeId" value="{$typeid}" />
+									<input type="hidden" name="Product_id" value="{$id}" />
+									</td>
+									<td>
+									<input type="image" name="" class="comment" />
+									</td>
+								</tr>
+							</table>
+						</form>
+					</li>
+
+				</ol>
+			</div>
+			<div class="clear"></div>
+
+		</div>
+		<!--产品信息Widget结束-->
+
+		<!--相关产品信息Widget开始-->
+
+		<div id="may">
+			<p class="maytitle"><img src="__MYSTYLE__Images/rela_b.jpg">
+			</p>
+			<div class="may_pro">
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Chanel Lifestyle Round Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Round-Sunglasses-p-3165.html"><img title="Chanel Lifestyle Round Sunglasses" alt="Chanel Lifestyle Round Sunglasses" src="__MYSTYLE__Images/SG0000001268_1.jpg"></a>
+					<a target="_top" class="may_name" title="Chanel Lifestyle Round Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Round-Sunglasses-p-3165.html">Chanel Lifestyle Round Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__/4star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">14.99</span>
+					</div>
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Oakley C Six Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/Oakley-C-Six-Active-Rectangle-Sunglasses-p-5466.html"><img title="Oakley C Six Active Rectangle Sunglasses" alt="Oakley C Six Active Rectangle Sunglasses" src="__MYSTYLE__/SG0000000563_1.jpg"></a>
+					<a target="_top" class="may_name" title="Oakley C Six Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/Oakley-C-Six-Active-Rectangle-Sunglasses-p-5466.html">Oakley C Six Active Rectangle Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/4star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Chanel Lifestyle Oval Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Oval-Sunglasses-p-3094.html"><img title="Chanel Lifestyle Oval Sunglasses" alt="Chanel Lifestyle Oval Sunglasses" src="__MYSTYLE__Images/SG0000001339_1.jpg"></a>
+					<a target="_top" class="may_name" title="Chanel Lifestyle Oval Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Oval-Sunglasses-p-3094.html">Chanel Lifestyle Oval Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/5star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="ED Hardy Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/ED-Hardy-Active-Rectangle-Sunglasses-p-3729.html"><img title="ED Hardy Active Rectangle Sunglasses" alt="ED Hardy Active Rectangle Sunglasses" src="__MYSTYLE__Images/SG0000001769_1.jpg"></a>
+					<a target="_top" class="may_name" title="ED Hardy Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/ED-Hardy-Active-Rectangle-Sunglasses-p-3729.html">ED Hardy Active Rectangle Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/5star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Oakley Antix Lifestyle Mask Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Antix-Lifestyle-Mask-Sunglasses-p-5445.html"><img title="Oakley Antix Lifestyle Mask Sunglasses" alt="Oakley Antix Lifestyle Mask Sunglasses" src="__MYSTYLE__Images/SG0000000584_1.jpg"></a>
+					<a target="_top" class="may_name" title="Oakley Antix Lifestyle Mask Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Antix-Lifestyle-Mask-Sunglasses-p-5445.html">Oakley Antix Lifestyle Mask Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/4star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">14.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Fendi Lifestyle Square Sunglasses" href="http://www.usefulsunglasses.com/Fendi-Lifestyle-Square-Sunglasses-p-4233.html"><img title="Fendi Lifestyle Square Sunglasses" alt="Fendi Lifestyle Square Sunglasses" src="__MYSTYLE__Images/SG0000002905_1.jpg"></a>
+					<a target="_top" class="may_name" title="Fendi Lifestyle Square Sunglasses" href="http://www.usefulsunglasses.com/Fendi-Lifestyle-Square-Sunglasses-p-4233.html">Fendi Lifestyle Square Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/5star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Chanel Lifestyle Round Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Round-Sunglasses-p-3929.html"><img title="Chanel Lifestyle Round Sunglasses" alt="Chanel Lifestyle Round Sunglasses" src="__MYSTYLE__Images/SG0000001569_1.jpg"></a>
+					<a target="_top" class="may_name" title="Chanel Lifestyle Round Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Lifestyle-Round-Sunglasses-p-3929.html">Chanel Lifestyle Round Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/5star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">14.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may_img" title="Versace Sport Visor Sunglasses" href="http://www.usefulsunglasses.com/Versace-Sport-Visor-Sunglasses-p-4464.html"><img title="Versace Sport Visor Sunglasses" alt="Versace Sport Visor Sunglasses" src="__MYSTYLE__Images/SG0000002672_1.jpg"></a>
+					<a target="_top" class="may_name" title="Versace Sport Visor Sunglasses" href="http://www.usefulsunglasses.com/Versace-Sport-Visor-Sunglasses-p-4464.html">Versace Sport Visor Sunglasses</a>
+					<img style=" float:left; " src="__MYSTYLE__Images/5star.jpg" alt="">
+					<br>
+					<div class="may_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!--相关产品信息Widget结束-->
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+<div class="clear"></div>
+<include file="Public:footer" />

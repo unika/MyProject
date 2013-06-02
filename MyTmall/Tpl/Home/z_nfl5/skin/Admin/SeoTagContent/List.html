@@ -1,0 +1,52 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            页面三大要素内容管理</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="7" style="text-align: right; padding-right: 10px;">
+                    <a href="#{Add}">新增内容</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    内容
+                </td>
+                <td>
+                    标签
+                </td>
+                <td>
+                    类型
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN tags -->
+            <tr class="tableItems">
+                <td>
+                    #{tag.Id}
+                </td>
+                <td>
+                    #{tag.Content}
+                </td>
+                <td>
+                    #{tag.HtmlTagTypeDes}
+                </td>
+                <td>
+                    #{tag.ContentTypeDes}
+                </td>
+
+                <td>
+                    <a href="#{tag.Edit}">编辑</a>｜<a href="#{tag.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END tags -->
+        </table>
+    </div>
+</div>

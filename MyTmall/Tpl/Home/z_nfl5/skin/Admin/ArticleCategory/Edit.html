@@ -1,0 +1,67 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑分类</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        分类名：
+                    </td>
+                    <td>
+                        <input name="articleCategory.Name" value="#{articleCategory.Name}" type="text" class="tipInput"
+                            style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面标题：
+                    </td>
+                    <td>
+                        <input name="articleCategory.Page_Title" value="#{articleCategory.Page_Title}" type="text"
+                            class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面关键字：
+                    </td>
+                    <td>
+                        <input name="articleCategory.Page_Keyword" value="#{articleCategory.Page_Keyword}" type="text"
+                            class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面描述：
+                    </td>
+                    <td>
+                        <input name="articleCategory.Page_Description" value="#{articleCategory.Page_Description}"
+                            type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        URL：
+                    </td>
+                    <td>
+                        <input name="articleCategory.Page_Url" type="text" value="#{articleCategory.Page_Url}"
+                            class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

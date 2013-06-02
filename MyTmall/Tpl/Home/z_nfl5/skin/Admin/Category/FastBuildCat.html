@@ -1,0 +1,218 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<style>
+    ul.ztree
+    {
+        margin-top: 10px;
+        border: 1px solid #617775;
+        background: #f0f6e4;
+        width: 500px;
+        height: 360px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+    #typetool, #btnCreate, .attrsel
+    {
+        margin: 10px;
+        border: 1px solid #617775;
+        padding: 10px;
+        background-color: White;
+    }
+</style>
+<script>
+<!--
+		var setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: onClick
+			}
+		};
+ 
+		var zNodes =#{nodes};
+ 
+		
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeType");
+			nodes = zTree.getSelectedNodes();
+			$("#typeId").val(nodes[0].id);
+            $("#typeSel").val(nodes[0].name);
+            $("#attrcon").html("");
+            hideMenu();
+		}
+ 
+		function showMenu() {
+			var cityObj = $("#typeSel");
+			var cityOffset = $("#typeSel").offset();
+			$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+ 
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" 
+            || event.target.id == "menuContent" 
+            || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+ 
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeType"), setting, zNodes);
+		});
+
+
+        function SelAttr(obj)
+        {
+            var mlObj = $(obj);
+            if(mlObj.val()!="") return;
+            var typeIdObj = $("#typeId");
+            typeIdObj.attr("href","AttrComb.aspx?typeId="+typeIdObj.val()+"&f="+mlObj.attr("name"));
+            typeIdObj.trigger('click');
+        }
+
+        function BuildAttrSel()
+        {
+            var typeV = $("#typeSel").val();
+            if(typeV.length==0)
+            {
+                alert("请选择类型");
+                return;
+            }
+
+            var html = $("#attrcon").html();
+            $("#attrcon").append("<div class=\"attrsel\">分类：<input class=\"ml\" name=\"ml"+($(".attrsel").length+1)+"\" type=\"text\" style=\"width:400px\" onclick=\"SelAttr(this)\"  /><font onclick=\"removeAttr(this)\">Ｘ</font></div>");
+
+            $("#btnCreate").css("display","");
+
+        }
+
+        function removeAttr(obj)
+        {
+            $(obj).parent().remove();
+            if($(".attrsel").length==0)
+            {
+                $("#btnCreate").css("display","none");
+            }
+        }
+
+
+         Array.prototype.getJson=function(){   
+          var o={}   
+          for(var i=0;i<this.length;i++){   
+            var items = this[i].split('=');   
+            o[items[0]] = !isNaN(items[1])?Number(items[1]):items[1];   
+          }   
+          return o;   
+        }  
+        function CreateCat()
+        {
+            var typeId = $("#typeId").val();
+            
+            var arr=[];
+            var hasNoneml = false;
+            $(".ml").each(function(){
+                arr.push(this.value);
+                if(this.value=="") hasNoneml=true;
+            });
+
+            if(hasNoneml) 
+            {
+                alert("分类不能为空");
+                return;
+            }
+            if(arr.length==0)
+            {
+                alert("请添加分类");
+                return;
+            }
+
+            
+            $("#btnsb").val("正在创建");
+            $("#btnsb").attr("disabled","true");
+
+            var attrs = $.toJSON(arr);
+
+            $.ajax({
+                      type: "POST",
+                      url: "BuildCat.aspx".toAjax(),
+                      data: "typeId="+typeId+"&attrs="+encodeURIComponent(attrs),
+                      success: function(msg){
+                            if(msg=="ok")
+                            {
+
+                                alert("创建生类成功");
+                            }
+                            else {alert(msg);}
+                                                                
+                           $("#btnsb").val("创建分类");
+                           $("#btnsb").get(0).disabled=false;
+                      },
+                      error: function(msg) {
+                        alert("系统异常，请联系研发部");
+                        $("#btnsb").val("创建分类");
+                        $("#btnsb").get(0).disabled=false;
+                        }
+                    });
+        }
+
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            智能创建分类</div>
+    </div>
+    <div class="adminMainPanel">
+        <div id="typetool">
+            请选择类型：<input id="typeSel" type="text" readonly value="" style="width: 120px;" onclick="showMenu();"
+                name="stype" />
+            <input type="hidden" id="typeId" class="frmBox" />
+            <input id="Button1" type="button" value="添加目录" onclick="BuildAttrSel()" />
+            <font style="color: red">注：可支持无限级分类创建</font>
+        </div>
+        <div id="menuContent" class="menuContent" style="display: none; position: absolute;">
+            <ul id="treeType" class="ztree" style="margin-top: 0; width: 300px;">
+            </ul>
+        </div>
+        <div id="attrcon">
+        </div>
+        <div id="btnCreate" style="display: none">
+            <input id="btnsb" type="button" value="创建分类" style="height: 30px; width: 100px;"
+                onclick="CreateCat();" />
+        </div>
+    </div>
+
+    <div class="adminMainPanel" style="margin: 10px; border: 1px solid #617775; padding: 10px;
+        background-color: White; display:#{lvdisp}">
+        <form method="post" action="/Admin/AutoBuildCategory/Do.aspx">
+        <select id="Select1" name="mn">
+            <option value="LvMethodA">[ LV ] 一级目录Gender,二级目录Series II</option>
+            <option value="LvMethodB">[ LV ] 一级目录Category,二级目录Series II</option>
+            <option value="LvMethodC">[ LV ] 一级目录Gender,二级目录Series I</option>
+            <option value="LvMethodD">[ LV ] 一级目录Gender,二级目录Series I & Series II</option>
+        </select>
+        <input id="Submit1" type="submit" value="创建" onclick="return confirm('你确定？')"/>
+        </form>
+    </div>
+
+    <div class="adminMainPanel" style="margin: 10px; border: 1px solid #617775; padding: 10px;
+        background-color: White; display:#{uggdisp}">
+        <form method="post" action="/Admin/AutoBuildCategory/Do.aspx">
+        <select id="Select2" name="mn">
+            <option value="UggMethodA">[ UGG ] UGG+[Series]</option>
+        </select>
+        <input id="Submit2" type="submit" value="创建" onclick="return confirm('你确定？')"/>
+        </form>
+    </div>
+</div>

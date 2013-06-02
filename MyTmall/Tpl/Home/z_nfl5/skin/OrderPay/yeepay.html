@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>loading, please wait...</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form name="payform" method="post" action="#{yeepay.Action}">
+    <input type="hidden" name="p0_Cmd" value='ICCBuy' />
+    <input type="hidden" name="yeepay.MerId" value='#{yeepay.MerId}' />
+    <input type="hidden" name="yeepay.Order" value='#{yeepay.Order}' />
+    <input type="hidden" name="yeepay.Currency" value='#{yeepay.Currency}' />
+    <input type="hidden" name="yeepay.Amount" value='#{yeepay.Amount}' />
+    <input type="hidden" name="yeepay.SecondName" value='#{yeepay.SecondName}' />
+    <input type="hidden" name="yeepay.FirstName" value='#{yeepay.FirstName}' />
+    <input type="hidden" name="yeepay.ShippingAddress" value='#{yeepay.ShippingAddress}' />
+    <input type="hidden" name="yeepay.ShippingZipcode" value='#{yeepay.ShippingZipcode}' />
+    <input type="hidden" name="yeepay.MD5info" value='#{yeepay.MD5info}' />
+    <input type="hidden" name="yeepay.ReturnURL" value='#{yeepay.ReturnURL}' />
+    <input type="hidden" name="yeepay.ShippingEmail" value='#{yeepay.ShippingEmail}' />
+    </form>
+    <script language="javascript" type="text/javascript">
+        document.forms["payform"].submit();
+    </script>
+</body>
+</html>

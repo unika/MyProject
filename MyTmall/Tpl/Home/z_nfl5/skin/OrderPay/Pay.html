@@ -1,0 +1,49 @@
+﻿
+<script>
+    $("input[name='currencylist']").parent().hide();
+    $("#currencylist").parent().hide();
+</script>
+<style>
+    .clear
+    {
+        clear: both;
+    }
+</style>
+<form action="#{payurl}" method="post" target="_blank" id="Form1" name="tzForm" />
+<div class="fixed_from user_right" style="margin: 0 auto; float: none; background-color: #fff;
+    clear: both;">
+    <div class="fixed_content">
+        <ol>
+            <li>Your Name:</li>
+            <li>Street Address:</li>
+            <li>Country:</li>
+            <li>State:</li>
+            <li>City:</li>
+            <li>Telephone:</li>
+            <li>Post/Zip Code:</li>
+            <li>Email:</li>
+            <li>Total:</li>
+            <li>&nbsp;</li>
+        </ol>
+        <ul>
+            <li>#{info.Customer.FirstName} #{info.Customer.SecondName}</li>
+            <li>#{info.Customer.Address}</li>
+            <li>#{info.Customer.Country}</li>
+            <li>#{info.Customer.State}</li>
+            <li>#{info.Customer.City}</li>
+            <li>#{info.Customer.Tel}</li>
+            <li>#{info.Customer.PostCode}</li>
+            <li>#{info.Customer.Email}</li>
+            <li>#{info.Price1}</li>
+            <li>
+                <input name="submit" value="GO TO PAY" style="background-color: #CCCCCC; border: 1px solid #333;
+                    height: 22px; line-height: 22px; padding: 0 10px; _border: 0 none; _height: 21px;"
+                    type="submit" /></li>
+        </ul>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+</form> 

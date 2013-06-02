@@ -1,0 +1,154 @@
+﻿<div class="fixed">
+<div id="cart_left">
+<div class="clear" style="margin-bottom:5px;"><a href="javascript:history.go(-1);" style="float:left;"><img alt="" src="~skin/z_nfl5/img/cart/continue.gif" /></a>
+        <img class="cart_checkout" alt="Proceed to Checkout" onclick="gopay();" src="/static/skin/z_nfl5/img/cart/checkout.gif"/><br class="clear" />
+</div>
+    <div class="fixed_title"><img alt="" src="~skin/z_nfl5/img/cart/titleL.gif" style="float:left;" align="top" /><span>Shopping Cart</span><img style="float:right;" alt="" src="~skin/z_nfl5/img/cart/titleR.gif" /></div>
+
+    <div class="fixed_from cart_table"> 
+    <ol class="cart_table_top">
+    <li class="cart_col1">ITEM</li>
+    <li class="cart_col2">ITEM PRICE</li>
+    <li class="cart_col3">QUANTITY</li>
+    <li class="cart_col4">PRICE</li>
+    </ol>
+    <div id="sys_num">
+            <!-- BEGIN products -->
+            <ol id="cart_#{product.CartId}">
+    <li class="cart_col1"><a href="/Product/#{product.Id}/Show.aspx"><img width="50" height="50" src="#{product.Img_0}"></a>
+    <div><a href="/Product/#{product.Id}/Show.aspx">#{product.Name}</a>
+                    <br />
+                    #{product.Attr}</div></li>
+    <li class="cart_col2">#{product.Price}</li>
+    <li class="cart_col3">
+  
+                    <dl>
+                    <dt><input value="#{product.Num}" size="2" style="text-align: right" onkeyup="Cacl(#{product.CartId})" class="line" id="sys_#{product.CartId}_Num"></dt>
+                    <dd><a href="javascript:Cacl_UpD(#{product.CartId},'u');" onfocus="this.blur()">
+                                            <img src="/static/skin/z_nfl5/img/cart/good_detail_up.gif"></a></dd>
+                                            <dd><a href="javascript:Cacl_UpD(#{product.CartId},'d');" onfocus="this.blur()">
+                                        <img src="/static/skin/z_nfl5/img/cart/good_detail_down.gif"></a></dd>
+                    </dl>
+    </li>
+    <li class="cart_col4" id="sys_#{product.CartId}_Subtotal"> #{product.Subtotal}</li><li class="cart_col4"><a id="del_#{product.CartId}" href="/ShoppingCart/#{product.CartId}/Delete.aspx" onclick="javascript:return confirm('Confirm delete it?')">
+                            <img alt="delete" src="/static/skin/z_nfl5/img/cart/del.gif" /></a></li>
+    </ol>
+            <!-- END products -->
+    </div>
+    <dl id="cart_total">
+    <dd><i>We automatically apply all eligible promotions to offer you the lovest possible price.</i><b>#{CurrencyName}<span id="sys_GrandTotal">#{GrandTotal}</span></b><s>CART TOTAL</s><br class="clear" /></dd>
+    </dl>
+    <div class="clear"></div>
+    </div>
+    <div id="cart_discount"><a href="javascript:code();">Have a coupon code? Validate it here</a><br />
+				<div id="cart_code"><br /><label>Enter your coupon code: </label>
+                <input id="Text1" type="text" class="input-text" name="txtCoupon" />
+        <input id="btnValidate" type="image" class="cart_button" value="" src="~skin/z_nfl5/img/cart/code.gif" onclick="ValidateCoupon()" /></div>
+        <div class="clear">
+        </div>
+        <span class="valid" mode="border"></span></div>
+        <div class="clear"><a href="javascript:history.go(-1);" style="float:left;"><img alt="" src="~skin/z_nfl5/img/cart/continue.gif" /></a>
+        <img class="cart_checkout" alt="Proceed to Checkout" onclick="gopay();" src="/static/skin/z_nfl5/img/cart/checkout.gif"/></div>
+</div>
+<div id="cart_right">
+<div class="cart_box"><b>Shop With Confidence</b><p>Shopping on #{parameter_domain} is safe and secure - guaranteed!</p>
+<div>
+<a href="https://www.mcafeesecure.com/" target="_blank" rel="nofollow"><img height="42" width="94" alt="" src="~skin/z_nfl5/img/cart/mca.gif"></a>
+<a href="https://www.verisign.com/" target="_blank" rel="nofollow"><img height="53" width="99" alt="" src="~skin/z_nfl5/img/cart/ver.gif"></a>
+</div></div>
+<div class="cart_box"><b>Shop With Confidence</b><p>#{parameter_domain} cares about your complete satisfaction. We offer a comprehensive return policy on all items, allowing you to shop with confidence.</p><p><a href="/Shipping-Returns.html" rel="nofollow" target="_blank">See our Return Policy &gt;&gt;</a></p></div>
+<div class="cart_box" style="margin-bottom:0;"><b>Privacy Policy</b>
+    <p>#{parameter_domain} respects your privacy. We do NOT share or in any way distribute any personal, business or contact information you may provide.</p>
+    <p><a href="/Privacy-Notice.html" rel="nofollow" target="_blank">See Our Privacy Policy &gt;&gt;</a></p>
+</div>
+
+</div>
+</div>
+<script>
+    function gopay() {
+
+        if ($("#sys_num").children("ol").length > 0) {
+            document.location.href = document.location.href = '#{gourl}';
+        }
+        else { alert("Your shopping cart is empty"); }
+    }
+
+    function ValidateCoupon() {
+
+        var coupon = $("input[name=txtCoupon]").val();
+        if (coupon == "") {
+            alert('Please enter the coupon number');
+            return;
+        }
+
+        var req = "/ShoppingCart/ValidateCoupon.aspx?coupon=" + coupon;
+
+        $("#btnValidate").attr("disabled", "true");
+
+        $.ajax({
+            type: "POST",
+            url: req,
+            data: "coupon=" + coupon,
+            success: function (data) {
+                if (data == "ok")
+                { Cacl_All(); alert("Validation succeeds"); }
+                else {
+                    alert(data);
+                }
+            },
+            error: function () {
+                alert("System is abnormal");
+            },
+            complete: function () {
+                $("#btnValidate")[0].disabled = false;
+            }
+        });
+
+    }
+
+    function Cacl_UpD(cartId, t) {
+        var num = $("#sys_" + cartId + "_Num").val();
+        num = parseInt(num);
+
+        if (t == "u") {
+            num = num + 1;
+        }
+        else {
+            num = num - 1;
+            if (num <= 0) return;
+        }
+
+        $("#sys_" + cartId + "_Num").val(num);
+
+        Cacl(cartId);
+    }
+    function Cacl(cartId) {
+
+        var num = $("#sys_" + cartId + "_Num").val();
+
+        num = num.replace(/[^\d]/gi, '');
+
+        if (num == "" || num <= 0) num = 1;
+
+        $("#sys_" + cartId + "_Num").val(num);
+
+        $("#sys_" + cartId + "_Subtotal").html("loading...");
+        $.post("/ShoppingCart/ChangeNum.aspx", { 'cartId': cartId, 'num': num }, function (data) {
+            $("#sys_" + cartId + "_Subtotal").html(data);
+
+            Cacl_All();
+        });
+    }
+
+    function Cacl_All() {
+
+        $.post("/ShoppingCart/CaclAll.aspx".toAjax(), "", function (data) {
+            var data = "var obj=" + data;
+            eval(data);
+            $("#sys_Subtotal").html(obj.Subtotal);
+            $("#sys_Coupon").html(obj.Coupon);
+            $("#sys_GrandTotal").html(obj.GrandTotal);
+        });
+    }
+</script>
+<script src="~skin/z_nfl5/js/cart.js" type="text/javascript"></script>

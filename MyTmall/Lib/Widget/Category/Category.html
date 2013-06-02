@@ -1,0 +1,39 @@
+<php>
+	foreach($category as $key=>$row){
+</php>
+<php>
+	switch($Display){
+	case "nav":
+</php>
+<a target="_top" href="/Category/{$row.info.Name}">{$row.info.Name}</a> &gt;
+<php>
+	break;
+	case "tree":
+</php>
+<!--一级分类开始 -->
+<li class="">
+	<a target="_top" href="/Category/{$row.info.Name}">{$row.info.Name}</a>
+	<!--二级分类开始 -->
+	<div class="">
+		<ul>
+			<php>
+				foreach($category[$key]['child'] as $subrow){
+			</php>
+			<li class="">
+				<a target="_top" href="/Category/{$subrow.info.Name}">{$subrow.info.Name}</a>
+			</li>
+			<php>
+				}
+			</php>
+		</ul>
+
+	</div>
+	<!--二级分类结束 -->
+</li>
+<!--一级分类结束 -->
+
+<php>
+	}
+	}
+</php>
+

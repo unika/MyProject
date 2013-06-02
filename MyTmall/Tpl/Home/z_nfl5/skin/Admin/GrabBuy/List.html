@@ -1,0 +1,71 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            产品抢购</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="8">
+                    <a href="#{Add}">新增抢购</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    产品Id
+                </td>
+                <td>
+                    产品图片
+                </td>
+                <td>
+                    产品名
+                </td>
+                <td>
+                    剩余时间
+                </td>
+                <td>
+                    单价
+                </td>
+                <td>
+                    抢购总数
+                </td>
+                <td>
+                    已出售总数
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN prograbs -->
+            <tr class="tableItems">
+                <td>
+                    #{prograb.Product.Id}
+                </td>
+                <td>
+                    <img src="#{prograb.Product.Img_0}" />
+                </td>
+                <td>
+                    #{prograb.Product.Name}
+                </td>
+                <td>
+                 #{prograb.Times}
+                </td>
+                <td>
+                    #{prograb.Price}
+                </td>
+                <td>
+                    #{prograb.TotalNum}
+                </td>
+                <td>
+                    #{prograb.SaleNum}
+                </td>
+                <td>
+                    <a href="#{prograb.Edit}">编辑</a>｜<a href="#{prograb.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END prograbs -->
+        </table>
+        <div>
+            #{pager}</div>
+    </div>
+</div>

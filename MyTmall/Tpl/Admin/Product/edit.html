@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="__PUBLIC__/Js/jquery.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/Js/fancybox/fancybox.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/Js/my.js" type="text/javascript"></script>
+		<script src="__PUBLIC__/Js/fancybox/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+		<link href="__PUBLIC__/Js/fancybox/fancybox.css" type="text/css" rel="stylesheet" />
+		<link href="__PUBLIC__/Css/admin.css" type="text/css" rel="stylesheet" />
+		<script src="__PUBLIC__/Js/editor/kindeditor.js" type="text/javascript"></script>
+		<title>编辑</title>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('#content');
+			});
+			$(document).ready(function(data) {
+				$("#ProductTypeId").change(function() {
+					$(".attr tbody").empty();
+					$.post("__GROUP__/ProductTypeAttr/getTypeAttr", {
+						'ProductTypeId' : $(this).val(),
+					}, function(data) {
+						if (data.status == 1) {
+							var html = new String();
+							$.each(data.data, function(index, item) {
+								html = '<tr>';
+								html += '<td>' + item.Name + '</td>';
+								html += '<td><input type="text" name="AttrValue[' + item.Name + ']" value="' + '' + '"></td>';
+								html += '</tr>';
+							});
+						}
+						$(".attr tbody").append(html);
+
+					}, 'json');
+
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<form action="__URL__/update" method="post">
+			<table>
+				<tbody>
+					<tr>
+						<td>选择商品类型</td>
+						<td>
+						<select name="ProductTypeId" id="ProductTypeId">
+							{$typeTree}
+						</select></td>
+					</tr>
+					<tr>
+						<td>图片</td>
+						<td><img  width="100" height="100" src="/Upload/Product/{$image.Img}" alt="" /></td>
+					</tr>
+					<tr>
+						<td> 产品属性： </td>
+						<td>
+						<table class="attr">
+							<tbody >
+
+								<foreach name="info.AttrValue" item="vo" key="key">
+									<tr>
+										<td>{$key} </td>
+										<td>
+										<input type="text" name="AttrValue[{$key}]" value="{$vo}">
+										</td>
+									</tr>
+								</foreach>
+							</tbody>
+						</table></td>
+					</tr>
+
+					<tr>
+						<td> 产品名称： </td>
+						<td>
+						<input type="text" style="width: 450px;" class="tipInput inputTip" name="Name" value="{$product_name}" />
+						</td>
+					</tr>
+					<tr>
+						<td> 页面标题： </td>
+						<td>
+						<input type="text" style="width: 500px;" class="tipInput inputTip" name="Page_Title" value="{$Page_Title}" />
+						</td>
+					</tr>
+					<tr>
+						<td> 页面关键字： </td>
+						<td>
+						<input type="text" style="width: 500px;" class="tipInput inputTip" name="Page_Keyword" value="{$Page_Keyword}" />
+						</td>
+					</tr>
+					<tr>
+						<td> 页面描述： </td>
+						<td>
+						<input type="text" style="width: 500px;" class="tipInput inputTip" name="Page_Description" value="{$Page_Description}" />
+						</td>
+					</tr>
+					<tr>
+						<td> URL： </td>
+						<td>
+						<input type="text" style="width: 500px;" class="tipInput inputTip" name="Page_Url" value="{$Page_Url}" />
+						</td>
+					</tr>
+					<tr>
+						<td> 产品关联标识： </td>
+						<td>
+						<input type="text" style="width: 500px;" class="tipInput inputTip" name="SerialIden" value="{$SerialIden}" />
+						</td>
+					</tr>
+
+					<tr>
+						<td> 价钱： </td>
+						<td>
+						<input type="text" id="ppr" style="width: 100px;" class="tipInput inputTip" name="Price" value="{$Price}" />
+						美元 </td>
+					</tr>
+					<tr>
+						<td> 市场价钱： </td>
+						<td>
+						<input type="text" id="pmpr" style="width: 100px;" class="tipInput inputTip" name="MarketPrice" value="{$MarketPrice}" />
+						美元 </td>
+					</tr>
+					<tr>
+						<td> 库存： </td>
+						<td>
+						<select name="DbNum" id="ddlDbNum">
+							<option value="1" <eq name="$DbNum" value="1">selected="selected"</eq> >有货</option>
+							<option value="0" <eq name="$DbNum" value="0">selected="selected"</eq>>无货</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td> 状态： </td>
+						<td>
+						<select name="Status" id="Select1">
+							<option value="1" <eq name="$Status" value="1"> selected="selected"</eq>>正常</option>
+							<option value="0" <eq name="$Status" value="0"> selected="selected"</eq>>已下架</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td> 产品描述： </td>
+						<td>						<textarea id="content" name="Des" rows="10" cols="80">{$Des}</textarea></td>
+					</tr>
+					<tr>
+						<!--隐藏字段id-->
+						<td>
+						<input type="hidden" name="id"  value="{$id}" />
+						</td>
+						<td>
+						<input type="submit" value="更新" id="Submit1" />
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</form>
+	</body>
+</html>

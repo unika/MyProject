@@ -1,0 +1,83 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        $(".delAttr").bind("click", function() {
+            var obj = $(this);
+            $.confirm("确认删除?", function() {
+                $.post("__URL__/del", {
+                    'id' : obj.attr('aid'),
+                }, function(data) {
+                    if (data.status == 1) {
+                        obj.parents("tr").remove();
+                    } else {
+                        $.alert(data.info);
+                    }
+                }, 'json');
+            }, function() {
+                return true;
+            });
+        })
+    })
+</script>
+
+<body>
+	<h3>属性列表</h3>
+	<table>
+		<tr>
+			<td>编号</td>
+			<td>类型编号</td>
+			<td>属性名</td>
+			<td>购买属性</td>
+			<td>参数类型</td>
+			<td>参数值</td>
+			<td>默认值</td>
+			<td>是否搜索</td>
+			<td>排序</td>
+			<td>显示</td>
+			<td>长度</td>
+			<td>操作</td>
+		</tr>
+		<volist name="list" id="vo">
+			<tr>
+				<td> {$vo.Id} </td>
+				<td> {$vo.ProductTypeId} </td>
+				<td> {$vo.Name} </td>
+				<td>
+				<eq name="$vo.IsBuyType" value="0">
+					是
+					<else/>
+					否
+				</eq></td>
+
+				<td>
+				<eq name="$vo.ParamType" value="0">
+					输入
+					<else/>
+					多选
+				</eq></td>
+
+				<td>
+				<volist name="vo.ParamValue" id="subvo">
+					{$subvo};
+				</volist></td>
+				<td> {$vo.DefaultValue} </td>
+				<td>
+				<eq name="$vo.IsSearchAttr" value="0">
+					否
+					<else/>
+					是
+				</eq></td>
+				<td> {$vo.AttrOrder} </td>
+				<td> {$vo.BuySelStyle} </td>
+				<td> {$vo.MaxLength} </td>
+				<td><a href='javascript:void(0)' class="delAttr" aid="{$vo.id}">删除</a></td>
+			</tr>
+
+		</volist>
+	</table>
+	<div class="page">
+		{$page}
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            中心推荐产品</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="4">
+                    <form method="post" action="#{ActionLink}" name="myf">
+                    #{iden}
+                    <script>
+                        jQuery(function () {
+                            $("#iden").change(
+                            function () {
+                                myf.submit();
+                            }
+                            );
+                        });
+                    </script>
+                    <input id="Button1" type="button" value="导入选择项到-----#{productClassify.IdenAlias}-----"
+                        onclick="recomm()" />
+                    <a href="List.aspx">返回》》</a>
+                    <script>
+                        function recomm() {
+                            var pids = "";
+
+                            $(".tableItems :checked").each(
+                                function () {
+                                    pids = pids + this.value + ",";
+                                }
+                            );
+
+                            if (pids == "") {
+                                alert("请选择要导入的产品");
+                                return;
+                            }
+
+                            if (!confirm("你确定要导入吗？")) return;
+
+                            $.ajax({
+                                type: "POST",
+                                url: "ImportRecommend.aspx",
+                                data: "pids=" + pids + "&classifyId=#{productClassify.Id}",
+                                success: function (msg) {
+                                    alert("Data Saved: " + msg);
+
+                                },
+                                error: function ()
+                                { alert("系统异常"); }
+                            });
+                        }
+                    </script>
+                    </form>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    产品Id
+                </td>
+                <td>
+                    产品图片
+                </td>
+                <td>
+                    产品名
+                </td>
+            </tr>
+            <tbody>
+                <!-- BEGIN products -->
+                <tr class="tableItems">
+                    <td>
+                        <input id="Checkbox1" type="checkbox" value="#{product.Id}" />#{product.Id}
+                    </td>
+                    <td>
+                        <img src="#{product.Img_0}" />
+                    </td>
+                    <td>
+                        #{product.Name}
+                    </td>
+                </tr>
+                <!-- END products -->
+            </tbody>
+        </table>
+    </div>
+</div>

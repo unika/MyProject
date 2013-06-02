@@ -1,0 +1,134 @@
+<include file="Public:header" />
+<div id="main">
+	<style>
+		fieldset {
+			border: 1px solid #CCCCCC;
+			margin: 5px 0;
+			padding: 5px;
+			background-color: #f7f7f7;
+		}
+		legend {
+			color: black;
+			font-weight: bold;
+			padding: 3px 5px;
+		}
+		.inputLabel {
+			width: 90px;
+			float: left;
+		}
+		.input_text {
+			border: 1px solid #7F9DB9;
+			width: 120px;
+			margin: 2px;
+		}
+		.half_from {
+			margin-bottom: 10px;
+			display: inline-block;
+			width: 50%;
+			float: left;
+		}
+	</style>
+	<div class="fixed_big_from">
+		<div class="half_from">
+			<fieldset>
+				<legend>
+					I am a new customer
+				</legend>
+				<div style="padding: 0pt 10px;">
+					<p style="display: none">
+						Checkout Options:
+					</p>
+					<label for="register" style="cursor: pointer;">
+						<input checked="checked" name="account" value="register" id="register" type="radio">
+						<b>Register Account</b></label>
+					<br>
+					<label for="guest" style="cursor: pointer; display: none">
+						<input name="account" value="guest" id="guest" type="radio">
+						<b>Guest Checkout</b></label>
+					<br>
+					<p>
+						By creating an account you will be able to shop faster, be up to date on an order's
+						status, and keep track of the orders you have previously made.
+					</p>
+					<div style="text-align: right;">
+						<a target="_top" onclick="topage();" class="button">
+						<input name="registrationButton" title=" Continue " alt="Continue" src="__MYSTYLE__Images/submit.gif" class="Continue" type="image">
+						</a>
+					</div>
+				</div>
+			</fieldset>
+			<script>
+				if ("none" !== "")
+					$('#register').attr("checked", "checked");
+				function topage() {
+					if ($('#guest').is(':checked'))
+						//付款
+						document.location.href = '';
+					else
+						document.location.href = '/Public/register/';
+				}
+			</script>
+			<fieldset>
+				<legend>
+					Returning Customer
+				</legend>
+				<div style="padding: 0pt 10px;">
+					<!--用户登陆Widget开始 -->
+					<!-- <script>
+					$(document).ready(function() {
+					$("#loginBt").click(function() {
+					$.post("__URL__/checkUser", $("#loginForm").serialize(), function(data) {
+					if (data.status == 1) {
+					location.href = "__URL__/info";
+					} else {
+					$.alert(data.info);
+					}
+
+					}, 'json');
+					})
+					})
+					</script> -->
+
+					<form id="loginForm" method="post" onsubmit="" action="__URL__/checkUser" class="">
+						I am a returning customer.
+						<br>
+						<br>
+						<label style="text-align: right;" for="login-email-address" class="inputLabel"> <b>Email Address:</b></label>
+						<input class="input_text" id="email" name="email" type="text">
+
+						<br class="clear">
+						<label style="text-align: right;" for="login-password" class="inputLabel"> <b>Password:</b></label>
+						<input class="input_text" id="password" name="password" type="password">
+						<a target="_top" rel="nofollow" href="/User/forget">Forget Password?</a>
+						<br class="clear">
+						<div style="text-align: right;">
+							<input id="loginBt" name="Submit1" type="image" src="__MYSTYLE__Images/login.gif">
+						</div>
+						<input name="go" value="" type="hidden">
+					</form>
+					<!--用户登陆Widget结束-->
+				</div>
+			</fieldset>
+		</div>
+		<div class="half_from">
+			<center>
+				<div style="background-color: #F7F7F7; width: 200px; padding: 10px; margin-top: 16px">
+					<a href="http://sealinfoverisign.com/splash?form_file=fdf/splash.fdf&amp;dn=usefulsunglasses.com&amp;lang=en" target="_top"> <img alt="" src="__MYSTYLE__Images/vlogo.gif"></a>
+					<br>
+					<br>
+					<a href="http://trustswave.com/cert.php?customerId=16ac926b72be810ba2d2636fdecb7080&amp;size=105x54&amp;style=normal" target="_top"> <img alt="" src="__MYSTYLE__Images/trustwave.gif"></a>
+					<br>
+					<br>
+					<a target="_top" href=""> <img alt="" src="__MYSTYLE__Images/verified.gif"></a>
+				</div>
+			</center>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+</div>
+
+<div class="clear"></div>
+
+<include file="Public:footer" />

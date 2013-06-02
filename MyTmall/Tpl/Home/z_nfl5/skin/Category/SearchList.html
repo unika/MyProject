@@ -1,0 +1,52 @@
+﻿<div id="nfl_search_attr" style="display:#{catNameDisplay}">
+    <div class="white_bg">
+    <h2>
+        <a href="/Category/#{category.Id}/Show.aspx" title="#{category.Name}">#{category.Name}</a></h2>
+    <div id="sys_search">
+        <b>Selected: </b>
+        <!-- BEGIN selkeys -->
+        <a href="#{sel.Url}"><span><i>#{sel.AttrName}:</i><span>#{sel.AttrValue}</span><span
+            class="close-icon"></span></span></a>
+        <!-- END selkeys -->
+        <br class="clear" />
+    </div>
+    <ul id="nfl_choose">
+        <!-- BEGIN CategorySearchAttrGroups -->
+        <li><label>#{CategorySearchAttrGroup.AttrName}:</label><div>
+            <!-- BEGIN CategorySearchAttrValues -->
+            <span class="#{CategorySearchAttrValue.Style}"><a href="#{CategorySearchAttrValue.Url}">#{CategorySearchAttrValue.Value}</a></span>
+            <!-- END CategorySearchAttrValues --></div>
+        </li>
+        <!-- END CategorySearchAttrGroups -->
+        <li class="clear"></li>
+    </ul>
+    <br class="clear" />
+    </div>
+    <script type="text/javascript">        if ($("#sys_search a").length < 1) { $("#sys_search").hide(); } if ($("#nfl_choose li").length < 2) { $("#nfl_choose").hide(); }</script>
+ </div>  
+ 
+       
+        <div class="nfl_box2"> <div class="nfl_page"> #{pager} <a href="#{priceurl}">Sort by price</a> | <a href="#{styleurl}">Switching Display Pattern</a></div>
+
+    <!-- BEGIN products -->
+    <ul class="nfl_item" iconlist="#{product.PromotionIcon}">
+        <li class="nfl_item_img"><a title="#{product.Name}" href="/Product/#{product.Id}/Show.aspx">
+            <img title="#{product.Name}" alt="#{product.Name}" src="#{product.Img_1}">
+        </a></li>
+        <li class="nfl_item_name">
+            <br />
+            <a title="#{product.Name}" href="/Product/#{product.Id}/Show.aspx">#{product.Name}</a><br />
+            <br />
+            <i>#{product.ShortDes}</i></li>
+        <li class="nfl_item_mprice">
+            <br />
+            <s class="sys_cur">#{product.CurrencyName}</s> <s class="sys_p">#{product.Show_MarketPrice}</s><br />
+            <b class="sys_cur">#{product.CurrencyName}</b> <b class="sys_p">#{product.Show_Price}</b><br />
+            <br />
+            <a href="/Product/#{product.Id}/Show.aspx"><i>show mall...</i></a></li>
+    </ul>
+    <!-- END products -->
+<div class="nfl_page2"> #{pager} </div>
+</div> 
+
+<script>    $('.nfl_item:odd').css('backgroundColor', '#fafafa');</script>

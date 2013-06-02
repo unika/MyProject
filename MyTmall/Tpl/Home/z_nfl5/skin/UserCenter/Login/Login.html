@@ -1,0 +1,116 @@
+﻿<style>
+    fieldset
+    {
+        border: 1px solid #CCCCCC;
+        margin: 5px 0;
+        padding: 5px;
+        background-color: #f7f7f7;
+    }
+    legend
+    {
+        color: black;
+        font-weight: bold;
+        padding: 3px 5px;
+    }
+    .inputLabel
+    {
+        width: 90px;
+        float: left;
+    }
+    .input_text
+    {
+        border: 1px solid #7F9DB9;
+        width: 120px;
+        margin: 2px;
+    }
+    #loginBt
+    {
+        background: url(/static/skin/z_nfl5/img/user/login.gif);
+        height: 26px;
+        width: 103px;
+        border: 0 none;
+        cursor: pointer;
+    }
+    .half_from
+    {
+        margin-bottom: 10px;
+        display: inline-block;
+        width: 50%;
+        float: left;
+    }
+</style>
+<div class="fixed_big_from">
+    <div class="half_from">
+        <fieldset>
+            <legend>I am a new customer</legend>
+            <div style="padding: 0pt 10px;">
+                <p style="display: #{display}">
+                    Checkout Options:</p>
+                <label for="register" style="cursor: pointer;">
+                    <input type="radio" name="account" value="register" id="register" checked="checked"/>
+                    <b>Register Account</b></label>
+                <br>
+                <label for="guest" style="cursor: pointer; display: #{display}">
+                    <input type="radio" name="account" value="guest" id="guest"  />
+                    <b>Guest Checkout</b></label>
+                <br>
+                <p>
+                    By creating an account you will be able to shop faster, be up to date on an order's
+                    status, and keep track of the orders you have previously made.</p>
+                <div style="text-align: right;">
+                    <a onclick="topage();" class="button">
+                        <input type="image" name="registrationButton" title=" Continue " alt="Continue" src="/static/skin/z_nfl5/img/user/submit.gif"
+                            class="Continue" /></a></div>
+            </div>
+        </fieldset>
+        <script>
+            if ("#{display}" !== "")
+                $('#register').attr("checked", "checked");
+            function topage() {
+                if ($('#guest').is(':checked'))
+                    document.location.href = '/OrderPay/CheckOut.aspx';
+                else
+                    document.location.href = '/UserCenter/Reg/Reg.aspx?go=#{go}';
+            }
+        </script>
+        <fieldset>
+            <legend>Returning Customer</legend>
+            <div style="padding: 0pt 10px;">
+                <form method="post" action="#{ActionLink}" class="ajaxPostForm">
+                I am a returning customer.<br />
+                <br />
+                <label style="text-align: right;" for="login-email-address" class="inputLabel">
+                    <b>Email Address:</b></label>
+                <input type="text" class="input_text" id="email" name="userName" /><span class="valid"
+                    mode="border" rule="email"></span><br class="clear" />
+                <label style="text-align: right;" for="login-password" class="inputLabel">
+                    <b>Password:</b></label>
+                <input type="password" class="input_text" id="password" name="pwd" /><span class="valid"
+                    mode="border"></span><a rel="nofollow" href="/UserCenter/Login/GetPwd.aspx">Forget Password?</a><br class="clear" />
+                <div style="text-align: right;">
+                     <input type="submit" value=" " id="loginBt" name="Submit1" />
+                </div>
+                <input name="go" type="hidden" value="#{go}" />
+                </form>
+            </div>
+        </fieldset>
+    </div>
+    <div class="half_from">
+        <center>
+            <div style="background-color: #F7F7F7; width: 200px; padding: 10px; margin-top: 16px">
+                <a href="#{verisign}" target=_blank>
+                    <img alt="" src="/static/skin/z_nfl5/img/user/vlogo.gif" /></a><br />
+                <br />
+                <a href="#{trustwave}" target=_blank>
+                    <img alt="" src="/static/skin/z_nfl5/img/user/trustwave.gif" /></a><br />
+                <br />
+                <a href="">
+                    <img alt="" src="/static/skin/z_nfl5/img/user/verified.gif" /></a>
+            </div>
+        </center>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+</div>

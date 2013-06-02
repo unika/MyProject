@@ -1,0 +1,45 @@
+﻿<div>
+
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="4" style="text-align: right; padding-right: 10px;">
+                    <a href="#{imgUp}">上传图片</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    图片
+                </td>
+
+                <td>
+                    操作
+                </td><td>模特图</td>
+            </tr>
+            <!-- BEGIN imgs -->
+            <tr class="tableItems">
+                <td>
+                    #{img.Id}
+                </td>
+                <td>
+                    <img src="#{img.Img_1}"  width="100px" height="100px"/>
+                </td>
+
+                <td imgid=#{img.Id}>
+                    <a href="#{img.Delete}" class="deleteCmd">删除</a>
+                    ｜<a href="#{img.SetMainImg}">设置主图</a>
+                    ｜<a href="#{img.SetModel}">设置模特图</a>
+                </td>
+                <td>
+                    #{img.IsModel}
+                </td>
+            </tr>
+            <!-- END imgs -->
+        </table>
+        <div>#{pager}</div>
+    </div>
+</div>
+

@@ -1,0 +1,101 @@
+<include file="public:header" />
+<script>
+    $(document).ready(function() {
+        $("#ProductTypeId").change(function() {
+            $.post("__GROUP__/Discount/getProduct", {
+                'ProductTypeId' : $(this).val(),
+            }, function(data) {
+                if (data.status == 1) {
+                    //类型下的产品信息列表
+                    html = new String();
+                    $.each(data.data, function(index, item) {
+                        html += "<tr class='tr'>";
+                        html += "<td><input type='checkbox' name='product[]' class='check' value='" + item.Id + "' />";
+                        html += item.Id + "</td>";
+                        if (item.Img != null) {
+                            html += "<td><img style='width:100px;height:100px;' src='/Upload/Product/m_" + item.Img.Img + "'/></td>";
+                        } else {
+                            html += "<td><img style='width:100px;height:100px;' src='/Upload/Product' alt='无图'/></td>";
+                        }
+                        html += "<td>" + item.Name + "</td>";
+                        html += "<td>" + item.Price + "</td>";
+                        if (item.DbNum == 0) {
+                            item.DbNum = '缺货';
+                        } else {
+                            item.DbNum = '正常';
+                        }
+                        html += "<td>" + item.DbNum + "</td>";
+                        if (item.Status == 0) {
+                            item.Status = '下架';
+                        } else {
+                            item.Status = '上架';
+                        }
+                        html += "<td>" + item.Status + "</td>";
+
+                        html += "</tr>";
+                    });
+                    $(".tr").remove();
+                    $("#table").find("tr:first").after(html);
+                } else {
+                    $.alert(data.info);
+                }
+            }, 'json');
+
+        });
+
+        $("input[type='checkbox']").click(function() {
+            if ($(this).prop("checked")) {
+                $.post("__URL__/addProduct", {
+                    "Productid" : $(this).val(),
+                    "id" : $("#Classify").val()
+                }, function(data) {
+                    $.alert(data.info);
+                }, 'json')
+            } else {
+                $.post("__URL__/delProduct", {
+                    "Productid" : $(this).val(),
+                    "id" : $("#Classify").val()
+                }, function(data) {
+                    $.alert(data.info);
+                }, 'json')
+            }
+        })
+    }); 
+</script>
+<body>
+	<div>
+		产品类型
+		<select id='ProductTypeId' name='ProducTypeId'>
+			{$data}
+		</select>
+	</div>
+	<table id="table">
+		<tr>
+			<td>编号</td><td>图片</td><td>名称</td><td>价格</td><td>库存</td><td>状态</td>
+		</tr>
+		<volist id="vo" name="list">
+			<tr class="tr">
+				<td>
+				<input type='checkbox' name='product[]' class='check' value='{$vo.Id}' />
+				{$vo.Id}</td>
+				<td>
+				<empty 	name="vo.Img.Img">
+					<img style='width:100px;height:100px;' src='/Upload/System/noimgae.jpg' />
+					<else />
+					<img style='width:100px;height:100px;' src='/Upload/Product/m_{$vo.Img.Img}'/>
+				</empty></td>
+				<td>{$vo.Name} </td>
+				<td>{$vo.Price}</td>
+				<td>{$vo.DbNum }</td>
+				<td>{$vo.Status} </td>
+			</tr>
+		</volist>
+
+		<input type="hidden" id="Classify" value="{$id}"/>
+	</table>
+	<div class="page">
+		{$page}
+	</div>
+
+</body>
+</html>

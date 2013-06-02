@@ -1,0 +1,126 @@
+<include file="Public:header" />
+<script>
+	$(document).ready(function() {
+		var editor;
+		var data = new Array("#username#", "#url#");
+		$("body").on("change", "#Type", function() {
+			editor.html(data[0] + data[1]);
+			$("#Title").val($("#Type").find("option:selected").text());
+		});
+		$("#add").click(function() {
+			$.dialog({
+				initialize : function() {
+					editor = KindEditor.create('#content');
+					$("input[name='status']").each(function() {
+						if ($(this).val = 1) {
+							$(this).prop("checked", true);
+						} else {
+							$(this).prop("checked", false);
+						}
+					})
+				},
+				title : "添加邮件模板",
+				content : mailtemp,
+				lock : true,
+				okValue : "添加",
+				ok : function() {
+					editor.sync("content");
+					$.post("__URL__/insert", $("#mailtemp").serialize(), function(data) {
+						$.alert(data.info);
+					}, 'json')
+				},
+				cancelValue : "关闭",
+				cancel : function() {
+
+				}
+			})
+		});
+		$(".delete").click(function() {
+			var obj = $(this);
+			$.post("__URL__/delTemplate", {
+				"id" : $(this).attr("aid")
+			}, function(data) {
+				if (data.status == 1) {
+					obj.parents("tr").remove();
+				} else {
+					$.alert(data.info);
+				}
+			}, 'json')
+
+		});
+		$(".edit").click(function() {
+			$.post("__URL__/getTemplate", {
+				"id" : $(this).attr("aid")
+			}, function(data) {
+				$.dialog({
+					initialize : function() {
+						editor = KindEditor.create('#content');
+						$("#Title").val(data.data.Title);
+						editor.html(data.data.Body);
+						$("option").each(function() {
+							if ($(this).val() == data.data.Type) {
+								$(this).attr("selected", "selected");
+							}
+						})
+						$("input[name='status']").each(function() {
+							if ($(this).val() === data.data.status) {
+								$(this).prop("checked", true);
+							} else {
+								$(this).prop("checked", false);
+							}
+						})
+						$("#Title").after("<input type='hidden' name='id' value='" + data.data.Id + "' id='id'/>");
+					},
+					title : "编辑模板信息",
+					content : mailtemp,
+					lock : true,
+					okValue : "更新",
+					ok : function() {
+						editor.sync("content");
+						$.post("__URL__/upTemplate", $("#mailtemp").serialize(), function(data) {
+							if (data.status == 1) {
+
+							} else {
+								$.alert(data.info);
+							}
+
+						}, 'json')
+
+					},
+					cancelValue : "关闭",
+					cancel : function() {
+						this.close();
+					}
+				});
+			}, 'json');
+
+		})
+	})
+</script>
+<body>
+	<h1><a href="javascript:void(0)" id="add">添加邮件模板</a></h1>
+	<table>
+		<tbody>
+			<tr>
+				<td>标题</td><td>类型</td><td>状态</td><td>操作</td>
+			</tr>
+		</tbody>
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo.Title}</td>
+				<td>{$vo.Type}</td>
+				<td>
+				<eq name="vo.status" value="0">
+					<span class="warring">禁用</span>
+					<else />
+					<span class="pass">启用</span>
+				</eq></td><td><a href="javascript:void(0)" class="edit" aid="{$vo.Id}">编辑</a><a href="javascript:void(0)" class="delete" aid="{$vo.Id}"> 删除</a></td>
+			</tr>
+
+		</volist>
+	</table>
+	<div class="page">
+		{$page}
+	</div>
+</body>
+</html>

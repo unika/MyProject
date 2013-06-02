@@ -1,0 +1,108 @@
+﻿<script>
+    function Go(hit, url) {
+        if (confirm(hit)) {
+            window.open(url);
+        }
+    }
+
+    function Html_Product_One() {
+        var pid = $("#pid").val();
+        if (pid == "") {
+            alert("请输入要生成的产品ID");
+            return;
+        }
+
+        if (confirm("你确定要生成吗？")) {
+
+            window.open("/Admin/Page/" + pid + "/Html_Product_One.aspx?ajax=true");
+        }
+    }
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            生成表态</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <table style="width: 90%">
+                <tr style="display: #{display}">
+                    <td>
+                        <input id="Button8" type="button" value="全站生成静态页" style="width: 200px; height: 30px"
+                            onclick="Go('你确定要全站生成静态页？','/Admin/Page/Html_Site.aspx?ajax=true')" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button9" type="button" value="生成站点地图/RSS" style="width: 200px; height: 30px"
+                            onclick="Go('生成站点地图？','/Admin/Page/Html_SiteXML.aspx?ajax=true')" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button5" type="button" value="一键生成所有单页(首页，联系我们，自定义页面等)" onclick="Go('你确定要一键生成所有单页？','/Admin/Page/Html_Url_ALL.aspx?ajax=true')" />
+                        <br />[1：动态站也需要去生成首页]
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button4" type="button" value="生成产品评论" style="width: 200px; height: 30px"
+                            onclick="Go('你确定要生成产品评论？','/Admin/Page/GetProductComment.aspx?ajax=true')" /><br />
+                        [1：产品页有评论框的才需要生成 <br />2：目前只建议生成UGG，LV的站。球衣不需要去生成，会有问题。<br />
+                        3：<font style=" color:Red">如果是静态站，需要先生成产品评论，后生成产品页静态。</font>]
+                    </td>
+                </tr>
+                <tr style="display: #{display}">
+                    <td>
+                        <input id="Button1" type="button" value="一键生成所有产品页" style="width: 200px; height: 30px"
+                            onclick="Go('你确定要一键生成所有产品页？','/Admin/Page/Html_Product_ALL.aspx?ajax=true')" />
+                    </td>
+                </tr>
+                <tr style="display: #{display}">
+                    <td>
+                        <input id="Button2" type="button" value="一键生成所有分类页" style="width: 200px; height: 30px"
+                            onclick="Go('你确定要一键生成所有分类页？','/Admin/Page/Html_Category_ALL.aspx?ajax=true')" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button3" type="button" value="导出链接列表" style="width: 200px; height: 30px"
+                            onclick="Go('你确定要导出链接列表？','/Admin/Page/OutputLink.aspx?ajax=true')" /><br />
+                            [1：导出的列表为：产品链接，目录链接，新闻链接]
+                    </td>
+                </tr>
+
+                <!--                <tr style="">
+                    <td>
+                        <input id="Button4" type="button" value="一键生成所有新闻页" style="width: 200px; height: 30px" 
+                        onclick="Go('你确定要一键生成所有新闻页？','/Admin/Page/Html_Article_ALL.aspx?ajax=true')" />
+                    </td>
+                </tr>-->
+                <!--                <tr>
+                    <td>
+                        <input id="Button6" type="button" value="一键生成单个产品页" style="width: 200px; height: 30px"
+                            onclick="Html_Product_One()" />
+                        <input type="text" id="pid" />
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>
+                        <input id="Button3" type="button " value="一键生成所有新闻分类页" style="width: 200px; height: 30px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button4" type="button" value="一键生成所有新闻页" style="width: 200px; height: 30px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Button7" type="button" value="输入页面生成" style="width: 200px; height: 30px" />
+                        <input id="Text2" type="text" />
+                    </td>
+                </tr>-->
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<html>
+<head>
+    <title>loading, please wait...</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="#{iPS.Action}" name="pay">
+    <input type="hidden" name="iPS.pMerchantCode" value="#{iPS.pMerchantCode}" />
+    <input type="hidden" name="iPS.pICPayReqB64" value="#{iPS.pICPayReqB64}" />
+    <input type="hidden" name="iPS.pICPayReqHashValue" value="#{iPS.pICPayReqHashValue}" />
+    <input type="hidden" name="iPS.pAFSReqB64" value="#{iPS.pAFSReqB64}" />
+    <input type="hidden" name="iPS.pAFSReqHashValue" value="#{iPS.pAFSReqHashValue}" />
+    </form>
+    <script language="javascript" type="text/javascript">
+        document.forms["pay"].submit();
+    </script>
+</body>
+</html>

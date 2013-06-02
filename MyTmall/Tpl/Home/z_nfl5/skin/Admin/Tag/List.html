@@ -1,0 +1,58 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            页面标签列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+           <tr class="adminBar">
+                <td colspan="6">
+                    <a href="/Admin/Tag/Add.aspx">新增标签</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    标签名
+                </td>
+                <td>
+                    类型
+                </td>
+                <td>
+                    显示数量
+                </td>
+                <td>
+                    备注
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN tags -->
+            <tr class="tableItems">
+                <td>
+                    #{tag.Id}
+                </td>
+                <td>
+                    #{tag.Name}
+                </td>
+                <td>
+                    #{tag.TypeDes}
+                </td>
+                <td>
+                    #{tag.Num}
+                </td>
+                <td>
+                    #{tag.Remark}
+                </td>
+                <td>
+                    <a href="#{tag.Edit}">编辑</a>｜<a href="#{tag.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END tags -->
+        </table>
+        <div>#{pager}</div>
+    </div>
+</div>

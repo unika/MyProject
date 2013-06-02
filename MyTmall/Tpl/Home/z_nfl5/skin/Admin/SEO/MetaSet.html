@@ -1,0 +1,97 @@
+﻿<style>
+    .tit
+    {
+        width: 200px;
+    }
+    legend
+    {
+        font-size: 15px;
+        background-color: #C3D5ED;
+    }
+    fieldset
+    {
+        margin: 10px;
+        background-color: #ffffff;
+    }
+</style>
+<form method="post" action="" id="iform" target="iboxFrmjd" >
+<div class="adminMainPanel">
+<fieldset>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <input id="Radio5" type="radio"  name="setObj" value="1"/>产品
+                <input id="Radio6" type="radio" name="setObj" value="2"/>目录
+                <input id="Radio7" type="radio" name="setObj" value="3" checked/>目录&产品
+            </td>
+        </tr>
+        <tr>
+        <td>
+            <textarea id="TextArea1" cols="80" rows="10"  name="setVal">[#{metaType}]</textarea>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                #{resType}<span id="resdbct"></span>
+                <input id="Hidden1" type="hidden" name="metaType" value="#{metaType}" />
+                <input id="Hidden2" type="hidden" name="catIds" value="#{catIds}" />
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <input id="Submit1" type="button" value="提交"  onclick="act_sub();"/>
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+</div>
+</form>
+<script>
+    $(document).ready(function () {
+        var metaType = "#{metaType}";
+
+
+        $("#resType").change(function () {
+            var resType = $("#resType").val();
+            $.ajax({
+                type: "POST",
+                url: "GetResDbByType.aspx",
+                data: "metaType=" + metaType + "&resType=" + resType,
+                success: function (msg) {
+                    msg = msg + '<input id="Button1" type="button" value="Add" onclick="AddKu()"/>';
+                    $("#resdbct").html(msg);
+                }
+            });
+        });
+    })
+
+    function AddKu() {
+        var tav = $("#TextArea1").val();
+        tav = tav + "+[" + $("#resDb").val() + "]";
+        $("#TextArea1").val(tav);
+    }
+
+    function act_sub() {
+
+        var html = "<iframe  name=\"iboxFrmjd\" width=\"500\" "
+                + " frameborder=\"0\" style=\"padding: 0px; margin: 0px; border: 0px solid red; height: 330px; width: 500px;\"  src=\"\">"
+                + "</iframe>";
+        wojilu.ui.box.showBoxString(html, 500, 350, "生成确认");
+
+        $("#iform").attr("action", "#{ActionLink}?ajax=true");
+        $("#iform").submit();
+
+    }
+
+    function confirm_sub() {
+        var html = "<iframe  name=\"iboxFrmjd\" width=\"500\" "
+                + " frameborder=\"0\" style=\"padding: 0px; margin: 0px; border: 0px solid red; height: 330px; width: 500px;\"  src=\"\">"
+                + "</iframe>";
+        wojilu.ui.box.showBoxString(html, 500, 350, "生成进度");
+
+        $("#iform").attr("action", "#{confirm_subAction}?ajax=true");
+        $("#iform").submit();
+    }
+</script>
+

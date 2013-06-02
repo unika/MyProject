@@ -1,0 +1,97 @@
+﻿<script src="~js/countries.js" type="text/javascript"></script>
+<style>
+.fixed_from{margin-bottom:5px;}
+</style>
+<div class="fixed">
+    <div class="chk">
+        <div class="fixed_title"><img alt="" src="~skin/z_nfl5/img/cart/titleL.gif" style="float:left;" align="top" /><span>Cart Summary</span><img style="float:right;" alt="" src="~skin/z_nfl5/img/cart/titleR.gif" /></div>
+      
+            <form method="post" action="#{ActionLink}" id="payf">
+                <div class="fixed_from" style="padding:10px 20px;"><b>Order Num: </b><input type="text" size="35" value="#{orderid}"  readonly="readonly" name="orderid" /> It is important to keep it for further tracking!</div>
+
+                <div class="fixed_title"><img alt="" src="~skin/z_nfl5/img/cart/titleL.gif" style="float:left;" align="top" /><span>Shipping Address</span><img style="float:right;" alt="" src="~skin/z_nfl5/img/cart/titleR.gif" /></div>
+
+                    <div class="fixed_from chk_address">
+                    <ul>
+                    <li>Your Name:</li>
+                    <li></li>
+                    <li>Address:<i class="fixed_red">*</i></li>
+                    <li>City:<i class="fixed_red">*</i></li>
+                    <li>State/Province:<i class="fixed_red">*</i></li>
+                    <li>Country:<i class="fixed_red">*</i></li>
+                    <li>Post/Zip Code:<i class="fixed_red">*</i></li>
+                    <li>TEL:<i class="fixed_red">*</i></li>
+                    <li>Email:<i class="fixed_red">*</i></li>
+                    </ul>
+                    <ol>
+                    <li><input name="customer.FirstName" value="#{customer.FirstName}" id="shipping_first_name" size="34"
+                                        gtbfieldid="4" type="text" />
+                                    <span class="valid" mode="border"></span><input name="customer.SecondName" size="34" value="#{customer.SecondName}" id="Text1" gtbfieldid="4"
+                                        type="text" />
+                                    <span class="valid" mode="border"></span></li>
+                    <li><span>First Name:<i class="fixed_red">*</i></span><span>Last Name:<i class="fixed_red">*</i></span></li>
+                    <li><input name="customer.Address" value="#{customer.Address}" id="shipping_address" size="70"
+                                        gtbfieldid="5" type="text" />
+                                    <span class="valid" mode="border"></span></li>
+                    <li><input name="customer.City" value="#{customer.City}" id="shipping_city" gtbfieldid="6" type="text" size="70" />
+                                    <span class="valid" mode="border"></span></li>
+                    <li><select name="customer.State" id="sys_state">
+                                    </select><span class="valid" mode="border"></span></li>
+                    <li><select onchange="print_state('sys_state',this.selectedIndex);" id="sys_country"  name="customer.Country">
+                                    </select><span class="valid" mode="border"></span>
+                                    <script type="text/javascript">
+                                        print_country("sys_country");
+                                        $("#sys_country").val("#{customer.Country}");
+                                        var index = $("#sys_country ").get(0).selectedIndex;
+                                        print_state('sys_state', index);
+                                        $("#sys_state").val("#{customer.State}");
+                                    </script></li>
+                    <li><input name="customer.PostCode" size="70" value="#{customer.PostCode}" id="shipping_zip" gtbfieldid="8" type="text" />
+                                    <span class="valid" mode="border" /></span></li>
+                    <li><input name="customer.Tel" size="70" id="shipping_phone" gtbfieldid="10" value="#{customer.Tel}" type="text" />
+                                    <span class="valid" mode="border"></span></li>
+                    <li><input name="customer.Email" size="70" value="#{customer.Email}" id="shipping_email" gtbfieldid="11" type="text" />
+                                    <span class="valid" mode="border" rule="email"></span></li>
+                                    </ol><div class="clear" ></div>
+                    </div>
+        
+                <div class="fixed_title"><img alt="" src="~skin/z_nfl5/img/cart/titleL.gif" style="float:left;" align="top" /><span>Shipping Method</span><img style="float:right;" alt="" src="~skin/z_nfl5/img/cart/titleR.gif" /></div>
+               
+                <div class="chk_border fixed_from">
+                <span class="fixed_red">NOTICE: We Offer Free Shipping For Orders Over 10PCS.</span><br />
+                     <!-- BEGIN delis -->
+                    <fieldset>
+                    <legend> Shipping Fee</legend>
+                    <input type="radio" value="#{deli.Id}" name="deliveries" id="deli#{deli.Id}" price="#{deli.Price}" style="float:left" #{deli.checked}/>
+                                    <label style="float:left" for="deli#{deli.Id}">#{deli.Name}</label> <b style="float:right">#{deli.CurrencyPrice}</b>  <br /> 
+                    </fieldset>
+
+                    <!-- END delis -->
+                    
+                </div>
+                <div class="fixed_title"><img alt="" src="~skin/z_nfl5/img/cart/titleL.gif" style="float:left;" align="top" /><span>Payment Method</span><img style="float:right;" alt="" src="~skin/z_nfl5/img/cart/titleR.gif" /></div>
+                <div class="chk_border fixed_from">
+                    <ul>
+                            <!-- BEGIN cards -->
+                            <li>
+                                    <input type="radio" value="#{card.Id}" name="cardType" id="cardId#{card.Id}" />
+                                    <label for="cardId#{card.Id}">
+                                       <img src="#{card.CardImg}" align="middle" /> #{card.CardDes}
+                                        </label><br /><br />
+                                
+                            </li>
+                            <!-- END cards -->
+                    </ul>
+                </div>
+                <input type="submit" value="" class="chk_pay" name="checkoutBt" style="float:right;" />
+            </form>
+    </div>
+    <div class="clear">
+    </div>
+</div>
+                    <script>
+                        //default :first checked;
+                        $("input[name=cardType]").first().attr("checked", true);
+
+                    </script>
+

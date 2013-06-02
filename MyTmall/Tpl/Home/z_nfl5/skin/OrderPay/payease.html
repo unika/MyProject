@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="#{payEase.Action}" name="pay">
+    <input type="hidden" name="payEase.MerNo" value='#{payEase.MerNo}' />
+    <input type="hidden" name="payEase.OrderId" value='#{payEase.OrderId}' />
+    <input type="hidden" name="payEase.UserName" value='#{payEase.UserName}' />
+    <input type="hidden" name="payEase.Adddress" value='#{payEase.Adddress}' />
+    <input type="hidden" name="payEase.Tel" value='#{payEase.Tel}' />
+    <input type="hidden" name="payEase.PostCode" value='#{payEase.PostCode}' />
+    <input type="hidden" name="payEase.Amount" value='#{payEase.Amount}' />
+    <input type="hidden" name="payEase.DataNow" value='#{payEase.DataNow}' />
+    <input type="hidden" name="v_moneytype" value='1' />
+    <input type="hidden" name="payEase.ReturnUrl" value='#{payEase.ReturnUrl}' />
+    <input type="hidden" name="payEase.MD5info" value="#{payEase.MD5info}" />
+    <input type="hidden" name="v_orderstatus" value="1" />
+    <input type="hidden" name="payEase.City" value="#{payEase.City}" />
+    <input type="hidden" name="payEase.State" value="#{payEase.State}" />
+    <input type="hidden" name="payEase.Country" value="#{payEase.Country}" />
+    <input type="hidden" name="payEase.Email" value="#{payEase.Email}" />
+    <script language="javascript" type="text/javascript">
+        document.forms["pay"].submit();
+    </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            客户留言</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    内容
+                </td>
+            </tr>
+            <!-- BEGIN contacts -->
+            <tr class="tableItems">
+                <td>
+                    #{contact.Id}
+                </td>
+                <td>
+                    #{contact.Email}
+                </td>
+                <td>
+                    <a href="#{contact.Detail}" class="frmBox">#{contact.Content}</a>
+                </td>
+            </tr>
+            <!-- END contacts -->
+        </table>
+
+    </div>
+</div>

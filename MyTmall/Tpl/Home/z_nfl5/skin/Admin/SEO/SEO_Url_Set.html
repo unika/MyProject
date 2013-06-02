@@ -1,0 +1,237 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<style>
+    .tit
+    {
+        width: 200px;
+    }
+    legend
+    {
+        font-size: 15px;
+        background-color: #C3D5ED;
+    }
+    fieldset
+    {
+        margin: 10px;
+        background-color: #ffffff;
+    }
+</style>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            产品/分类三要素</div>
+    </div>
+    <div class="adminMainPanel">
+        <div style="display: none">
+            <form method="post" action="UrlLayout.aspx">
+            <fieldset>
+                <legend>层级配置</legend>
+                <table style="width: 100%;">
+                    <tr>
+                        <td class="tit">
+                            是否启用目录层级:
+                        </td>
+                        <td>
+                            <select id="EnableUlrLayout" name="EnableUlrLayout">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                            <script>
+                                $("#EnableUlrLayout").val("#{EnableUlrLayout}");
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tit">
+                        </td>
+                        <td>
+                            <input id="Submit3" type="submit" value="提交" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            </form>
+        </div>
+        <fieldset>
+            <legend> [父级目录] ｜[同类产品名] ｜[目录名] 标签替换 </legend>
+            <p>
+                <a href="/Admin/Optimiza/ProductSeoTagRep.aspx" target=_blank>点击替换</a>
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>注：选中分类可以单独对该分类进行设置。不选中则设置全站 </legend>
+            <div class="adminMainPanel">
+                <font onclick="setMeta('url','url')" style="color: Red; cursor: pointer">URL</font>｜
+                <font onclick="setMeta('title','title')" style="color: Red; cursor: pointer">Title</font>｜
+                <font onclick="setMeta('keyword','keyword')" style="color: Red; cursor: pointer">Keyword</font>｜
+                <font onclick="setMeta('description','description')" style="color: Red; cursor: pointer">
+                    Description</font>
+                <script>
+				<!--
+            var setting = {
+
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+
+
+                check : {
+
+                    chkStyle: "checkbox",
+                    enable: true,
+                    radioType: "level"
+                }
+            };
+
+            var zNodes = #{nodes};
+
+
+            $(document).ready(function () {
+                $.fn.zTree.init($("#treeCat"), setting, zNodes);
+            });
+
+       function setMeta(metaType,title) {
+            var catIds = getCatIds();
+            showBox("MetaSet.aspx?frm=true&catIds=" + catIds+"&metaType="+metaType, title);
+        }
+
+       function getCatIds() {
+        var treeObj = $.fn.zTree.getZTreeObj("treeCat");
+
+        var nodes = treeObj.getCheckedNodes(true);
+
+        var catIds = "";
+        for (var i = 0; i < nodes.length; i++) {
+            catIds = catIds + nodes[i].id + ",";
+        }
+        if (catIds.length > 0) {
+            catIds = catIds.substring(0, catIds.length - 1);
+        }
+        return catIds;
+    }
+
+
+        function showBox(url, title) {
+            var html = "<iframe id=\"boxFrm1\"  name=\"iboxFrm\"  "
+                    + "scrolling=\"no\" frameborder=\"0\" style=\"padding: 0px; margin: 0px; border: 0px solid red; height: 300px; width: 530px;\"  src=\"" + url + "\">"
+                    + "</iframe>";
+            var loadingDiv = '<div id="boxFrm1Loading" style="width:530px;text-align:center;"><img src="' + wojilu.path.img + '/ajax/big.gif" /></div>';
+            wojilu.ui.box.showBoxString(html, 530, 330, title, loadingDiv);
+        }
+		//-->
+                </script>
+                <ul id="treeCat" class="ztree">
+                </ul>
+            </div>
+        </fieldset>
+        <form method="post" action="UpdateSimpleSeo.aspx">
+        <fieldset>
+            <legend>注：产品简单三要素设置</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        标题：
+                    </td>
+                    <td>
+                        <input id="Text1" type="text" style="width: 500px" name="seo_p_title" value="#{seo_p_title}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td>
+                        <input id="Text2" type="text" style="width: 500px" name="seo_p_description" value="#{seo_p_description}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        关键字：
+                    </td>
+                    <td>
+                        <input id="Text3" type="text" style="width: 500px" name="seo_p_keyword" value="#{seo_p_keyword}" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>注：分类简单三要素设置</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td>
+                        标题：
+                    </td>
+                    <td>
+                        <input id="Text4" type="text" style="width: 500px" name="seo_c_title" value="#{seo_c_title}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td>
+                        <input id="Text5" type="text" style="width: 500px" name="seo_c_description" value="#{seo_c_description}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        关键字：
+                    </td>
+                    <td>
+                        <input id="Text6" type="text" style="width: 500px" name="seo_c_keyword" value="#{seo_c_keyword}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit2" type="submit" value="保存" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+        <form method="post" action="UpdateUrlRule.aspx">
+        <fieldset>
+            <legend>URL前后缀设置</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td class="tit">
+                        前缀:
+                    </td>
+                    <td>
+                        <input id="Text8" type="text" name="Pre_Url" value="#{Pre_Url}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tit">
+                        后缀:
+                    </td>
+                    <td>
+                        <input id="Text9" type="text" name="Aft_Url" value="#{Aft_Url}" />
+                    </td>
+                </tr>
+                <tr style="display: none">
+                    <td class="tit">
+                        连接符:
+                    </td>
+                    <td>
+                        <input id="Text10" type="text" name="Join_Url" value="-" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tit">
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="提交" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+    </div>
+</div>

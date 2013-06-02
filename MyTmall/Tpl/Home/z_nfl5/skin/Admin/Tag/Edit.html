@@ -1,0 +1,72 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑标签</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        标签名：
+                    </td>
+                    <td>
+                        <input name="pageTag.Name" type="text" class="tipInput" style="width: 450px;" value="#{pageTag.Name}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        标签类型：
+                    </td>
+                    <td>
+                        <select id="selType" name="pageTag.Type">
+                            <option value="0">商品</option>
+                            <option value="1">新闻</option>
+                            <option value="2">商品分类</option>
+                        </select>
+                        <script>
+                        $("#selType").val("#{pageTag.Type}");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        条件：
+                    </td>
+                    <td>
+                        <input name="pageTag.Condition" type="text" class="tipInput" style="width: 450px;" value="#{pageTag.Condition}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        显示数量：
+                    </td>
+                    <td>
+                        <input name="pageTag.Num" type="text" class="tipInput" style="width: 450px;" value="#{pageTag.Num}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        备注：
+                    </td>
+                    <td>
+                        <input name="pageTag.Remark" type="text" class="tipInput" style="width: 450px;" value="#{pageTag.Remark}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

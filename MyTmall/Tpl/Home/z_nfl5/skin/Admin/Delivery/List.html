@@ -1,0 +1,58 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            物流管理</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="7" style="text-align: right; padding-right: 10px;">
+                    <a href="#{Add}">新增物流</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    物流名称
+                </td>
+                <td>
+                    价钱
+                </td>
+                <td>
+                    状态
+                </td>
+                <td>
+                    默认选项
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN delis -->
+            <tr class="tableItems">
+                <td>
+                    #{deli.Id}
+                </td>
+                <td>
+                    #{deli.Name}
+                </td>
+                <td>
+                    #{deli.Price}
+                </td>
+                <td>
+                    #{deli.StatusDes}
+                </td>
+                <td>
+                    #{deli.IsDefaultDes}
+                </td>
+                <td>
+                    <a href="#{deli.Edit}">编辑</a>｜<a href="#{deli.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END delis -->
+        </table>
+
+    </div>
+</div>

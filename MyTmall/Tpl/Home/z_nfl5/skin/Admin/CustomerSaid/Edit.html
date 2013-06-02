@@ -1,0 +1,39 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        内容：
+                    </td>
+                    <td>
+                        <textarea id="TextArea1" cols="100" rows="5" name="customerSaid.Cont">#{customerSaid.Cont}</textarea>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        客户：
+                    </td>
+                    <td>
+                        <input name="customerSaid.CustName" type="text" class="tipInput" style="width: 450px;" value="#{customerSaid.CustName}" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

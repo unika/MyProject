@@ -1,0 +1,64 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            货币管理</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="8" style="text-align: right; padding-right: 10px;">
+                    <a href="#{Add}">新增货币</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    货币名称
+                </td>
+                <td>
+                    货币简称
+                </td>
+                <td>
+                    汇率
+                </td>
+                <td>
+                    状态
+                </td>
+                <td>
+                    是否默认币种
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN curs -->
+            <tr class="tableItems">
+                <td>
+                    #{cur.Id}
+                </td>
+                <td>
+                    #{cur.Name}
+                </td>
+                <td>
+                    #{cur.ShowName}
+                </td>
+                <td>
+                    #{cur.Rate}
+                </td>
+                <td>
+                    #{cur.StatusDes}
+                </td>
+                <td>
+                    #{cur.IsDefault}
+                </td>
+                <td>
+                    <a href="#{cur.Edit}">编辑</a>｜<a href="#{cur.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END curs -->
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<style>
+    ul.ztree
+    {
+        margin-top: 10px;
+        border: 1px solid #617775;
+        background: #f0f6e4;
+        width: 500px;
+        height: 250px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+</style>
+<script>
+<!--
+
+ 
+       var cat_setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: cat_onClick
+			},
+
+ 
+		};
+ 
+		var cat_zNodes =#{cat_nodes};
+ 
+		
+		function cat_onClick(e, treeId, treeNode) {
+            if(treeNode.isParent)
+            {
+                return;
+            }
+			var zTree = $.fn.zTree.getZTreeObj("treeCat");
+			nodes = zTree.getSelectedNodes();
+			$("#ncat").val(nodes[0].name);
+
+            $("#tcatid").val(nodes[0].id);
+            hideCat();
+		}
+ 
+		function showCat() {
+			var cityObj = $("#ncat");
+			var cityOffset = $("#ncat").offset();
+			$("#catContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+ 
+			$("body").bind("mousedown", cat_onBodyDown);
+		}
+		function hideCat() {
+			$("#catContent").fadeOut("fast");
+			$("body").unbind("mousedown", cat_onBodyDown);
+		}
+		function cat_onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" || event.target.id == "catContent" || $(event.target).parents("#catContent").length>0)) {
+				hideCat();
+			}
+		}
+ 
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeCat"), cat_setting, cat_zNodes);
+		});
+		//--> 
+</script>
+
+<div>
+
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        复制到：
+                    </td>
+                    <td>
+                        <input id="ncat" type="text" readonly value="" style="width: 200px;" onclick="showCat();" name="ncat" />
+                        <span class="valid" mode="border"></span>
+                        <input id="tcatid" type="hidden" name="tcatid" />
+                        <input id="scatid" type="hidden" name="scatid"  value="#{scatid}"/>
+                        <div id="catContent" class="menuContent" style="display: none; position: absolute;">
+                            <ul id="treeCat" class="ztree" style="margin-top: 0; width: 400px;"></ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>数量：</td>
+                    <td><input id="Hidden1" type="text" name="copyNum" />
+                    <span class="valid" mode="border"></span>
+                    <br />
+                    输入0表示全部复制，大于0的数字表示随机复制条数</td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="确认复制" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

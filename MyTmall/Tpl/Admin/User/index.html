@@ -1,0 +1,138 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        $(".view").click(function() {
+            $.alert(data.info);
+        });
+        $(".del").click(function() {
+            $.post("__URL__/delUser", {
+                "uid" : $(this).attr("uid")
+            }, function(data) {
+                $.alert(data.info);
+            }, 'json');
+            $(this).parents("tr").remove();
+        })
+
+        $("#add").click(function() {
+            $.dialog({
+                title : "添加会员",
+                content : register,
+                lock : true,
+                okValue : "添加",
+                ok : function() {
+                    $.post("__URL__/addUser", $("#register").serialize(), function(data) {
+                        if (data.status == 1) {
+                            $("#reset").trigger("click");
+                            var html = new String();
+                            html += '<tr>';
+                            html += '<td>' + data.data.id + '</td>';
+                            html += '<td>' + data.data.username + '</td>';
+                            html += '<td>' + data.data.email + '</td>';
+                            html += '<td>' + data.data.address + '</td>';
+                            html += '<td>';
+                            if (data.data.status == 0) {
+                                html += '<span style="color:red">no</span>';
+                            } else {
+                                html += '<span style="color:green">yes</span>';
+                            }
+                            html += '</td>';
+                            html += '<td>' + data.data.regIp + '</td>';
+                            html += '<td>' + data.data.regTime + '</td>';
+                            html += '<td>' + data.data.lastLoginIp + '</td>';
+                            html += '<td>' + data.data.lastLoginTime + '</td>';
+                            html += '<td><a href="javascript:void(0)" class="view" uid="' + data.data.id + '">查看订单</a>&nbsp; <a href="javascript:void(0)" class="pwd" uid="' + data.data.id + '">修改密码</a>&nbsp;<a href="javascript:void(0)" class="email" uid="' + data.data.id + '">修改邮箱</a> &nbsp;<a href="javascript:void(0)" class="del" uid="' + data.data.id + '">删除</a></td>';
+                            html += '</tr>';
+                            $("#table").find("tr:first").after(html);
+                        } else {
+                            $.alert(data.info);
+                        }
+                    }, 'json');
+                    return false;
+                },
+                cancelValue : "取消",
+                cancel : function() {
+                    this.close();
+                }
+            });
+        })
+        $(".email").click(function() {
+            var uid = $(this).attr("uid");
+            $.dialog({
+                initialize : function() {
+                    $("#uid").val(uid);
+                },
+                title : "修改邮箱",
+                content : email,
+                lock : true,
+                okValue : "修改",
+                ok : function() {
+                    $.post("__URL__/updateEmail", $("#email").serialize(), function(data) {
+                        $.alert(data.info);
+                    }, 'json');
+                },
+            });
+
+        });
+
+        $(".pwd").click(function() {
+            var uid = $(this).attr("uid");
+            $.dialog({
+                initialize : function() {
+                    $("#uid").val(uid);
+                },
+                title : "修改密码",
+                content : pass,
+                lock : true,
+                okValue : "修改",
+                ok : function() {
+                    $.post("__URL__/updatePwd", $("#pass").serialize(), function(data) {
+                        $.alert(data.info);
+                    }, 'json');
+                },
+            });
+
+        });
+
+    })
+</script>
+<body>
+	<h1><a href="javascript:void(0)" id="add">添加会员</a></h1>
+	<table id="table">
+		<tr>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>邮箱</td>
+			<td>地址</td>
+			<td>邮箱验证</td>
+			<td>注册ip</td>
+			<td>注册时间</td>
+			<td>最后登陆ip</td>
+			<td>最后登陆时间</td>
+			<td>操作</td>
+		</tr>
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td>{$vo.username}</td>
+				<td>{$vo.email}</td>
+				<td>{$vo.address}</td>
+				<td>
+				<eq name="vo.status" value="0">
+					<span style="color:red">no</span>
+					<else/>
+					<span style="color:green">yes</span>
+				</eq></td>
+				<td>{$vo.regIp}</td>
+				<td>{$vo.regTime}</td>
+				<td>{$vo.lastLoginIp}</td>
+				<td>{$vo.lastLoginTime}</td>
+				<td><a href="javascript:void(0)" class="view" uid="{$vo.id}">查看订单</a>&nbsp; <a href="javascript:void(0)" class="pwd" uid="{$vo.id}">修改密码</a>&nbsp;<a href="javascript:void(0)" class="email" uid="{$vo.id}">修改邮箱</a> &nbsp;<a href="javascript:void(0)" class="del" uid="{$vo.id}">删除</a></td>
+			</tr>
+		</volist>
+
+	</table>
+	<div class="page">
+		{$page}
+	</div>
+</body>
+</html>

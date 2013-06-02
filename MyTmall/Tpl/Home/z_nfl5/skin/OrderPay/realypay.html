@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form action="#{realypay.action}" id="Rppay_standard_checkout" name="Rppay_standard_checkout"
+    method="post">
+    <input value="#{realypay.product_no}" name="realypay.product_no" type="hidden" />
+    <input value="#{realypay.product_name}" name="realypay.product_name" type="hidden" />
+    <input value="#{realypay.price_unit}" name="realypay.price_unit" type="hidden" />
+    <input value="1" name="realypay.quantity" type="hidden" />
+    <input value="#{realypay.siteid}" name="realypay.siteid" type="hidden" />
+    <input value="#{realypay.order_sn}" name="realypay.order_sn" type="hidden" />
+    <input value="#{realypay.customername}" name="realypay.customername" type="hidden" />
+    <input value="#{realypay.address}" name="realypay.address" type="hidden" />
+    <input value="#{realypay.city}" name="realypay.city" type="hidden" />
+    <input value="#{realypay.state}" name="realypay.state" type="hidden" />
+    <input value="#{realypay.postcode}" name="realypay.postcode" type="hidden" />
+    <input value="#{realypay.country}" name="realypay.country" type="hidden" />
+    <input value="#{realypay.email}" name="realypay.email" type="hidden" />
+    <input value="#{realypay.tel}" name="realypay.tel" type="hidden" />
+    <input value="#{realypay.ShippingFee}" name="realypay.ShippingFee" type="hidden" />
+    <input name="currency" value="USD" type="hidden" />
+    <input value="#{realypay.returnUrl}" name="realypay.returnUrl" type="hidden" />
+    <input value="#{realypay.verifyCode}" name="realypay.verifyCode" type="hidden" />
+    <script language="javascript" type="text/javascript">
+        document.forms["Rppay_standard_checkout"].submit();
+    </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,103 @@
+﻿<style>
+    .tit
+    {
+        width: 200px;
+    }
+    legend
+    {
+        font-size: 15px;
+        background-color: #C3D5ED;
+    }
+    fieldset
+    {
+        margin: 10px;
+        background-color: #ffffff;
+    }
+</style>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            系统模版列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <form method="post" action="PriceSet.aspx">
+        <fieldset>
+            <legend>总价折扣</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="color: red">
+                        备注：<br />
+                        >=500-100 (满500减100)<br />
+                        >=500/0.75 (满500打0.75折)<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        >=<input id="txtPrice" type="text" />
+                        <select id="txtType">
+                            <option value="减">减</option>
+                            <option value="折">折</option>
+                        </select><input id="txtYH" type="text" /><input id="Button1" type="button" value="ADD"
+                            onclick="priceadd()" />
+                        <script>
+                            function priceadd() {
+                                var txt = ">=" + $("#txtPrice").val() + ($("#txtType").val() == "减" ? "-" : "/") + $("#txtYH").val();
+                                $("#priceRule").val($("#priceRule").val() + "\r" + txt);
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="priceRule" cols="100" rows="6" name="priceRule">#{priceRule}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Submit2" type="submit" value="提交" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+        <form method="post" action="NumSet.aspx">
+        <fieldset>
+            <legend>数量折扣</legend>
+            <table style="width: 100%;">
+                <tr>
+                    <td style="color: red">
+                        备注：<br />
+                        >=3-100 (买3件减100)<br />
+                        >=3/0.75 (买3件打0.75折)<br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        >=<input id="txtNum" type="text" />
+                        <select id="txtNumType">
+                            <option value="减">减</option>
+                            <option value="折">折</option>
+                        </select><input id="txtNumYH" type="text" /><input id="Button2" type="button" value="ADD" onclick="numadd()"/>
+                        <script>
+                            function numadd() {
+                                var txt = ">=" + $("#txtNum").val() + ($("#txtNumType").val() == "减" ? "-" : "/") + $("#txtNumYH").val();
+                                $("#numRule").val($("#numRule").val() + "\r" + txt);
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea id="numRule" cols="100" rows="6" name="numRule">#{numRule}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="Submit1" type="submit" value="提交" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        </form>
+    </div>
+</div>

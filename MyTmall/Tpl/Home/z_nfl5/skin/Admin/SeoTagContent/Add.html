@@ -1,0 +1,57 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            添加内容</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+                <table style="width: 90%">
+                <tr>
+                    <td>
+                        标签元素：
+                    </td>
+                    <td>
+                        <select id="Select2" name="seoTagContent.HtmlTagType">
+                            <option value="0">页面-Title</option>
+                            <option value="1">页面-Keywords</option>
+                            <option value="2">页面-Description</option>
+                            <option value="3">产品描述</option>
+                            <option value="4">产品分类描述</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        内容标签类型：
+                    </td>
+                    <td>
+                        <select id="Select1" name="seoTagContent.ContentType">
+                            <option value="0">文章</option>
+                            <option value="1">产品分类</option>
+                            <option value="2">产品</option>
+                            <option value="3">文章分类</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        内容：
+                    </td>
+                    <td>
+                        <textarea name="seoTagContent.Content" cols="100" rows="5" ></textarea>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

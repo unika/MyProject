@@ -1,0 +1,145 @@
+<include file="Public:header" />
+<script>
+	$("document").ready(function() {
+		$("#submit").click(function() {
+			$.post("__URL__/insert", $("#sys").serialize(), function(data) {
+				$.alert(data.info);
+			}, 'json');
+		})
+		$("#file").click(function() {
+			$.dialog({
+				title : "选择水印图片",
+				content : uploadimage("__URL__/uploadfile"),
+				okValue : "上传",
+				ok : function() {
+					$("#image").submit();
+					return false;
+				},
+				cancelValue : "取消",
+				cancel : function() {
+					this.close()
+				},
+			})
+
+		})
+	})
+</script>
+<h1>基本信息</h1>
+<body>
+	<form id="sys" onsubmit="return false;" method="post">
+		<table>
+			<tr>
+				<td width="20%" style="text-align: center;">网站名称</td>
+				<td>
+				<input class="input1"   name="siteTitle" type="text" value="{$param.siteTitle}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">域名</td>
+				<td>
+				<input class="input1"  name="siteUrl" type="text" value="{$param.siteUrl}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">SEO关键字</td>
+				<td>
+				<input class="input1"  name="keywords" type="text" value="{$param.keywords}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">SEO描述</td>
+				<td>				<textarea class="input1"  name="description">{$param.description}</textarea></td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">水印</td>
+				<td>
+				<eq name="param.water" value="true">
+					<input name="water" type="checkbox" checked="checked" />
+					<else />
+					<input name="water" type="checkbox" />
+				</eq><span class="tip">针对产品图有效</span></td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">水印图片</td>
+				<td><img style="width: 200px;height: 200px;" id="img" name="img" src="/Conf/{$param.image}" />
+				<button id="file">
+					上传
+				</button><span class="tip">针对产品图有效(水印图片大小请在200*200以内) </span></td>
+			</tr>
+			<tr>
+
+				<td width="20%" style="text-align: center;">商户号</td>
+				<td>
+				<input class="input1" type="text" id="merchantid" name="merchantid" value="{$param.merchantid}" />
+				</td>
+
+			</tr>
+			<tr>
+
+				<td width="20%" style="text-align: center;">证书号</td>
+				<td>				<textarea class="input1" id="orderhash" name="orderhash" style="width: 582px; height: 115px;">{$param.orderhash}</textarea></td>
+
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">透明度</td>
+				<td>
+				<input  class="input1" style="width:30px;" type="text" name="alpha" id="alpha" value="{$param.alpha}"/>
+				<span class="tip">水印图透明度 1-100%,值越低,越透明(默认为80%)</span></td>
+			</tr>
+			<tr>
+				<td  width="20%" style="text-align: center;">缩略图</td>
+				<td>
+				<eq name="param.thumb" value="true">
+					<input name="thumb" type="checkbox" checked="checked" />
+					<else />
+					<input name="thumb" type="checkbox" />
+				</eq><span class="tip">针对产品图 </span></td>
+			</tr>
+			<tr>
+				<td  width="20%" style="text-align: center;">缩略图宽</td>
+				<td>
+				<present name="param.thumbMaxWidth">
+					<input  class="input1" name="thumbMaxWidth" type="text" value="{$param.thumbMaxWidth}" />
+					<else />
+					<input  class="input1" name="thumbMaxWidth" type="text" value="" />
+				</present><span class="tip">多张请用,分割如要生成两张缩略图,请填写:200,300</span></td>
+			</tr>
+			<tr>
+				<td  width="20%" style="text-align: center;">缩略图高</td>
+				<td>
+				<present name="param.thumbMaxHeight">
+					<input  class="input1" name="thumbMaxHeight" type="text" value="{$param.thumbMaxHeight}" />
+					<else />
+					<input  class="input1" name="thumbMaxHeight" type="text" value="" />
+				</present><span class="tip">多张请用,分割如要生成两张缩略图,请填写:200,300</span></td>
+			</tr>
+			<tr>
+				<td  width="20%" style="text-align: center;">缩略图前缀</td>
+				<td>
+				<present name="param.thumbPrefix">
+					<input  class="input1" name="thumbPrefix" type="text" value="{$param.thumbPrefix}" />
+					<else />
+					<input  class="input1" name="thumbPrefix" type="text" value="" />
+				</present><span class="tip">图片water.png如设置了:m_,s_将生成m_water.png,s_water.png</span></td>
+			</tr>
+
+			<tr>
+				<td  width="20%" style="text-align: center;">页面统计代码</td>
+				<td>				<textarea  class="input1" name="tongji" id="tongji"  style="width: 380px; height: 136px;">{$param.tongji}</textarea><span class="tip">统计代码,请贴入代码</span></td>
+			</tr>
+			<tr>
+				<td  width="20%" style="text-align: center;">在线客服代码</td>
+				<td>				<textarea  class="input1" name="im" id="im"  style="width: 380px; height: 136px;">{$param.im}</textarea><span class="tip">在线客服代码,请贴入代码</span></td>
+			</tr>
+			<tr>
+				<td> &nbsp; </td>
+				<td>
+				<input id="submit" type="image" value="保存" />
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>

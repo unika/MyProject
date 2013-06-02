@@ -1,0 +1,104 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            添加(#{TypeName})产品类型属性</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+
+                <tr>
+                    <td>
+                        属性名：
+                    </td>
+                    <td>
+                        <input name="typeAttr.Name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        属性类型：
+                    </td>
+                    <td>
+                        <input id="Radio3" type="radio" name="typeAttr.ParamType" value="0" checked />
+                        输入
+                        <input id="Radio4" type="radio" name="typeAttr.ParamType" value="1" />
+                        多选
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        多选值：
+                    </td>
+                    <td>
+                        <textarea id="TextArea1" cols="100" name="typeAttr.ParamValue" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        默认值：
+                    </td>
+                    <td>
+                        <input name="typeAttr.DefaultValue" type="text" class="tipInput" style="width: 450px;" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        输入长度限制：
+                    </td>
+                    <td>
+                        <input name="typeAttr.MaxLength" type="text" class="tipInput" style="width: 450px;"
+                            value="0" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        是否用户于搜索：
+                    </td>
+                    <td>
+                        <input id="Radio1" type="radio" name="typeAttr.IsSearchAttr" value="1"  />
+                        是
+                        <input id="Radio2" type="radio" name="typeAttr.IsSearchAttr" value="0" checked/>
+                        否
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        是否是购买属性：
+                    </td>
+                    <td>
+                        <input id="Radio6" type="radio" name="typeAttr.IsBuyAttr" value="0" checked />
+                        否
+                        <input id="Radio7" type="radio" name="typeAttr.IsBuyAttr" value="1" />
+                        是
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        购买选择样式：
+                    </td>
+                    <td>
+                        <input id="Radio5" type="radio" name="typeAttr.BuySelStyle" value="0" checked />
+                        DIV方块
+                        <input id="Radio8" type="radio" name="typeAttr.BuySelStyle" value="1" />
+                        下拉列表
+                        <input id="Radio9" type="radio" name="typeAttr.BuySelStyle" value="2" />
+                        按属性购买
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

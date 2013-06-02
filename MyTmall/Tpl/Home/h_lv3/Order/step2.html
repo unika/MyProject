@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<div id="main">
+	<link rel="stylesheet" href="__MYSTYLE__/pay.css" type="text/css">
+	<form method="post" action="/Order/step3" id="pay_from1">
+		<div id="from2">
+			<div class="pay_t2">
+				2. Shipping &amp; Payment Method
+			</div>
+			<input id="C_FirstName" name="C_FirstName" value="<?php echo $_POST['C_FirstName'] ?>" type="hidden">
+			<input id="C_Username" name="C_Username" value="<?php echo $_POST['C_Username'] ?>" type="hidden">
+			<input id="C_SecondName" name="C_SecondName" value="<?php echo $_POST['C_SecondName'] ?>" type="hidden">
+			<input id="C_Address" name="C_Address" value="<?php echo $_POST['C_Address'] ?>" type="hidden">
+			<input id="C_City"  name="C_City" value="<?php echo $_POST['C_City'] ?>" type="hidden">
+			<input id="C_country" name="C_Country" value="<?php echo $_POST['C_Country'] ?>" type="hidden">
+			<input id="C_state" name="C_State" value="<?php echo $_POST['C_State'] ?>" type="hidden">
+			<input id="C_PostCode" name="C_PostCode" value="<?php echo $_POST['C_PostCode'] ?>" type="hidden">
+			<input id="C_Tel" name="C_Tel" value="<?php echo $_POST['C_Tel'] ?>" type="hidden">
+			<input id="C_Email" name="C_Email" value="<?php echo $_POST['C_Email'] ?>" type="hidden">
+			<input id="B_FirstName" name="B_FirstName" value="<?php echo $_POST['B_FirstName'] ?>" type="hidden" />
+			<input id="B_SecondName" name="B_SecondName" value="<?php echo $_POST['B_SecondName'] ?>" type="hidden" />
+			<input id="B_Address" name="B_Address" value="<?php echo $_POST['B_Address'] ?>" type="hidden" />
+			<input id="B_City" name="B_City" value="<?php echo $_POST['B_City'] ?>" type="hidden" />
+			<input id="B_Country" name="B_Country" value="<?php echo $_POST['B_Country'] ?>" type="hidden">
+			<input id="B_State" name="B_State" value="<?php echo $_POST['B_State'] ?>" type="hidden" />
+			<input id="B_PostCode" name="B_PostCode" value="<?php echo $_POST['B_PostCode'] ?>" type="hidden" />
+			<input id="B_Tel" name="B_Tel" value="<?php echo $_POST['B_Tel'] ?>" type="hidden"/>
+			<input id="B_Email" name="B_Email" value="<?php echo $_POST['B_Email'] ?>" type="hidden" />
+			<div class="shipping_list">
+				<span class="tt">Shipping Method</span>
+				<ul style="width:700px; float:left;">
+					<!--物流公司开始-->
+					<volist name="dlist" id="vo">
+						<li>
+							<input type="radio" id="deli{$vo.id}" name="DeliveryId" value="{$vo.id}" checked="" />
+							<label for="deli3"> &nbsp; {$vo.Name}<span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> ${$vo.Price} </label>
+						</li>
+					</volist>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="shipping_list">
+				<span class="tt">Payment Method</span>
+				<ul style="width:700px; float:left;">
+					<volist name="plist" id="vo">
+						<li>
+							<input type="radio" checked="" name="PaymentId" value="{$vo.id}" />
+							<label for="cardId4"><img align="middle" style="width: 80px;" alt="{$vo.Name}" src="/Upload/Payment/{$vo.logo}"></label>
+							<label>{$vo.Iden}</label>
+						</li>
+					</volist>
+				</ul>
+			</div>
+			<input value="" type="submit"  id="Submit2" class="Submit1">
+		</div>
+	</form>
+</div>
+</div>
+<div class="clear"></div>
+<include file="Public:footer" />

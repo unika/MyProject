@@ -1,0 +1,42 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            请选择要发布的产品类型</div>
+    </div>
+    <div class="adminMainPanel">
+        <script>
+				<!--
+            var setting = {
+               
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+
+                callback: {
+                    onClick: zTreeOnClick
+                }
+            };
+
+            var zNodes = #{nodes};
+
+            function zTreeOnClick(event, treeId, treeNode) {
+
+                document.location.href=treeNode.id+"/Add.aspx";
+            };
+
+
+            $(document).ready(function () {
+                $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+            });
+		//-->
+	</script>
+
+    <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿ 
+     <div class="nfl_box2 cate_child"> 
+     <div class="nfl_page3"><a href="/Category/#{category.Id}/Show.aspx" title="#{category.Name}">Sub Categories </a></div>
+    #{widget_cat_menu_child}
+    <div class="clear"></div>
+    </div>  <div class="nfl_box2"> <div class="nfl_page3">New Product - #{category.Name}</div>
+    <!-- BEGIN products -->
+        <ul class="nfl_root" iconlist="#{product.PromotionIcon}">
+            <li><a title="#{product.Name}" href="/Product/#{product.Id}/Show.aspx"><img class="nfl_list_img" title="#{product.Name}" alt="#{product.Name}" src="#{product.Img_1}"><br />#{product.Name}</a></li>
+            <li><s class="sys_cur">#{product.CurrencyName}</s><s class="sys_p">#{product.Show_MarketPrice}</s> &nbsp; <span class="sys_cur">#{product.CurrencyName}</span><span class="sys_p">#{product.Show_Price}</span> </li>
+        </ul>
+    <!-- END products -->
+    </div>

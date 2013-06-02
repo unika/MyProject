@@ -1,0 +1,51 @@
+<include file="Public:header" />
+<script>
+	$("document").ready(function() {
+		$("#submit").click(function() {
+			$.post("__URL__/setSmtp", $("#smtp").serialize(), function(data) {
+				$.alert(data.info);
+			}, 'json');
+		})
+	})
+</script>
+<h1>SMTP配置</h1>
+<body>
+	<form id="smtp" onsubmit="return false;" method="post">
+		<table>
+			<tr>
+				<td width="20%" style="text-align: center;">SMTP</td>
+				<td>
+				<input class="input1"  name="smtpHost" type="text" value="{$param.smtpHost}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">SMTP端口</td>
+				<td>
+				<input class="input1"  name="smtpPort"	type="text" value="{$param.smtpPort}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">邮箱</td>
+				<td>
+				<input class="input1"  name="smtpUser" type="text" value="{$param.smtpUser}" />
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" style="text-align: center;">密码</td>
+				<td>
+				<input class="input1"  name="smtpPwd" type="password" value="{$param.smtpPwd}" />
+				</td>
+			</tr>
+
+			<tr>
+				<td> &nbsp; </td>
+				<td>
+				<input id="submit" type="image" value="保存" />
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>

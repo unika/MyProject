@@ -1,0 +1,28 @@
+<include file="Public:header" />
+<script>
+	$(document).ready(function() {
+		$("#add").click(function() {
+			$.dialog({
+				title : "添加语言",
+				content : langue,
+				okValue : "添加",
+				ok : function() {
+					$.post("__URL__/insert", $("#langue").serialize(), function(data) {
+						$.alert(data.info);
+					}, 'json');
+
+				},
+				cancelValue : "关闭",
+				cancel : function() {
+
+				}
+			})
+		});
+	})
+
+</script>
+<body>
+	<h1>语言管理模块</h1>
+	<a href="javascript:void(0)" id="add">添加翻译语言</a>
+</body>
+</html>

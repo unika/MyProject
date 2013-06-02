@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="https://www.ecmcpal.com/personal/pays"  target="_parent" name="pay_checkout">
+    <table>
+        <tr>
+            <td>
+                <input name="Currency" type="hidden" value="1" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="OrderDesc" type="hidden" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="Remark" type="hidden" value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="ReturnURL" type="hidden" value="#{ecmcpal.ReturnURL}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="Language" type="hidden" value="2" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="BillNo" type="hidden" class="input" value="#{ecmcpal.OrderId}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="MerNo" type="hidden" class="input" value="#{ecmcpal.MerNo}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="Amount" type="hidden" class="input" value="#{ecmcpal.Amount}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="MD5info" type="hidden" class="input" value="#{ecmcpal.MD5info}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingFirstName" value="#{ecmcpal.ShippingFirstName}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingLastName" value="#{ecmcpal.ShippingLastName}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingEmail" value="#{ecmcpal.ShippingEmail}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingPhone" value="#{ecmcpal.ShippingPhone}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingZipcode" value="#{ecmcpal.ShippingZipcode}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingAddress" value="#{ecmcpal.ShippingAddress}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingCity" value="#{ecmcpal.ShippingCity}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingSstate" value="#{ecmcpal.ShippingSstate}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="shippingCountry" value="#{ecmcpal.ShippingCountry}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="products" value="" />
+            </td>
+        </tr>
+    </table>
+    <script language="javascript" type="text/javascript">
+        document.forms["pay_checkout"].submit();
+    </script>
+    </form>
+</body>
+</html>

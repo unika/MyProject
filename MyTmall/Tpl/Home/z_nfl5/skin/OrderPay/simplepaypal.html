@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+    <title>loading, please wait...</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="#{paypal.action}" name="pay_checkout" id="pay_checkout" >
+	    <input type="hidden" id="paypal.business" name="paypal.business" value="#{paypal.business}">
+	    <input type="hidden" id="paypal.item_name" name="paypal.item_name" value="#{paypal.item_name}">
+	    <input type="hidden" id="paypal.amount" name="paypal.amount" value="#{paypal.amount}"> 
+	    <input type="hidden" id="paypal.first_name" name="paypal.first_name" value="#{paypal.first_name}">
+	    <input type="hidden" id="paypal.last_name" name="paypal.last_name" value="#{paypal.last_name}">
+	    <input type="hidden" id="paypal.address1" name="paypal.address1" value="#{paypal.address1}">
+	    <input type="hidden" id="paypal.email" name="paypal.email" value="#{paypal.email}">
+	    <input type="hidden" id="paypal.city" name="paypal.city" value="#{paypal.city}">
+        <input type="hidden" id="paypal.state" name="paypal.state" value="#{paypal.state}">
+        <input type="hidden" id="paypal.country" name="paypal.country" value="#{paypal.country}">
+	 	<input type="hidden" id="paypal.zip" name="paypal.zip" value="#{paypal.zip}">
+
+	    <input type="hidden" id="paypal.notify_url" name="paypal.notify_url" value="#{paypal.notify_url}" />
+    </form>
+    <iframe height="0" width="0" name="ifrm_pay_checkout" id="ifrm_pay_checkout" style="display: none"></iframe>
+    <script type="text/javascript">
+        if (window.XMLHttpRequest) {
+            document.getElementById("pay_checkout").target = 'ifrm_pay_checkout';
+        }
+        document.getElementById("pay_checkout").submit();
+        window.status = 'https://www.paypal.com/cgi-bin/webscr';
+</script>
+</body>
+</html>

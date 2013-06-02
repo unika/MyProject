@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title>{$Page_Title} </title>
+		<meta http-equiv="content" content="text/html; charset=UTF-8" />
+		<meta name="keyword" content="{$Page_Keyword}" />
+		<meta name="description" content="{$Page_Description}" />
+		<script src="__PUBLIC__/Js/jquery.js"></script>
+		<script src="__PUBLIC__/Js/artDialog/jquery.artDialog.min.js"></script>
+		<script src="__PUBLIC__/Js/artDialog/artDialog.plugins.min.js"></script>
+		<link href="__PUBLIC__/Js/artDialog/skins/default.css" type="text/css" rel="stylesheet" />
+		<script>
+			$(document).ready(function() {
+				$(".cart").click(function() {
+					$.post("__APP__/Cart/addCart", {
+						"id" : $(this).attr("aid"),
+						"num" : $("#num").val(),
+						"product_name" : $("#product_name").text(),
+						"price" : $("#price").text(),
+					}, function(data) {
+						$.dialog({
+							title : data.message.title,
+							content : data.message.info,
+						})
+					}, 'json');
+				})
+				$(".comment").click(function() {
+					$.dialog({
+						title : "商品评论",
+						content : comment,
+						ok : function() {
+							$.post("__APP__/Comment/insert", $("#comment").serialize(), function(data) {
+								$.alert(data.info.message);
+							}, 'json');
+						}
+					})
+
+				});
+			})
+		</script>
+
+		<style>
+			body {
+				margin: auto;
+				padding: auto;
+				width: 1024px;
+				width: 1024px;
+				font-size: 16px;
+				font-weight: normal;
+			}
+			#detail {
+				width: 960px;
+			}
+			#desc {
+				text-align: center;
+			}
+			#head_left {
+				float: left;
+				width: 310px;
+			}
+			#head_right {
+				float: left;
+			}
+			a {
+				display: block;
+				height: 36px;
+				width: auto;
+				float: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="detail">
+			<div id="detail_head">
+				<div id="head_left">
+					<img src="/Upload/Product/{$Img}" />
+				</div>
+				<div id="head_right">
+					<h3><span id="product_name">{$product_name}</span></h3>
+					<p>
+						状态：{$Status}
+					</p>
+					<p>
+						价格：<span id="price">{$Price}</span>
+					</p>
+					<p>
+						市场价:{$MarketPrice}
+					</p>
+					<p>
+						库存：{$DbNum}
+					</p>
+					<p>
+						上架时间:{$AddTime}
+					</p>
+					<p>
+						数量:
+						<input id="num" name="num" value="1" />
+					</p>
+					<p>
+						<a href="javascript:void(0)" aid="{$id}" class="cart"> <img src="__PUBLIC__/images/cart.jpg " /> </a>
+						<a href="javascript:void(0)" aid="{$id}" class="buy"> <img src="__PUBLIC__/images/buy.jpg" /> </a>
+					</p>
+				</div>
+
+			</div>
+			<div id="desc">
+				{$Des}
+			</div>
+		</div>
+		<button class="comment">
+			我要评论
+		</button>
+		<form style="display: none;" id="comment" action="" method="post">
+			<table>
+				<tr>
+					<td>评论标题:</td>
+					<td>
+					<input type="text" name="Name" />
+					</td>
+				</tr>
+				<tr>
+					<td>评论内容:</td>
+					<td>					<textarea name="Comment"> </textarea></td>
+				</tr>
+				<tr>
+					<td>评分:</td>
+					<td>
+					<input type="radio" name="Star" value="1"/>
+					1分
+					<input type="radio" name="Star" value="2"/>
+					2分
+					<input type="radio" name="Star" value="3"/>
+					3分
+					<input type="radio" name="Star" value="4"/>
+					4分
+					<input type="radio" name="Star" value="5"/>
+					5分 </td>
+					
+				</tr>
+				<input type="hidden" name="ProductTypeId" value="{$typeid}" />
+				
+				<input type="hidden" name="Product_id" value="{$id}" />
+			</table>
+		</form>
+	</body>
+</html>

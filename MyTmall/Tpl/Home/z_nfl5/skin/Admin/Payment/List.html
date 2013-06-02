@@ -1,0 +1,60 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            支付通道管理</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="7" style="text-align: right; padding-right: 10px;">
+                    <a href="#{Add}">新增通道</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    通道名称
+                </td>
+
+                <td>
+                    状态
+                </td>
+                <td>
+                    手续费
+                </td>
+                <td>
+                    标识
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN pays -->
+            <tr class="tableItems">
+                <td>
+                    #{pay.Id}
+                </td>
+                <td>
+                    #{pay.Name}
+                </td>
+
+                <td>
+                    #{pay.StatusDes}
+                </td>
+                <td>
+                    #{pay.Price}
+                </td>
+                <td>
+                    #{pay.Iden}
+                </td>
+                <td>
+                    <a href="#{pay.Edit}">编辑</a>｜<a href="#{pay.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END pays -->
+        </table>
+
+    </div>
+</div>

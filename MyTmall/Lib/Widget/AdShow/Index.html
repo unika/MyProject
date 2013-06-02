@@ -1,0 +1,45 @@
+<!--记录广告点击率-->
+<script>
+    function adclick(obj) {
+        var url = $(obj).attr("href");
+        $(obj).attr("href", "#");
+        $.post("__GROUP__/admin/Admanager/adClick", {
+            'id' : $(obj).attr("id"),
+        });
+        $(obj).attr("href", url);
+    }
+</script>
+
+<!--$row['valid']检查广告是否有效,有效才输出0为未开始,1为进行中,2为过期-->
+<php>
+	$count=count($ad);
+	foreach($ad as $row){
+	if($row['valid']=='1'){
+	switch($Display){
+	case "single":
+</php>
+<li>
+	<!-- <a id="{$row.id}" onclick="adclick(this)" href="javascript:void(0)" style="display: block;"> <img  style="width: 300px;" src="/Upload/Admanager/{$row.image}" alt="" /> </a> -->
+	<a class="" id="{$row.id}" target="_blank" onclick="adclick(this)" href="{$row.url}" title="{$row.Name}"> <img style="width: {$width};height: {$height};" src="/Upload/Admanager/{$row.image}" alt="{$row.Name}" /> </a>
+</li>
+<php>
+	break;
+	case "slide":
+</php>
+<div style="opacity: 0; z-index: 0;" class="smask">
+	<a  id="{$row.id}" target="_blank" onclick="adclick(this)" title="{$row.Name}" href="{$row.url}" rel="nofollow"><img style="width: {$width};height: {$height};" title="{$row.Name}" alt="{$row.Name}" src="/Upload/Admanager/{$row.image}" /></a>
+</div>
+
+<php>
+	break;
+	case "banner":
+</php>
+<a  id="{$row.id}" target="_blank" onclick="adclick(this)" title="{$row.Name}" href="{$row.url}" ><img style="width: {$width};height: {$height};" title="{$row.Name}" alt="{$row.Name}" src="/Upload/Admanager/{$row.image}" /></a>
+<php>
+	}
+	}
+	}
+</php>
+
+<!--如果有其他的广告类型-->
+

@@ -1,0 +1,78 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            新增信用卡</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        名称：
+                    </td>
+                    <td>
+                        <input name="payCard.Name" type="text" class="tipInput" style="width: 450px;" value="#{payCard.Name}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        状态：
+                    </td>
+                    <td>
+                        <select id="pst" name="payCard.Status">
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </select>
+                        <script>
+                            $("#pst").val("#{payCard.Status}");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        通道：
+                    </td>
+                    <td>
+                        #{payments}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td>
+                        <input name="payCard.CardDes" type="text" class="tipInput" style="width: 450px;" value="#{payCard.CardDes}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        图片：
+                    </td>
+                    <td>
+                        <input name="payCard.CardImg" type="text" class="tipInput" style="width: 450px;" value="#{payCard.CardImg}"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        排序：
+                    </td>
+                    <td>
+                        <input name="payCard.OrderIndex" type="text" class="tipInput" style="width: 50px;" value="#{payCard.OrderIndex}"/>
+                        数字越大排在越前面
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

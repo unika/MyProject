@@ -1,0 +1,36 @@
+﻿<script>
+    function adnum(id,name) {
+        $.ajax({
+            type: "POST",
+            url: "GetAdNum.aspx?ajax=true",
+            data: "adName=" + name,
+            success: function (msg) {
+                $("#" + id).html(msg);
+            }
+        });
+    }
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            广告列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <ul>
+            <!-- BEGIN ads -->
+            <li style="float: left; text-align: center; border: 1px solid #AAC9CE; margin: 5px;
+                background: #ffffff">
+                <form method="post" action="SetUrl.aspx" class="ajaxPostForm">
+                <a href="ClickStat.aspx?pic=#{ad.Name}" class="frmBox" title="点击查看统计"><img src="#{ad.Url}" /></a><br />
+                <input id="Hidden1" type="hidden" name="adname" value="#{ad.Name}" />
+                <input id="File1" type="text" name="adlink" style="width: 200px" value="#{ad.Link}" />
+                <input id="Submit1" type="submit" value="保存" />
+                <br />
+                <a href="UpAd.aspx?adname=#{ad.Name}" class="frmBox">上传替换</a>｜ <a href="AdSerial.aspx?adName=#{ad.Name}">
+                    从广告库中替换(<font id="pic#{ad.index}" style=" color:Red">loading<script>                                      adnum('pic#{ad.index}','#{ad.Name}')</script></font>)</a>
+                </form>
+            </li>
+            <!-- END ads -->
+        </ul>
+    </div>
+</div>

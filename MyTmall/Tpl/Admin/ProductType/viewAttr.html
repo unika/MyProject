@@ -1,0 +1,35 @@
+<include file="Public:header" />
+<body>
+	<h3>类型属性</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<td>编号</td>
+				<td>属性名</td>
+				<td>属性类型 </td>
+				<td>默认值</td>
+				<td>属性值</td>
+				<td>输入长度限制</td>
+				<td>是否用户于搜索</td>
+				<td>是否是购买属性</td>
+			</tr>
+		</thead>
+		<tbody>
+			<volist name="list" id="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.Name}</td>
+					<td>{$vo.ParamType}</td>
+					<td>{$vo.ParamValue}</td>
+					<td>{$vo.DefaultValue}</td>
+					<td>{$vo.MaxLength}</td>
+					<td>{$vo.IsSearchAttr}</td>
+					<td>{$vo.IsBuyType}</td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+
+</body>
+</html>

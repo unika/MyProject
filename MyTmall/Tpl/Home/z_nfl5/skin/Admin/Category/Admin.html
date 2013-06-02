@@ -1,0 +1,363 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            产品类型列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <script>
+		<!--
+            var setting = {
+
+                view: { expandSpeed: "slow",
+                    addHoverDom: addHoverDom,
+                    removeHoverDom: removeHoverDom,
+                    selectedMulti: true
+                },
+
+                check : {
+                    chkboxType : {"Y": "s", "N": "s"},
+                    chkStyle: "checkbox",
+                    enable: true,
+                    radioType: "level"
+                },
+
+                edit: {
+                    enable: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+                callback: {
+
+                    beforeRemove: beforeRemove,
+                    onDrop: zTreeOnDrop
+                }
+            };
+
+            var zNodes = #{nodes};
+
+
+            function beforeRemove(treeId, treeNode) {
+                var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                zTree.selectNode(treeNode);
+
+                if(!confirm("确认删除类型［" + treeNode.name + "］吗？"))
+                {
+                    return false;
+                }
+
+                var result = result = $.ajax({
+                      type: "POST",
+                      url: "Delete.aspx?ajax=true",
+                      data: "catids="+treeNode.id,
+                      async: false
+                    }).responseText;
+
+                return result=="ok";
+
+            }
+
+            function addHoverDom(treeId, treeNode) {
+
+                $(".edit").css("display","none");
+                var sObj = $("#" + treeNode.tId + "_span");
+                if ($("#addBtn_" + treeNode.id).length > 0) return;
+
+                var addStr = "<button type='button' class='add2' id='addBtn_" + treeNode.id
+				+ "' title='新增类型' onfocus='this.blur();'></button>";
+                sObj.append(addStr);
+
+                addStr = "<button type='button' class='edit2' id='editBtn_" + treeNode.id
+				+ "' title='编辑类型' onfocus='this.blur();'></button>";
+                sObj.append(addStr);
+
+                var editBtn = $("#editBtn_" + treeNode.id);
+
+                if(editBtn) editBtn.bind("click",function(){
+
+                    showBox(treeNode.id+"/Edit.aspx?frm=true","编辑分类");
+                    //document.location.href=treeNode.id+"/Edit.aspx";
+                });
+
+
+                var btn = $("#addBtn_" + treeNode.id);
+                if (btn) btn.bind("click", function () {
+
+                    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+                    //创新新节点
+                    var nid = $.ajax({
+                      type: "POST",
+                      url: "Add.aspx?ajax=true",
+                      data: "name=请修改新类型名&pid="+treeNode.id,
+                      async: false
+                    }).responseText;
+
+                    zTree.addNodes(treeNode, {isParent:true, id: nid, pId: treeNode.id, name: "请修改新类型名"+nid });
+                });
+
+            };
+            function removeHoverDom(treeId, treeNode) {
+                $("#addBtn_" + treeNode.id).unbind().remove();
+                $("#editBtn_" + treeNode.id).unbind().remove();
+            };
+
+            function zTreeOnDrop(event, treeId, treeNodes, targetNode, moveType) {
+                //设置顺序
+                //获取与 treeNodes[0] 节点相邻的后一个节点
+                var oid =1;
+                var nextNode= treeNodes[0].getNextNode();
+
+                if(nextNode!=null)
+                {
+                    oid = nextNode.oid+1;
+                }
+                else
+                {
+                    //拉到最下面的情况
+                    oid = targetNode.oid-1;
+                }
+                treeNodes[0].oid = oid;
+                var catn = treeNodes[0].name.replace(/（\d+?）/g,"");
+                var result = $.ajax({
+                      type: "POST",
+                      url: "Update.aspx?ajax=true",
+                      data: "name="+catn+"&pid="+treeNodes[0].pId+"&id="+treeNodes[0].id+"&oid="+oid,
+                      async: false
+                    }).responseText;
+
+            };
+
+
+            $(document).ready(function () {
+                $.fn.zTree.init($("#treeDemo"), setting,zNodes );
+
+            });
+		//-->
+	</script>
+        <div style=" padding:10px; background-color:#ffffff; margin-bottom:5px; border:1px ">
+        <input id="Button1" type="button" value="删除分类并转移产品"  onclick="shiftCat()"/>
+        <input id="Button2" type="button" value="删除分类不转移产品"  onclick="delCat()"/>
+        <input id="Button3" type="button" value="复制分类下的产品到目标分类"  onclick="copyCat()"/>
+        <input id="Button4" type="button" value="剪切分类下的产品到目标分类"  onclick="cutCat()"/>
+        <br /><br />
+        <input id="Button6" type="button" value="设置分类三要素"  onclick="seoTag()"/>
+        <input id="Button12" type="button" value="设置分类产品三要素"  onclick="seoProductTag()"/>
+        <input id="Button14" type="button" value="按分类字母排序顺序"  onclick="saveOrderByChar()"/>
+        <input id="Button5" type="button" value="保存分类排序顺序"  onclick="saveOrder()"/>
+        <input id="Button15" type="button" value="创建新品目录"  onclick="createNew()"/>
+        <input id="Button13" type="button" value="重新重建分类产品"  onclick="rebuildcat()"/>
+        <input id="Button16" type="button" value="批量设置三要素"  onclick="batchSetCatMeta()"/>
+        </div>
+        <div style=" padding:10px; background-color:#ffffff">
+            <input id="Button7" type="button" value="高亮显示空分类描述"  onclick="showRed(1)"/>
+            <input id="Button8" type="button" value="高亮显示空Meta标题" onclick="showRed(2)"/>
+            <input id="Button9" type="button" value="高亮显示空Meta关键字" onclick="showRed(3)"/>
+            <input id="Button10" type="button" value="高亮显示空Meta描述" onclick="showRed(4)"/>
+            <input id="Button11" type="button" value="显示分类图片" onclick="showCatPic()"/>
+        </div>
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+</div>
+<script>
+    function showRed(type) {
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+        treeObj.cancelSelectedNode();
+        $.ajax({
+            type: "POST",
+            url: "GetAllNoneCatId.aspx?type=" + type,
+            success: function (strCatIds) {
+                eval("var catIds=" + strCatIds);
+                for (var i = 0; i < catIds.length; i++) {
+                    var node = treeObj.getNodeByParam("id", catIds[i], null);
+                    treeObj.selectNode(node, true);
+                }
+                alert(catIds.length+"个分类未填写！！");
+            },
+            error: function (msg) {
+                alert("系统异常，请联系研发部");
+            }
+        });
+    }
+
+    function saveOrderByChar() {
+        document.location.href = "SaveOrderByChar.aspx";
+    }
+
+    function saveOrder() {
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+        var nodes = treeObj.transformToArray(treeObj.getNodes());
+
+        var catIds = "";
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].id == 0) continue;
+            catIds = catIds + nodes[i].id + ",";
+        }
+        catIds = catIds.substring(0, catIds.length - 1);
+
+        var result = $.ajax({
+            type: "POST",
+            url: "SaveOrder.aspx?ajax=true",
+            data: "catIds=" + catIds,
+            async: false
+        }).responseText;
+
+        if (result == "ok") {
+            alert("保存顺序成功");
+        }
+        else {
+            alert(result);
+        }
+    }
+
+    function delCat() {
+
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要删除的分类");
+            return;
+        }
+
+        if (!confirm("你确定要删除选择的分类吗？")) {
+            return;
+        }
+
+        var result = $.ajax({
+            type: "POST",
+            url: "Delete.aspx?ajax=true",
+            data: "catids=" + catIds,
+            async: false
+        }).responseText;
+
+        if (result == "ok") {
+            alert("删除成功");
+            document.location.href = "/Admin/Category/Admin.aspx";
+        }
+        else {
+            alert(result);
+        }
+    }
+
+    function createNew() {
+        showBox("/Admin/Category/CreateNew.aspx?frm=true", "创建新品目录");
+    }
+
+    function shiftCat() {
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要转移的分类");
+            return;
+        }
+
+        showBox("/Admin/Category/ShiftProduct.aspx?catIds=" + catIds + "&frm=true", "删除分类并转移产品");
+
+    }
+
+    function copyCat() {
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要复制的分类");
+            return;
+        }
+        showBox("/Admin/Category/CopyProduct.aspx?catIds=" + catIds + "&frm=true", "复制分类下的产品到目标分类");
+    }
+
+    function cutCat() {
+
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要剪切的分类");
+            return;
+        }
+
+        showBox("/Admin/Category/CutProduct.aspx?catIds=" + catIds + "&frm=true", "剪切分类下的产品到目标分类");
+
+
+    }
+
+    function getCatIds() {
+        var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+
+        var nodes = treeObj.getCheckedNodes(true);
+
+        var catIds = "";
+        for (var i = 0; i < nodes.length; i++) {
+            catIds = catIds + nodes[i].id + ",";
+        }
+        if (catIds.length > 0) {
+            catIds = catIds.substring(0, catIds.length - 1);
+        }
+        return catIds;
+    }
+
+    function seoTag() {
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要设置三要素的分类");
+            return;
+        }
+        showBox("SeoTag.aspx?frm=true&catIds="+catIds, "设置分类三要素");
+    }
+
+
+    function seoProductTag() {
+        var catIds = getCatIds();
+        if (catIds == "") {
+            alert("请选择要设置产品三要素的分类");
+            return;
+        }
+        showBox("SeoProductTag.aspx?frm=true&catIds=" + catIds, "设置分类产品三要素");
+    }
+
+    function batchSetCatMeta() {
+
+        showBox("BatchSetCatMeta.aspx?frm=true", "批量设置三要素");
+
+    }
+
+    function rebuildcat() {
+        if (!confirm("你确定要重新创建分类产品吗？")) {
+            return;
+        }
+
+        $("#Button13").attr("disabled", "disabled");
+
+        $.ajax({
+            type: "POST",
+            url: "RebuildCat.aspx",
+            success: function (msg) {
+                alert(msg);
+                $("#Button13").removeAttr("disabled");
+            },
+            error: function (msg) {
+                alert("系统异常");
+            }
+        });
+
+
+        
+    }
+
+    function showCatPic() {
+        var html = "<iframe id=\"boxFrm100\"  name=\"iboxFrm\"  "
+                + "scrolling=\"no\" frameborder=\"0\" style=\"padding: 0px; margin: 0px; border: 0px solid red; height: 400px; width: 800px;\"  src=\"CategoryPic.aspx?frm=true\">"
+                + "</iframe>";
+        var loadingDiv = '<div id="boxFrm100Loading" style="width:800px;text-align:center;"><img src="' + wojilu.path.img + '/ajax/big.gif" /></div>';
+        wojilu.ui.box.showBoxString(html, 800, 450, "分类图片", loadingDiv);
+        $('#overlay1').remove();
+    }
+
+    function showBox(url, title) {
+        var html = "<iframe id=\"boxFrm1\"  name=\"iboxFrm\"  "
+                + " frameborder=\"0\" style=\"padding: 0px; margin: 0px; border: 0px solid red; height: 320px; width: 500px;\"  src=\"" + url + "\">"
+                + "</iframe>";
+        var loadingDiv = '<div id="boxFrm1Loading" style="width:500px;text-align:center;"><img src="' + wojilu.path.img + '/ajax/big.gif" /></div>';
+        wojilu.ui.box.showBoxString(html, 500, 320, title, loadingDiv);
+    }
+</script>

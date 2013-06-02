@@ -1,0 +1,42 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            <a href="/Admin/TSystem/Page.aspx">修改页面模版</a>｜
+            <a href="/Admin/TSystem/Css.aspx">修改Css模版</a>｜
+            <a href="/Admin/TSystem/Js.aspx">修改Js模版</a>｜
+            <a href="/Admin/TemplateKu/List.aspx">一键换模版</a>
+        </div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr style=" display:none">
+                    <td>
+                        模版名：
+                    </td>
+                    <td>
+                        <input name="file" type="text" class="tipInput" style="width: 450px;" value="#{fn}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        模版内容：
+                    </td>
+                    <td>
+                        <textarea id="TextArea1" cols="150" rows="40" name="content">#{fc}</textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+﻿<script src="~js/countries.js" type="text/javascript"></script>
+
+<div class="fixed_from user_right">
+    <form name="UserForm" action="#{ActionLink}" method="post">
+            <div class="fixed_content">
+                <div class="fixed_title2">
+                    About Me</div>
+                <div class="fixed_middle">
+                    <ol>
+                    <li>First Name:</li>
+                    <li>Last Name:</li>
+                    <li>Street Address:</li>
+                    <li>City:</li>
+                    <li>State:</li>
+                    <li>Country:</li>
+                    <li>Telephone:</li>
+                    <li>Post/Zip Code:</li>
+                    <li>Email:</li>
+                    </ol>
+                    <ul>
+                    <li><input class="fixed_text2" name="customer.FirstName" value="#{customer.FirstName}" type="text"></li>
+                    <li><input class="fixed_text2" name="customer.SecondName" value="#{customer.SecondName}" type="text"></li>
+                    <li><input class="fixed_text2" name="customer.Address" value="#{customer.Address}" type="text" style="width:258px;" ></li>
+                    <li><input class="fixed_text2" name="customer.City" value="#{customer.City}" type="text"></li>
+                    <li><select name="customer.State" id="sys_state" ></select></li>
+                    <li><select onchange="print_state('sys_state',this.selectedIndex);" id="sys_country" name="customer.Country"></select>
+                    <script type="text/javascript">
+                        print_country("sys_country");
+                        $("#sys_country").val("#{customer.Country}");
+                        var index = $("#sys_country ").get(0).selectedIndex;
+                        print_state('sys_state', index);
+                        $("#sys_state").val("#{customer.State}");
+                    </script></li>
+                    <li><input class="fixed_text2" name="customer.Tel" value="#{customer.Tel}" type="text"></li>
+                    <li><input class="fixed_text2" name="customer.PostCode" value="#{customer.PostCode}" type="text"></li>
+                    <li><input class="fixed_text2" name="customer.Email" value="#{customer.Email}" type="text"></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="fixed_bottom">
+                <input name="submit" value="Update" class="fixed_btn" type="submit">
+            </div>
+        </form>
+    </div>
+
+

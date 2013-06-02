@@ -1,0 +1,57 @@
+<ul>
+	<php>
+		foreach($product as $row){
+	</php>
+	<php>
+		if($type!="promotion"){
+	</php>
+	<div class="list">
+		<a class="l_img" title="{$row.Name}" href="/Product/show/id/{$row.id}" target="_top"> <img alt="{$row.Name}" src="/Upload/Product/{$row.Img.Img}"> </a>
+		<a class="l_name" href="/Product/show/id/{$row.id}" title="{$row.Name}" target="_top">{$row.Name}</a>
+		<!--产品分数-->
+		<php>
+			if($row['score'] !=null){
+
+		</php>
+		<img src="/Tpl/Home/h_lv3/Public/Images/{$row.score}star.jpg">
+		<php>
+			}else {
+		</php>
+		<img src="/Tpl/Home/h_lv3/Public/Images/1star.jpg">
+		<php>
+			}
+		</php>
+		<!--产品分数-->
+		<div class="price">
+			<span class="sys_cur">$</span>
+			<span class="sys_p">{$row.Price}</span>
+		</div>
+	</div>
+	<php>
+		}else {
+	</php>
+	<div class="list">
+		<a title="{$row.Name}" href="/Product/show/id/{$row.id}" class="l_img" target="_top"><img alt="{$row.Name}" src="/Upload/Product/{$row.Img.Img}" /></a>
+		<p>
+			<a href="/Product/show/id/{$row.id}" title="{$row.Name}" class="l_name" target="_top">{$row.Name}</a>
+			<php>
+				if($row['score'] !=null){
+
+			</php>
+			<img src="/Tpl/Home/h_lv3/Public/Images/{$row.score}star.jpg">
+			<php>
+				}else {
+			</php>
+			<img src="/Tpl/Home/h_lv3/Public/Images/1star.jpg">
+			<php>
+				}
+			</php>
+			<span class="price"><span class="sys_cur">$</span><span class="sys_p">{$row.Price}</span></span>
+		</p>
+	</div>
+	<php>
+		}}
+	</php>
+
+</ul>
+

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>#{Page_Title}</title>
+    <meta name="description" content="#{Page_Description}" />
+    <meta name="keywords" content="#{Page_Keyword}" />
+    <script src="~js/jquery.js?v=#{jsVersion}" type="text/javascript"></script>
+    <link rel="stylesheet" href="~skin/z_nfl5/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="~skin/z_nfl5/css/public.css" type="text/css" />
+    <link rel="stylesheet" href="~skin/z_nfl5/css/dialog.css" type="text/css" />
+    <script src="~js/lang.zh-cn.js?v=#{jsVersion}" type="text/javascript"></script>
+    <script src="~js/wojilu.common.js?v=#{jsVersion}" type="text/javascript"></script>
+    <script src="~js/wojilu.common.admin.js?v=#{jsVersion}" type="text/javascript"></script>
+    <script src="~js/pub.js?v=#{jsVersion}" type="text/javascript"></script>
+    <script src="~skin/z_nfl5/js/dialog.js?v=#{jsVersion}" type="text/javascript"></script>
+    <script type="text/javascript">var rate = {#{rates}};</script>
+</head>
+<body>
+    <div class="nfl_wrapper">
+        <div id="nfl_head">
+        <div id="nfl_top">
+            <h1>
+                <a title="#{parameter_domain}" href="http://www.#{parameter_domain}">
+                    <img align="left" title="#{parameter_ElementKeyword}" alt="#{parameter_ElementKeyword}" src="~skin/z_nfl5/ad/nfl_z_321_53_8_0.gif"><strong>
+                    www.#{parameter_domain}
+                    </strong></a>
+                    
+                    </h1>
+            
+            <div id="tabs">
+  <ul>
+    <li><a href="/UserCenter/User/Address.aspx" rel="nofollow" class="one outer" target="_top">My Account
+      <!--[if IE 7]><!--></a><!--<![endif]-->
+      <!--[if lte IE 6]><table><tr><td style="position:absolute;left:0;top:0;"><![endif]-->
+      <div class="tab_left">
+        <p><a href="/UserCenter/Order/List.aspx" rel="nofollow" title="View Orders" target="_top">View Orders</a></p>
+        <p><a href="/UserCenter/User/Address.aspx" rel="nofollow" title="Account Settings" target="_top">Account Settings</a></p>
+        <p><a href="/UserCenter/User/Pwd.aspx" rel="nofollow" title="Modify Password" target="_top">Modify Password</a></p>
+      </div>
+      <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+    </li>
+    <li><a href="http://www.#{parameter_domain}/faqs.html" target="_top" rel="nofollow" class="two outer">Help
+      <!--[if IE 7]><!--></a><!--<![endif]-->
+      <!--[if lte IE 6]><table><tr><td style="position:absolute;left:0;top:0;"><![endif]-->
+      <div class="tab_center">
+        <p><a href="http://www.#{parameter_domain}/FAQs.html" rel="nofollow" target="_top">F.A.Q</a></p>
+        <p><a  rel="nofollow" href="javascript:dialog('/Contact_Add.html?ajax=true','674px','auto',null)" >Contact Us</a></p>
+      </div>
+      <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+    </li>
+    <li id="nfl_cur"><span>#{widget_currencylist_radio}</span></li>
+  </ul>
+</div>
+<div id="top_right">
+<div class="sys_login">Welcome! <a href="/UserCenter/Login/Login.aspx" rel="nofollow">Login/Register</a></div>
+           
+            <script src="~skin/z_nfl5/js/addthis.js" type="text/javascript"></script></div>
+            </div>
+            <div id="nfl_menux">
+                   <div id="nfl_home"><a href="http://www.#{parameter_domain}">Home</a></div> 
+                #{widget_define_cat_menu_top}
+                <div id="chat">#{parameter_Tel}</div>
+            </div>
+            <div id="nfl_menux2"><b>Search: </b><form id="nfl_search" method="get" name="mini-search" action="/Search.aspx">
+            #{widget_cat_select}
+            <input type="text" value="#{parameter_SearchDefaultKey}" onblur="if (this.value == '') this.value = '#{parameter_SearchDefaultKey}';"
+                onfocus="if (this.value == '#{parameter_SearchDefaultKey}') this.value = '';" name="key" id="nfl_Gstr" />
+            <input id="nfl_go" type="image" value="" alt="Search" src="~skin/z_nfl5/img/go.gif" />
+            </form>
+                    <a class="sys_cart" href="/ShoppingCart/List.aspx" title="Shopping Cart">Cart 0 Item(s)</a>
+            </div>
+        </div>
+        <div id="nfl_main">
+
+            #{layout_content}
+        </div>
+    <script src="~skin/z_nfl5/js/menu.js?v=#{jsVersion}" type="text/javascript"></script>
+        <div id="nfl_foot" class="pfoot">
+            <div id="nfl_bottom">
+            <ul>
+<li><a href="http://www.#{parameter_domain}">Home</a></li>
+<li>I</li>
+<li><a href="/sitemap.html">SiteMap</a></li>
+<li>I</li>
+<li><a href="/Privacy-Notice.html" rel="nofollow">Privacy Notice</a></li>
+<li>I</li>
+<li><a href="/Safe-Shopping.html" rel="nofollow">Safe Shopping</a></li>
+<li>I</li>
+<li><a href="/Shipping-Returns.html" rel="nofollow">Shipping & Returns</a></li>
+<li>I</li>
+<li><a href="/FAQs.html" rel="nofollow">F . A . Q</a></li>
+<li>I</li>
+<li><a href="/Size-Chart.html" rel="nofollow">Size Chart</a></li>
+<li>I</li>
+<li><a  rel="nofollow" href="javascript:dialog('/Contact_Add.html?ajax=true','674px','auto',null)" >Contact Us</a></li>
+</ul><br />
+<span class="common">Copyright&copy; 2012 <a href="http://www.#{parameter_domain}">#{parameter_ElementKeyword}</a> Store Privacy Policy</span></div>
+        </div>
+    </div>
+   #{parameter_Stat_Js}
+</body>
+</html>

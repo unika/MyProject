@@ -1,0 +1,41 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            <a href="/Admin/TSystem/Page.aspx">修改页面模版</a>｜
+            <a href="/Admin/TSystem/Css.aspx">修改Css模版</a>｜
+            <a href="/Admin/TSystem/Js.aspx">修改Js模版</a>｜
+            <a href="/Admin/TemplateKu/List.aspx">一键换模版</a>
+        </div>
+    </div>
+    <div class="adminMainPanel">
+
+        <div style=" margin:20px 0px;"><a href="/Admin/TemplateKu/List.aspx">本地模版列表</a>--------------><a href="/Admin/TemplateKu/CenterKu.aspx">从模版库中安装</a></div>
+        
+        <ul class="mbul">
+            <!-- BEGIN tkus -->
+            <li class="mbli">
+                <img src="#{t.PicPath}" />
+                <div>
+                     #{t.Name}
+                    ｜ <a href="#{t.Delete}" class="deleteCmd">删除</a>
+                    ｜ <a href="#{t.SetSkin}"  onclick="return confirm('你确定要启用该模版吗？')">启用</a>
+                </div>
+            </li>
+            <!-- END tkus -->
+        </ul>
+        
+    </div>
+</div>
+<style>
+    .mbli
+    {
+        float: left;
+        border: 1px solid #898C95;
+        margin-right: 10px;
+    }
+    .mbli div
+    {
+        text-align: center;
+        background-color: #ECF4FF;
+    }
+</style>

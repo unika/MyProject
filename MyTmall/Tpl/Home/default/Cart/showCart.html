@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<title>index</title>
+		<style>
+			table {
+				border: 1px solid gray;
+				margin: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="loginbar">
+			<empty name="Think.session.username">
+				<a href="__APP__/Public/login">login</a>
+				<a href="__APP__/User/regUser">register</a>
+				<else />
+				Welcome! <span><a href="__APP__/User/">{$Think.session.username}</a></span>
+				Item<span>[]</span>
+				<a href="__APP__/Public/logout">logout</a>
+			</empty>
+		</div>
+		<table>
+			<tr>
+				<td>商品编号</td>
+
+				<td>商品名称</td>
+				<td>数量</td>
+				<td>价格</td>
+			</tr>
+			<volist name="goods" id="vo">
+				<tr>
+					<td>{$vo.item_id}</td>
+
+					<td>{$vo.item_name}</td>
+					<td>{$vo.item_num}</td>
+					<td>{$vo.item_price}</td>
+				</tr>
+
+			</volist>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td>总数</td>
+				<td>{$total_num}</td>
+				<td >总价</td>
+				<td>{$total_price}</td>
+			</tr>
+
+		</table>
+
+	</body>
+</html>

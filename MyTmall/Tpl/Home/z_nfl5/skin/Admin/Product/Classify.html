@@ -1,0 +1,55 @@
+﻿<div>
+
+    <div class="adminMainPanel">
+
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="tableHeader">
+                <td>
+                    标识
+                </td>
+                <td>
+                    <input id="Button1" type="button" value="保存" onclick="save();"/>
+                </td>
+            </tr>
+            <!-- BEGIN idens -->
+            <tr class="tableItems">
+                <td>
+                    #{iden.alias}
+                </td>
+                <td>
+                    #{iden.chk}
+                </td>
+            </tr>
+            <!-- END idens -->
+        </table>
+
+    </div>
+</div>
+<script>
+    function save() {
+        var idenVs = "";
+
+        $("input[name='iden']").each(function () {
+            if (this.checked) {
+                idenVs = idenVs + this.value+":1"+",";
+            }
+            else {
+                idenVs = idenVs + this.value + ":0" + ",";
+            }
+        });
+
+        if (idenVs == "") return;
+
+        idenVs = idenVs.substring(0, idenVs.length - 1);
+
+        $.ajax({
+            type: "POST",
+            url: "#{ActionLink}",
+            data: "idenVs=" + idenVs,
+            success: function (msg) {
+                alert(msg);
+            }
+        });
+
+    }
+</script>

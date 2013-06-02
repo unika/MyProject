@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="http://pay.amopay.com/pay.aspx" name="pay_checkout" id="pay_checkout">
+    <table>
+        <tr>
+            <td>
+			    <input type='hidden' name='CompanyID' value="#{baofoo.CompanyID}" />
+			    <input type='hidden' name='MerchantOrderID' value="#{baofoo.MerchantOrderID}" />
+			    <input type='hidden' name='ApplyMoney' value="#{baofoo.ApplyMoney}" />
+			    <input type='hidden' name='SubmitTime' value="#{baofoo.SubmitTime}" />
+			    <input type='hidden' name='NetSourceID' value="#{baofoo.NetSourceID}" />
+			    <input type='hidden' name='PageReturnUrl' value="#{url}/OrderPay/Notify_baofoo_PageReturnUrl.aspx" />
+			    <input type='hidden' name='ServerReturnUrl' value="#{url}/OrderPay/Notify_baofoo_ServerReturnUrl.aspx" />
+			    <input type='hidden' name='Currency' value="CNY" />
+			    <input type='hidden' name='ShippingFirstName' value="#{baofoo.ShippingFirstName}" />
+			    <input type='hidden' name='ShippingLastName' value="#{baofoo.ShippingLastName}" />
+			    <input type='hidden' name='ShippingStreet1' value="#{baofoo.ShippingStreet1}" />
+			    <input type='hidden' name='ShippingCity' value="#{baofoo.ShippingCity}" />
+			    <input type='hidden' name='ShippingCountryCode' value="#{baofoo.ShippingCountryCode}" />
+			    <input type='hidden' name='ShippingProvinceCode' value="#{baofoo.ShippingProvinceCode}" />
+			    <input type='hidden' name='ShippingPostcode' value="#{baofoo.ShippingPostcode}" />
+			    <input type='hidden' name='ShippingTelephone' value="#{baofoo.ShippingTelephone}" />
+			    <input type='hidden' name='ShippingEmail' value="#{baofoo.ShippingEmail}" />
+			    <input type='hidden' name='SecureHash' value="#{baofoo.SecureHash}" />
+            </td>
+        </tr>
+    </table>
+    </form>
+
+    <iframe height="0" width="0" name="ifrm_pay_checkout" id="ifrm_pay_checkout" style="display: none"></iframe>
+    <script type="text/javascript">
+        window.status = 'http://pay.amopay.com/pay.aspx';
+        document.pay_checkout.submit();
+    </script>
+</body>
+</html>

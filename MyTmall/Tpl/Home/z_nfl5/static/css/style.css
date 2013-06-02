@@ -1,0 +1,461 @@
+﻿*{margin:0;padding:0;}
+body {font:12px/1.5 Arial, Helvetica, sans-serif;color:#222;background-color:#FFF;}
+div, form, img, ul, ol, li, dl, dt, dd {border:0px;}
+input{font-size:12px;vertical-align:middle;outline:none;}
+input[type="text"],input[type="password"]{border:1px solid #ccc;}
+select{font-size:12px;vertical-align:middle;outline:none;border:1px solid #ADD2E2;}
+textarea{border:1px solid #ADD2E2;outline:none;}
+
+ul, ol,li {list-style-type:none;}
+a {color:#222;text-decoration:none;outline:none;}
+a:hover{text-decoration:none;color:#ff7100;}
+h2{font-size:20px;clear:both;text-indent:5px;}
+
+
+.nfl_wrapper { width:980px;margin:0 auto; }
+
+/*********************************head*************************************************/
+#nfl_head {float: left;width:100%;padding-top:5px; }
+#nfl_top{float: left;width:100%;height:61px;}
+h1 {float:left;width:500px;overflow:hidden;padding:7px 0;position:relative;}
+h1 strong{position:absolute;left:80px;bottom:5px;font-size:16px;}
+
+/*tabs*/
+#tabs {width:410px;float:right; }
+#tabs ul {width:410px;position:relative;}
+#tabs ul li {float:left; display:inline;}
+#tabs ul li a.outer {display:block;height:26px;line-height:20px;text-decoration:none;text-indent:1em;font-size:12px;margin-top:2px;}
+#tabs ul li strong.outer {display:block;height:26px;line-height:20px;text-decoration:none;text-indent:1em;font-size:12px;margin-top:2px;font-weight:bold;}
+
+#tabs ul li a.one {background:url(../img/tabs_1_.gif) no-repeat;width:105px;}
+#tabs ul li a.two {background:url(../img/tabs_2_.gif) no-repeat;width:64px;}
+#tabs ul li a.three {background:url(../img/tabs_3_.gif) no-repeat;width:140px;}
+
+#tabs ul li div {padding:5px; position:absolute; top:-2400px;}
+ 
+#tabs ul li a div.tab_left,#tabs ul li div.tab_left {left:0;text-indent:1em;background:url(../img/tab_left.gif) no-repeat;height:79px;width:146px;}
+#tabs ul li a div.tab_center,#tabs ul li div.tab_center{left:105px;text-indent:1em;background:url(../img/tab_center.gif) no-repeat;height:61px;width:130px;}
+#tabs ul li a div.tab_right,#tabs ul li div.tab_right{left:169px;text-indent:1em;background:url(../img/tab_right.gif) no-repeat;height:135px;width:130px;}
+
+#tabs ul li:hover > a.one {color:#000; background:url(../img/tabs_1_.gif) 0 -28px no-repeat; height:26px; }
+* html #tabs ul li a.one:hover {height:26px; color:#000;background:url(../img/tabs_1_.gif) 0 -28px no-repeat;cursor:pointer;} 
+#tabs ul li:hover > a.two {color:#000; background:url(../img/tabs_2_.gif) 0 -28px no-repeat; height:26px; }
+* html #tabs ul li a.two:hover {height:26px; color:#000;background:url(../img/tabs_2_.gif) 0 -28px no-repeat;cursor:pointer;}
+#tabs ul li:hover > a.three,#tabs ul li a.three:hover {color:#000; background:url(../img/tabs_3_.gif) 0 -28px no-repeat; height:26px; cursor:default;}
+* html #tabs ul li a.three:hover {height:26px; color:#000;background:url(../img/tabs_3_.gif) 0 -28px no-repeat;cursor:default;} 
+
+#tabs ul li:hover div,#tabs ul li a:hover div  {top:24px;}
+#tabs p {padding:0;margin:0;}
+div.tab_left p a,div.tab_center p a {line-height:160%;background:url(../img/list_ca_l.gif) left center no-repeat;padding-left:1em;}
+#tabs em {text-decoration:underline; font-style:normal;font-weight:normal;margin-left:5px;}
+.tab_right p {height:18px;}
+.tab_right img {margin-right:0.5em;}
+
+#tabs ul li#nfl_cur{float:right;padding:7px 0px 0 0;font-size:11px;}
+#nfl_cur span{float:right;}
+#nfl_cur label,#nfl_cur input{float:left;height:11px;display:block;*height:15px;padding-left:3px;line-height:9px;}
+#nfl_cur input{padding:0;margin:0 2px;*margin:0 -2px;}
+
+#top_right{float:right;padding:5px 0 0 100px;}
+#top_right div{float:left;padding:0 10px 0 0}
+
+#nfl_menux{width:100%;float:left;background:url(../img/menucenter.gif) repeat-x 0 13px;}
+#nfl_menux a{color:#222;font-size:13px;line-height:26px;padding:0 20px;display:block;float:left;background:url(../img/menuline.gif) no-repeat right;font-weight:bold;}
+#nfl_home{background:url(../img/menuleft.gif) no-repeat 0 13px;float:left;}
+#nfl_menux a:hover{color:#ff7100;}
+#nfl_menux div{float:left;padding-top:13px;}
+#nfl_menux ul,#nfl_menux li{float:left;}
+#nfl_menux div div{position:absolute;left:-9999px;}
+#nfl_menux div#chat{width:116px;background-image:url(../img/chat.gif);float:right;padding:19px 0 0 115px;font-weight:normal;height:20px;}
+#nfl_menux div#chat:hover{color:#ff7100;}
+
+#nfl_menux2{width:938px;float:left;background:#03689B url(../img/search1.gif) no-repeat 5px;border:1px solid #bbb;border-top:0 none;height:38px;padding:6px 20px 0;}
+#nfl_menux2 b{float:left;line-height:33px;color:#fff;}
+
+#nfl_search{float:left;padding:6px 15px 0 20px;background:url(../img/search2.gif) no-repeat right;height:26px;}
+#catId{float:left;padding:1px;}
+#nfl_Gstr{float:left;width:300px;padding:1px 2px;display:inline;margin:0 10px;height:16px;line-height:16px;}
+#nfl_go{cursor:pointer;float:left;}
+
+
+.sys_cart{float:right;width:181px;height:31px;display:block;background-image:url(../img/cart.gif);line-height:31px;text-indent:50px;font-weight:bold;color:#fff;}
+
+/*********************************index*************************************************/
+
+#nfl_center{width:584px;float:left;}
+
+.nfl_brand{font-size:16px;font-weight:bold;clear:both;line-height:40px;color:#ff7100;text-indent:10px;}
+
+#nfl_banner {position:relative; overflow:hidden;width:764px;height:257px;float:left;}
+#nfl_banner ul {position:absolute;z-index:99; bottom:10px; right:8px;filter: Alpha(Opacity=90);opacity:0.9;}
+#nfl_banner li { padding:0px 10px;float:left;display:block;color:#cbbeb8;border:#fff 1px solid;background-color:#fff;cursor:pointer;margin-left:3px;}
+#nfl_banner li.on { background:#cbbeb8;color:#fff;}
+#nfl_banner_list a{position:absolute;}
+
+
+#nfl_adv{width:100%;float:left;height:75px;background-color:#9db7c4;color:#fff;font-size:11px;padding-top:11px;}
+#nfl_adv a,#nfl_adv img{float:left;}
+#nfl_adv div{float:left;width:166px;padding-right:12px;}
+#nfl_adv b{clear:both;display:block;}
+
+.feat{width:100%;float:left;color:#FF6C00;text-indent:20px;font-weight:bold;font-size:16px;padding-top:5px;}
+
+
+#nfl_center_r{width:192px;float:right;}
+
+.nfl_box1{border:1px solid #ADD2E2;margin-bottom:5px;float:left;width:190px;}
+
+.right_a_1 { height:70px;padding-top:5px;background-image:url(../img/index/login_di.gif)}
+.right_a_1 span {PADDING-RIGHT: 4px; FLOAT: left; }
+.right_a_1 span a {DISPLAY: block;}
+.right_a_1 p{ line-height:20px; padding:5px; margin:0px;}
+.right_a_1 .back{ background-color:#FFF8E1; border:1px solid #FFE6BA; width:175px}
+
+.right_a_1 A.what { background:url(../img/index/rightbg03.gif) no-repeat; WIDTH: 95px; HEIGHT: 65px;}
+.right_a_1 A.what:hover { background:url(../img/index/rightbg02.gif) no-repeat;}
+
+.right_a_1 A.a1 {DISPLAY: block; FONT: 0px Arial, Helvetica, sans-serif; WIDTH: 77px; HEIGHT: 26px;}
+.right_a_1 A.a2 {DISPLAY: block; FONT: 0px Arial, Helvetica, sans-serif; WIDTH: 77px; HEIGHT: 26px}
+.right_a_1 A.a1 {background: url(../img/index/signin.gif) no-repeat;}
+.right_a_1 A.a2 {background:url(../img/index/joinfree.gif) no-repeat;}
+
+#nfl_order b{font-size:14px;line-height:40px;}
+#nfl_order ul{height:210px;width:100%;overflow:hidden;width:180px;padding:0px 2px 10px 8px;font-size:11px;}
+#nfl_order li{padding:10px 0 0 18px;height:60px;background:url(../img/order_rgn.gif) no-repeat 0 10px;width:162px;color:#666;line-height:14px;}
+#nfl_order a{color:#000;}
+
+#emailmsn{background-image:url(../img/email.gif);height:114px;}
+#emailmsn a{margin:13px 0 0 55px;display:inline-block;font-weight:bold;font-size:14px;color:#000;}
+#emailmsn a:hover{color:#ff7100;}
+
+#nfl_tab{width:582px;float:right;border-left:1px solid #ADD2E2;border-top:1px solid #ADD2E2;background-image:url(../img/tab_rgn.gif);display:inline;margin-top:5px;}
+#nfl_tab li{width:193px;float:left;height:29px;line-height:28px;border-right:1px solid #ADD2E2;text-align:center;font-weight:bold;font-size:14px;cursor:pointer;}
+#nfl_pro{width:581px;float:right;border-left:1px solid #ADD2E2;border-right:1px solid #ADD2E2;border-bottom:1px solid #ADD2E2;}
+#nfl_pro li{display:none;}
+
+#nfl_tab li.nfl_choose{background-color:#fff;}
+#nfl_pro li.nfl_choose{display:block;width:582px;margin-left:-1px;}
+#nfl_tab1 span{width:100%;height:100%;display:block;background:url(../img/hot_rgn.gif) no-repeat 90% 30%;}
+
+
+
+#nfl_center dl{width:173px;float:left;height:279px;color:#737373;border-left:1px dotted #ccc;margin:10px 0 0 ;padding:0 10px;}
+#nfl_center dl.dl_right{border-right:0 none;}
+#nfl_center dd a{color:#737373;display:block;max-height:54px;overflow:hidden;}
+#nfl_center dt{clear:both;}
+#nfl_center h3{font-size:14px;}
+#nfl_center dd{clear:both;}
+#nfl_center img{float:left;}
+#nfl_center dt img{width:173px;}
+#nfl_center dd.rgn_underline{background-image:none;text-indent:10px;}
+#nfl_center dd.rgn_underline a{color:#184C95;text-decoration:underline;font-size:11px;}
+
+.rgn_underline{color:#184C95;text-decoration:underline;font-size:11px;}
+
+
+/*********************************main*************************************************/
+#nfl_main{width:100%;float:left;padding-top:5px;}
+
+#nfl_menuy{width:173px;float:left;}
+#nfl_menuy div{width:171px;float:left;border-left:1px solid #abc9cc;border-right:1px solid #abc9cc;padding:5px 0;}
+#nfl_menuy ul{float:left;}
+#nfl_menuy li div,#nfl_menuy li.curselt_li li div{border:0 none;position:absolute;left:-9999px;padding:0;}
+#nfl_menuy a{width:155px;display:block;float:left;padding:3px 8px;font-weight:bold;font-size:14px;color:#336068;text-decoration:underline}
+#nfl_menuy li li a{width:147px;padding:2px 8px 2px 16px;font-size:12px;text-decoration:none;background:url(../img/nav5_rgn.gif) no-repeat 9px 7px}
+#nfl_menuy li li.curselt_li li a,#nfl_menuy li li div.curselt_div li a{background:none;color:#888;}
+#nfl_menuy li.curselt_li div ,#nfl_menuy div.curselt_div,#nfl_menuy li.curselt_li li div.curselt_div{position:static;left:auto;}
+#nfl_menuy li li.curselt_li a{background:url(../img/nav6_rgn.gif) no-repeat 8px 8px}
+#nfl_menuy a:hover,#nfl_menuy .curselt_li a:hover,#nfl_menuy li li div.curselt_div li.curselt_li a,#nfl_menuy li li div.curselt_div li a:hover {color:#B10000;}
+
+
+
+
+/*********************************left*************************************************/
+#nfl_left{width:195px;float:left;}
+#nfl_left h3,#nfl_center_r h3{background-image:url(../img/h3.gif);float:left;line-height:30px;text-indent:20px;font-size:15px;width:100%;text-align:left;text-shadow: 0 1px 0 #FFF;}
+/*cate*/
+#cate{width:195px;float:left;background-image:url(../img/nav_top.gif);line-height:36px;text-indent:36px;font-size:15px;color:#fff;font-weight:bold;display:block;}
+a#cate:hover{text-decoration:underline;}
+#nfl_cate{width:191px;float:left;border:2px solid #03689B;background-color:#EDF7FF;}
+#nfl_cate div{width:100%;float:left;}
+#nfl_cate ul{float:left;}
+#nfl_cate li{float:left;background:url(../img/nav_bg.gif) no-repeat 175px 12px;line-height:30px;width:191px;z-index:999;}
+#nfl_cate li div{position:absolute;top:-1px;left:-9999px;width:520px;float:left;border:1px solid #83ABC5;padding:5px 0;background-color:#fff;z-index:999;}
+#nfl_cate li li div{background-color:#F6F5F5;}
+#nfl_cate li.nfl_hover{position: relative; background:#fff;z-index:999; }
+#nfl_cate li.nfl_hover div{left:166px;}
+#nfl_cate li.nfl_hover li.nfl_hover2 div{left:230px;}
+#nfl_cate li.nfl_hover li div{left:-9999px;}
+
+#nfl_cate li a{float:left;text-indent:10px;font-weight:bold;border-bottom:1px solid #83ABC5;width:100%;display:block;color:#000;}
+#nfl_cate li li a{border-bottom:0 none;text-indent:20px;font-weight:normal;}
+#nfl_cate li.nfl_hover a{}
+#nfl_cate li li li a{line-height:22px;}
+#nfl_cate li ul{width:520px;}
+#nfl_cate li li{width:260px;background:#fff url(../img/nav_bg.gif) no-repeat 8px 10px;text-indent:20px;}
+#nfl_cate li li li{padding-left:0;background:none transparent;}
+#nfl_cate li.nfl_hover li a{width:260px;line-height:15px;padding:5px 0;}
+#nfl_cate li li.nfl_hover2 a,#nfl_cate li li.nfl_hover2 li a:hover{text-decoration:underline;}
+#nfl_cate li li.nfl_hover2 li a{text-decoration:none;}
+#nfl_cate li li a:hover{color:#004B91;text-decoration:underline;}
+#nfl_cate #temp{position:absolute;width:3px;height:30px;left:166px;z-index:99999;top:0px;background-color:#fff;border:0;padding:0;}
+
+
+/**/
+.nfl_box{border:1px solid #ADD2E2;margin-top:5px;float:left;width:193px;display:inline;}
+#livehelp {text-align:center;padding-bottom:23px;}
+#livehelp a{margin:21px auto 0;display:inline-block;}
+#googletrans{background:url(../img/index/translate.gif) bottom}
+#googletrans ul{padding: 43px 0 15px 50px;float:left;}
+#googletrans li{padding: 1px 0;}
+
+
+.nfl_hotlink{padding-bottom:7px;background-color:#f9f9f9;}
+#nfl_left dl{width:100%;float:right;color:#aaa;line-height:1.3;font-size:11px;padding-top:7px;}
+#nfl_left dl h4{font-size:11px;}
+#nfl_left dt{float:left;}
+#nfl_left dd{margin-left:70px;}
+#nfl_left .nfl_popular h3{text-indent:0;}
+
+
+.nfl_say{padding:10px;width:173px !important;}
+.nfl_say q{padding:10px 0 3px 0;width:100%;float:left;}
+.nfl_say p{text-align:right;clear:both;}
+.nfl_say em a{color:#184C95;text-decoration:underline;}
+
+.nfl_find{width:144px;height:26px;padding:40px 0 0 26px;background-image:url(../img/side_rgn.jpg)}
+.nfl_find a{color:#73BCEF;font-size:11px;text-decoration:underline;}
+.nfl_trus{padding:90px 10px 10px;background:url(../img/side_rgn.jpg) no-repeat -13px -66px;font-size:11px;color:#666;width:150px;}
+.nfl_popular{font-size:11px;width:160px;padding:10px 0px 10px 10px ;}
+.nfl_popular a:hover{color:#9a005e;text-decoration:underline;}
+.nfl_popular li{float:left;padding:0 10px 0 0;}
+
+
+#nfl_view li{clear:both;}
+.nfl_view_i{float:left;padding-bottom:10px;}
+.nfl_view_n{float:left;width:130px;}
+.nfl_view_p{float:left;color:#C96203;font-size:11px;}
+
+
+
+
+
+
+/*********************************right*************************************************/
+#nfl_right{width:780px;float:right;}
+
+.nfl_path{width:100%;float:left;font-weight:bold;}
+.nfl_path a,.nfl_path span{padding:0 5px;}
+
+.cate_child{padding-bottom:20px;}
+.nfl_page3{background-image:url(../img/h3.gif);width:100%;height:30px;line-height:29px;float:left;text-indent:20px;}
+
+.cate_child .curselt_div{width:100%;clear:both;}
+.cate_child li{width:247px;float:left;line-height:20px;padding:10px 0 0 10px;}
+.cate_child li li{background:url(../img/list_bg.gif) no-repeat 3px bottom;padding:0;}
+.cate_child a{color:#004B91;font-weight:bold;}
+.cate_child li li a{font-weight:normal;position:relative;top:10px;left:18px;}
+
+
+
+
+
+
+/*********************************prolist*************************************************/
+
+.nfl_box2{border:1px solid #ADD2E2;margin-top:5px;float:left;width:778px;}
+
+.nfl_list{float:left;width:164px;padding:8px 10px 8px 18px;height:310px;overflow:hidden;font-size:11px;}
+
+.nfl_root{float:left;width:184px;padding:8px 0 8px 8px;height:260px;overflow:hidden;}
+
+.nfl_list li{width:100%;float:left;}
+.nfl_list_name{margin-bottom:5px;padding-bottom:25px;background:url(../img/free_s.gif) no-repeat 0 bottom;}
+.nfl_list_img{width:160px;height:160px;border:1px solid #ADD2E2;padding:10px;}
+.nfl_list a {color:#004B91;}
+.nfl_list span{color:#BF0000;font-weight:bold;font-size:12px;}
+li.nfl_list span{float:left;font-size:12px;}
+
+.nfl_root{text-align:center;}
+.nfl_root a{color:#004B91;}
+.nfl_root span{color:#e33;font-weight:bold;}
+.nfl_root s{font-weight:bold;}
+
+
+.nfl_pro_stars {clear:both;}
+.nfl_pro_price{text-align:center; color:#770f1f;}
+    
+.currentPageNo{color:#000;}
+
+.nfl_foot_page{margin-bottom:10px;}
+
+#nfl_search_attr{float:right;background-image:url(../img/attr_rgn.gif);width:760px;padding:7px;}
+.white_bg{width:730px;background-color:#fff;padding:15px 15px 25px;}
+#nfl_search_attr h2{background:url(../img/h2_rgn.gif) repeat-x bottom;padding-bottom:20px;}
+#sys_search span,#sys_search b{float:left;display:block;}
+#sys_search a{border: 1px solid #eee;float:left;color: #666;display: inline;height: 24px;line-height: 24px;margin: 3px 0 3px 10px;padding:0 5px;text-decoration: none;background-color:#FDF1C5;}
+#sys_search i{color: #808080;font-weight: normal;font-style:normal;float:left;white-space:nowrap;}
+                
+#sys_search .close-icon{background-image: url(../img/attribute_rgn.gif);height: 24px;width: 23px;}
+#nfl_choose{border-bottom:3px solid #eee;width:100%;float:left;}
+#nfl_choose li{width:100%;padding:12px 0;float:left;border-bottom:1px solid #ADD2E2;color:#888;}
+#nfl_choose span{padding-right:30px;}
+#nfl_choose a{color:#000;}
+#nfl_choose div{float:right;width:628px;}
+#nfl_choose label{float:left;}
+#nfl_choose .seld a{color:#1D58B3;font-weight:bold;}
+
+
+
+.turnpage{float:left;line-height:34px;}
+.turnpage a{border:1px solid #888;padding:1px 5px;}
+
+.nfl_page,.nfl_page1,.nfl_page2{width:748px;padding:0 15px;float:left;border-bottom:1px solid #ADD2E2;background-color:#E7EFFA;line-height:34px;height:34px;text-align:right;font-size:13px;}
+.nfl_page1{text-align:left;border-color:#f8f8f8;}
+.nfl_page2{border-top:1px solid #ADD2E2;margin:0;}
+
+.nfl_item{border-bottom:1px dotted #D9DDE3;float:left;width:100%;}
+.nfl_item li{height:130px;float:left;}
+.nfl_item_img{width:25%;}
+.nfl_item_img img{height:130px;}
+.nfl_item_name{width:55%;}
+.nfl_item_name i{color:#888;}
+.nfl_item_mprice{width:19%;color:#f00;}
+.nfl_item_mprice s{color: #396F00;font-weight:bold;}
+.nfl_item a:hover{color:#000;}
+
+#sys_search{clear: both;padding: 10px 0;}
+#sys_search b{display:block;line-height:32px;}
+
+
+
+
+/*********************************news*************************************************/
+
+.nfl_border{ border: 1px solid #ADD2E2ddd;padding: 15px;}
+.nfl_news_b_info,.nfl_news_info{width: 100%;padding:5px 0;}
+.nfl_news_b_title,.nfl_news_title{border-bottom: 1px solid #B5B5B5;line-height: 30px;width: 100%;padding-top:5px;}
+.nfl_news_b_title span{font-weight:bold}
+.nfl_news_b_title em,.nfl_news_b_info em,.nfl_news_time{float:right;}
+.nfl_news_b_info li{ border-bottom: 1px dashed #ADD2E2ddd;line-height: 25px;width: 100%;}
+.nfl_news_b_info span,.nfl_news_b_info span a{padding-left:10px;}
+.nfl_news_title{text-align:center;font-size:14px;font-weight:bold;}
+
+
+
+/*********************************proinfo*************************************************/
+/*------image--------*/
+
+.nfl_img{ float:left; width:350px;padding:5px 0 0 5px}
+.nfl_img .jqzoom{border:0;}
+
+/*------info--------*/
+.nfl_info{ width:410px;float:right; overflow:hidden;padding:20px 5px 20px 0;font-weight:bold;}
+
+.nfl_info_list{clear:both;padding:5px 0;}
+.nfl_info_link a{margin-left:5px;}
+.nfl_size{padding-left:50px;color:#f00;}
+.nfl_pro_con{ float:right; width:100%;}
+#sys_pn{font-size:14px;padding-bottom:15px;text-indent:0;}
+.nfl_mprice{color: #396F00;font-weight:bold;}
+.nfl_oprice{color: #C96203;font-weight:bold;}
+.nfl_price{font-size:13px;border-bottom:1px dashed #ADD2E2;padding-bottom:10px;}
+.nfl_price s{font-size:11px;}
+.nfl_price .fixed_red{font-size:24px;font-weight:bold;}
+.nfl_price .sys_mp {padding-right:15px;}
+.nfl_desc{padding:10px;border:1px solid #ADD2E2;width:60%;}
+.nfl_ls{font-size:11px;text-align:right;clear:both;}
+.nfl_ls a{color:#00f;}
+
+.nfl_seckill{width:294px;height:55px;clear:both;background:url(../img/seckill_rgn.gif) no-repeat center;color:#fff;padding:10px 0 0 70px;text-transform:capitalize;}
+.nfl_seckill b{font-size:18px;}
+
+#nfl_buyfrom{ clear:both;}
+#nfl_buyfrom ul{clear:both;width:75%;}
+#nfl_buyfrom li{ clear:both; padding-top:10px; line-height:21px; }
+#nfl_buyfrom font{ margin:0px;font-size:12px; display:block; float:left;font-weight:bold;color:#666;width:120px;}
+#nfl_buyfrom span{ display:block; float:right; color:#666666 ; }
+
+#nfl_buyfrom a{ margin-bottom:5px;  border:1px solid #000000; display:inline; height:auto; line-height:17px; min-width:17px; _width:17px; white-space:nowrap; padding:1px 3px 1px 3px; float:left; margin-left:5px; text-align:center; cursor:pointer; color:#666666}
+#nfl_buyfrom a.selected{  border:2px solid #000000;  padding:0px 5px 0px 5px; background:URL(../img/selected.gif) right bottom no-repeat }
+#nfl_buyfrom a:hover{border:2px solid #000000;  padding:0px 3px 0px 3px; text-decoration:none}
+
+#nfl_buyfrom b{float:left;line-height:23px;display:block;padding-top:1px;}
+#nfl_qty{float:left;width:51px;height:22px;background-image:url(../img/qty_rgn.gif);padding-top:2px;}
+#nfl_qty input{background-color:transparent;float:left;border:0 none;height:22px;line-height:22px;text-align:center;width:33px;}
+#nfl_qty span{display:block;float:left;width:18px;height:11px;cursor:pointer;_font-size:1px;}
+.nfl_add{float:right;}
+
+.buyp{margin-left:5px;}
+
+/*-------con-------*/
+#nfl_con{width:780px;float:left;padding:5px 0 0;}
+#nfl_con #nfl_pro0,#nfl_con #nfl_pro1,#nfl_con #nfl_pro3{padding:5px 8px;}
+.nfl_tab{width:100%;float:left;font-weight:bold;}
+.nfl_tab li{float:left;cursor:pointer;width:195px;line-height:30px;background-image:url(../img/tab.gif);text-align:center;}
+.nfl_tab li.nfl_choose{background-position:right;}
+.nfl_pro{clear:both;border:1px solid #ADD2E2;width:778px;float:left;border-top:0 none;}
+.nfl_pro li{position:absolute;left:-9999px;}
+.nfl_pro li.nfl_choose,.nfl_pro li li{position:static;left:auto;}
+
+
+/*-------content-------*/
+#nfl_pro3 i{font-style:normal;font-weight:bold;font-size:16px;}
+#nfl_sub{background-image:url(../img/sub_rgn.gif);width:94px;height:36px;border:0 none;float:left;margin-left:105px;}
+#nfl_pro3 img{margin-bottom:-1px;}
+#nfl_pro3 li{clear:both;padding:5px 0;border-bottom:1px dashed #ADD2E2;}
+#nfl_pro3 font{color:#f00;width:40px;display:block;float:left;}
+#nfl_pro3 b{display:block;float:left;color:#333;}
+#nfl_pro3 span{width:240px;float:left;display:block;}
+#nfl_pro3 li label{padding:5px 0 5px 11px;width:702px;clear:both;display:block;}
+#nfl_pro3 form{float:left;padding:40px 0 20px 40px;width:666px;}
+#nfl_pro3 form b{width:100px;text-align:right;}
+#nfl_mail_input,#nfl_pro3 textarea {color:#555;}
+#nfl_mail_input{width:250px;_line-height:14px;}
+
+div.nfl_list{text-align:center;font-size:11px;}
+
+/*-------scroll-------*/
+.rollBox{float:right;width:178px;border:1px solid #ADD2E2;}
+#also{width:100%;height:30px;line-height:30px;background-color:#b8b8b8;color:#fff;text-indent:10px;}
+.Lbtn,.Rbtn{float: left;height: 19px;width: 21px;background-image:url(../img/btn_rgn.gif);display:block;margin:10px 0 10px 61px;}
+.Rbtn{background-position:right;margin-left:10px;}
+#ISL_Cont{width:158px;height:920px;overflow:hidden;clear:both;margin:0 auto;}
+.ScrCont{width:158px;font-weight:bold;height:10000px;}
+#top_products_show,#Lists{float:left;}
+#ISL_Cont li{width:158px;float:left;height:230px;overflow:hidden;}
+#ISL_Cont img{width:158px;float:left;}
+#ISL_Cont s{color:#396F00;}
+#ISL_Cont b{color:#f00;}
+
+
+
+
+
+/*********************************foot*************************************************/
+
+#nfl_foot{width:980px;clear:both;padding:0 0 15px;}
+
+#nfl_what{width:978px;padding-bottom:10px;}
+#nfl_what b{display:block;float:left;text-indent:10px;line-height:30px;font-size:14px;width:100%;background-image:url(../img/h3.gif);}
+#nfl_what li{float:right;width:469px;padding:10px 10px 0;}
+#nfl_what p{width:100%;float:left;font-size:11px;}
+#nfl_what strong{display:block;padding-bottom:5px;float:left;font-size:12px;}
+
+
+
+
+
+
+
+#nfl_page{}
+#nfl_page dl{width:195px;padding:10px 0 20px 40px;height:100px;overflow:hidden;}
+#nfl_page dl.nfl_last{width:100px;}
+#nfl_page dt{font-size:16px;font-weight:bold;list-style-type:disc;line-height:40px;}
+#nfl_page dd{float:left;clear:both;padding-left:10px;background:url(../img/icona_rgn.gif) no-repeat 3px 7px;font-size:11px;width:100%;}
+#nfl_page a{color:#999;}
+#nfl_page p{border-top:1px solid #AAC9CE;height:50px;line-height:50px;color:#666;font-size:14px;text-align:center;}
+#nfl_bottom{text-align:center;clear:both;padding-top:15px;background:url(../img/bg_foot.gif) repeat-x 0 5px;font-size:11px;}
+#nfl_bottom ul{padding-bottom:60px;background:url(../img/foot.gif) no-repeat bottom;}
+#nfl_bottom li{display:inline;}
+

@@ -1,0 +1,148 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+
+<style>
+    ul.ztree
+    {
+        margin-top: 10px;
+        border: 1px solid #617775;
+        background: #f0f6e4;
+        width: 500px;
+        height: 200px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+</style>
+<script>
+<!--
+ 
+		var setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+
+				onClick: onClick
+			}
+		};
+ 
+		var zNodes =#{nodes};
+ 		
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("typeTree");
+			nodes = zTree.getSelectedNodes();
+
+			$("#typeSel").attr("value", nodes[0].name);
+            $("input[name='desLibType']").attr("value", nodes[0].id);
+
+            hideMenu();
+		}
+ 
+		function showMenu() {
+
+			var typeSelObj = $("#typeSel");
+			var typeOffset = typeSelObj.offset();
+			$("#menuContent").css({left:typeOffset.left + "px", top:typeOffset.top + typeSelObj.outerHeight() + "px"}).slideDown("fast");
+ 
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" 
+            || event.target.id == "menuContent" 
+            || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+ 
+		$(document).ready(function(){
+
+			$.fn.zTree.init($("#typeTree"), setting, zNodes);
+		});
+
+		//--> 
+</script>
+
+<div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+                <table style="width: 90%">
+                <tr>
+                <td colspan=2 style=" color:red">
+                使用说明:<br />
+                1：如果需要从描述库中随机选择，必须选择描述库类型，并且输入项为空。<br />
+                2：#{name}为替换关键字。如: uggs boot #{name}
+                </td>
+                </tr>
+                <tr>
+                <td>描述库类型：</td>
+                <td>
+                    <input id="typeSel" name="deslibrary.ProductTypeName" type="text"  style="width: 200px;"  onclick="showMenu();" readonly/>
+                     <input name="desLibType" type="hidden"  value=""/>
+                     <div id="menuContent" class="menuContent" style="display: none; position: absolute;">
+                        <ul id="typeTree" class="ztree" style="margin-top: 0; width: 300px;">
+                        </ul>
+                     </div>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        分类描述：
+                    </td>
+                    <td>
+                        <textarea name="contentDes" cols="50" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面标题：
+                    </td>
+                    <td>
+                        <input name="pageTitle"  type="text" class="tipInput"
+                            style="width: 300px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面关键字：
+                    </td>
+                    <td>
+                        <input name="pageKey"  type="text"
+                            class="tipInput" style="width: 300px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面描述：
+                    </td>
+                    <td>
+                        <input name="pageDes"  type="text"
+                            class="tipInput" style="width: 300px;" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="确定" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+

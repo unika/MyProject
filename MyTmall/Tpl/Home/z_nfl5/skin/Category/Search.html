@@ -1,0 +1,16 @@
+﻿
+    <h2 style="display:#{catNameDisplay}">
+        <a href="/Category/#{category.Id}/Show.aspx" title="#{category.Name}">#{category.Name}</a></h2>
+ 
+       
+        <div class="nfl_box2"> <div class="nfl_page"> #{pager} #{OrderBy} #{PageSize}</div>
+
+    <!-- BEGIN products -->
+        <ul class="nfl_list" iconlist="#{product.PromotionIcon}">
+            <li><a title="#{product.Name}" href="/Product/#{product.Id}/Show.aspx"><img width="164" title="#{product.Name}" alt="#{product.Name}" src="#{product.Img_1}"></a></li>
+            <li class="nfl_list_name"><a title="#{product.Name}" href="/Product/#{product.Id}/Show.aspx">#{product.Name}</a></li>
+            <li><b>Our Price:</b> <span class="sys_cur">#{product.CurrencyName}</span><span class="sys_p">#{product.Show_Price}</span> <a href="/Product/#{product.Id}/Show.aspx"><img alt="detail" src="/static/skin/z_nfl5/img/car_price.gif"  /></a> </li>
+            <li>Compare at:<i class="sys_cur">#{product.CurrencyName}</i><i class="sys_p">#{product.Show_MarketPrice}</i></li>
+        </ul>
+    <!-- END products --><div class="nfl_page2"> #{pager} </div>
+</div> 

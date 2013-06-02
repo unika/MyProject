@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>index</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link href="__PUBLIC__/Css/admin.css" type="text/css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<h3>添加类型属性</h3>
+		<form action="__URL__/insertAttr" method="post">
+			<table>
+				<tbody>
+					<tr>
+						<td> 属性名： </td>
+						<td>
+						<input type="text" style="width: 150px;" class="tipInput inputTip" name="Name">
+						</td>
+					</tr>
+					<tr>
+						<td> 属性类型： </td>
+						<td>
+						<input type="radio" checked="checked" value="0" name="ParamType" id="Radio3">
+						输入
+						<input type="radio" value="1" name="ParamType" id="Radio4">
+						多选 </td>
+					</tr>
+					<tr>
+						<td> 多选值(换行分隔)： </td>
+						<td>						<textarea rows="5" name="ParamValue" cols="100" id="TextArea1"></textarea></td>
+					</tr>
+					<tr>
+						<td> 排序： </td>
+						<td>
+						<input type="text" style="width: 50px;" class="tipInput inputTip" name="AttrOrder">
+						</td>
+					</tr>
+
+					<tr>
+						<td> 默认值： </td>
+						<td>
+						<input type="text" style="width: 150px;" class="tipInput inputTip" name="DefaultValue">
+						</td>
+					</tr>
+
+					<tr>
+						<td> 输入长度限制： </td>
+						<td>
+						<input type="text" value="0" style="width: 50px;" class="tipInput" name="MaxLength">
+						</td>
+					</tr>
+
+					<tr>
+						<td> 是否用户于搜索： </td>
+						<td>
+						<input type="radio" value="1" name="IsSearchAttr" id="Radio1">
+						是
+						<input type="radio" checked="checked" value="0" name="IsSearchAttr" id="Radio2">
+						否 </td>
+					</tr>
+					<tr>
+						<td> 是否是购买属性： </td>
+						<td>
+						<input type="radio" checked="checked" value="0" name="IsBuyType" id="Radio6">
+						否
+						<input type="radio" value="1" name="IsBuyType" id="Radio7">
+						是 </td>
+					</tr>
+					<tr>
+						<td> 购买选择样式： </td>
+						<td>
+						<input type="radio" value="0" checked="checked" name="BuySelStyle" id="Radio5">
+						DIV方块
+						<input type="radio" value="1" name="BuySelStyle" id="Radio8">
+						下拉列表
+						<input type="radio" value="2" name="BuySelStyle" id="Radio9">
+						按属性购买 </td>
+					</tr>
+					<tr>
+
+						<td>
+						<input type="hidden" name="ProductTypeId" value="{$typeid}" />
+						</td>
+						<td>
+						<input type="submit" value="新增" id="Submit1">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</body>
+</html>

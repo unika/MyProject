@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+		<title>index</title>
+		<style>
+			body {
+
+				margin: 0px;
+				padding: 0px;
+				text-align: center;
+				width: 1024px;
+			}
+			ul {
+				margin: 0px;
+				padding: 0px;
+				width: 1024px;
+			}
+			li {
+				list-style: none;
+				width: 300px;
+				height: 200px;
+				float: left;
+			}
+			.product {
+				width: 100px;
+				height: 100px;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+		<ul>
+			<volist name="list" id="vo">
+				<li>
+
+					{$vo.imgid}
+					{$vo.Name}
+					<img class="product" src="/Upload/Product/{$vo.Img}"/>
+					{$vo.Price}
+					{$vo.ProductImgId}
+					{$vo.ProductTypeId}
+					{$vo.AddTime}
+					{$vo.Status}
+					{$vo.MarketPrice}
+					<p>
+						<a href="__APP__/Cart/">查看购物车</a>
+						<a href="__APP__/Cart/addCart/id/{$vo.id}">加入购物车</a>
+						<a href="__APP__/Order/buy/id/{$vo.id}">立即购买</a>
+					</p>
+				</li>
+			</volist>
+		</ul>
+
+	</body>
+</html>

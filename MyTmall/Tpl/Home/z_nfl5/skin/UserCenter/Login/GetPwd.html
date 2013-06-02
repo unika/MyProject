@@ -1,0 +1,54 @@
+﻿
+<style>
+    fieldset
+    {
+        border: 1px solid #CCCCCC;
+        margin: 5px auto;
+        padding:5px 10px;
+        background-color: #f7f7f7;
+        width:500px;
+        clear:both;
+    }
+    legend
+    {
+        color: black;
+        font-weight: bold;
+        padding: 3px 5px;
+    }
+    .inputLabel
+    {
+        width: 90px;
+        float: left;
+    }
+    .input_text
+    {
+        border: 1px solid #7F9DB9;
+        width: 120px;
+        margin: 2px;
+    }
+    #Submit1
+    {
+        background: url(/static/skin/z_nfl5/img/user/submit.gif);
+        height: 26px;
+        width: 71px;
+        border: 0 none;
+        cursor: pointer;
+    }
+</style>
+<div class="fixed_big_from">
+        <fieldset>
+            <legend>Retrieve password</legend>
+            Forget password? Please enter your email address while register, we will send the reset email to your emial box. 
+<br /><br />
+<form method="post" action="#{ActionLink}" >
+Email:<input type="text" class="input_text"  name="email"/><span class="valid" mode="border" rule="email"></span>
+<input id="Submit1" type="submit" value=" " />
+<br /><span style=" color:Red;line-height:40px;">
+#{msg}
+</span><br />
+</form>
+        </fieldset>
+        
+    <div class="clear">
+    </div>
+</div>

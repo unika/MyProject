@@ -1,0 +1,51 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑参数</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        参数名：
+                    </td>
+                    <td>
+                        <input name="paramConfig.Name" value="#{paramConfig.Name}" type="text" class="tipInput"
+                            style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        参数值：
+                    </td>
+                    <td>
+                    <textarea name="paramConfig.Value" cols="100" rows="5">#{paramConfig.Value}</textarea>
+
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        备注：
+                    </td>
+                    <td>
+                        <input name="paramConfig.Remark" value="#{paramConfig.Remark}" type="text" class="tipInput"
+                            style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

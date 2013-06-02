@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>index</title>
+		<style>
+			body {
+				margin: auto;
+				padding: 0;
+				/*text-align: center;*/
+				width: 1024px;
+			}
+			ul, li {
+				margin: 0px;
+				padding: 0px;
+			}
+			li {
+				float: left;
+				list-style: none outside none;
+				width: 300px;
+			}
+			p {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="loginbar">
+			<empty name="Think.session.username">
+				<a href="__APP__/Public/login">login</a>
+				<a href="__APP__/User/regUser">register</a>
+				<else />
+				Welcome! <span><a href="__APP__/User/">{$Think.session.username}</a></span>
+				Item<span>[0]</span>
+				<a href="__APP__/Public/logout">logout</a>
+			</empty>
+		</div>
+
+		<div id="goodslist">
+			<h3>产品列表</h3>
+			<ul>
+				<volist name="list" id="vo">
+					<li>
+						<img src="/Upload/Product/{$vo.Img}" width="160px" height="160px"/>
+						<p>
+							Name:	{$vo.Name}
+						</p>
+						<p>
+							Price：	{$vo.Price}
+						</p>
+						<p>
+							DbNum：	{$vo.DbNum}
+						</p>
+						<a href="__APP__/Product/show/id/{$vo.id}" />Info</a> <a href="__APP__/Cart/addCart/pid/{$vo.id}" />Add in Cart</a>
+					</li>
+				</volist>
+			</ul>
+
+		</div>
+
+	</body>
+</html>

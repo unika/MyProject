@@ -1,0 +1,121 @@
+﻿<script type="text/javascript" src="/static/js/jqui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.sortable.js"></script>
+<script type="text/javascript">
+    // Return a helper with preserved width of cells
+    var fixHelper = function (e, ui) {
+        //console.log(ui)  
+        ui.children().each(function () {
+            $(this).width($(this).width());     //在拖动时，拖动行的cell（单元格）宽度会发生改变。在这里做了处理就没问题了  
+        });
+        return ui;
+    };
+
+
+    jQuery(function () {
+        jQuery("#dataAdminList tbody").sortable({                //这里是talbe tbody，绑定 了sortable  
+            helper: fixHelper,                  //调用fixHelper  
+            axis: "y",
+            start: function (e, ui) {
+                ui.helper.css({ "background": "#fff" })     //拖动时的行，要用ui.helper  
+                return ui;
+            },
+            stop: function (e, ui) {
+                //ui.item.removeClass("ui-state-highlight"); //释放鼠标时，要用ui.item才是释放的行  
+
+
+
+                return ui;
+            }
+        }).disableSelection();
+    })
+
+    function saveOrder() {
+        if (!confirm("你确定要保存吗？"))
+        { return; }
+
+        var attrids = "";
+        $(".tableItems").each(function () {
+            attrids = attrids + $(this).attr("attrid") + ",";
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "SaveOrder.aspx".toAjax(),
+            data: "attrids=" + attrids,
+            success: function (msg) {
+                alert("保存顺序成功");
+            }
+        });
+
+    }
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            (#{TypeName})产品类型属性</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="8" style="text-align: right; padding-right: 10px;">
+                    <a href="#{addlink}">新增属性</a>｜
+                    <a href="javascript:void(0)" onclick="saveOrder()">保存顺序</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    产品类型
+                </td>
+                <td>
+                    属性名
+                </td>
+                <td>
+                    是否是购买属性
+                </td>
+                <td>
+                    属性类型
+                </td>
+
+                <td>
+                    是否可用于检索
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <tbody>
+                <!-- BEGIN attrs -->
+                <tr class="tableItems" attrid=#{attr.Id}>
+                    <td>
+                        #{attr.Id}
+                    </td>
+                    <td>
+                        #{attr.ProductType.Name}
+                    </td>
+                    <td>
+                        #{attr.Name}
+                    </td>
+                    <td>
+                        #{attr.IsBuyAttr}
+                    </td>
+                    <td>
+                        #{attr.ParamTypeDes}
+                    </td>
+
+                    <td>
+                        #{attr.IsSearchAttr}
+                    </td>
+                    <td>
+                        <a href="#{attr.Edit}">编辑</a>/<a href="#{attr.Delete}" class="deleteCmd">删除</a>
+                    </td>
+                </tr>
+                <!-- END attrs -->
+            </tbody>
+        </table>
+    </div>
+</div>

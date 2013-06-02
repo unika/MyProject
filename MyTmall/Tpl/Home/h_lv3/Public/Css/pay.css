@@ -1,0 +1,187 @@
+#main {
+	background-color: #fff;
+}
+#pay_from1 {
+	padding: 20px 5px;
+	float: left;
+	width: 960px;
+}
+.pay_r ul input, .pay_l input, #C_Country, #B_Country {
+	width: 287px;
+	height: 18px;
+	border: 1px #909aa3 solid;
+	display: block;
+	float: left;
+}
+.pay_t, .pay_t2, .pay_t3 {
+	font-size: 13px;
+	color: #4d4d4d;
+	font-weight: bold;
+	width: 100%;
+	float: left;
+}
+.pay_t .edit, .pay_t2 .edit {
+	float: right;
+	display: block;
+	width: 51px;
+	height: 27px;
+	background-image: url(../Images/edit.gif);
+}
+.pay_t1 {
+	font-size: 13px;
+	color: #636363;
+	font-weight: bold;
+	padding: 15px 0 5px;
+	float: left;
+	display: block;
+	width: 100%;
+}
+.pay_l ul, pay_r ul {
+	float: left;
+}
+#pay_from1 #from1 li {
+	float: left;
+	line-height: 20px;
+	padding-bottom: 7px;
+}
+.pay_l {
+	float: left;
+	width: 540px;
+}
+.pay_r {
+	float: right;
+	width: 394px;
+}
+#pay_from1 .name {
+	display: block;
+	width: 100px;
+	float: left;
+	font-size: 12px;
+}
+.Submit1 {
+	background-image: url(../Images/continue.gif);
+	width: 84px;
+	height: 35px;
+	border: 0 none;
+	float: right;
+	margin: 10px 0;
+	cursor: pointer;
+}
+.Information1 {
+	width: 315px;
+}
+.Information1, .Information2 {
+	float: left;
+}
+.Information {
+	width: 730px;
+	float: left;
+	padding-left: 160px;
+	padding-bottom: 10px;
+}
+
+.Information .inf_t {
+	font-size: 13px;
+	color: #4d4d4d;
+}
+
+.pay_t2, .pay_t3 {
+	padding-bottom: 8px;
+	padding-top: 15px;
+}
+
+.shipping_list {
+	float: left;
+	width: 100%;
+	line-height: 27px;
+}
+.shipping_list .tt {
+	float: left;
+	font-size: 12px;
+	color: #737373;
+	padding-right: 66px;
+	font-weight: bold;
+}
+.shipping_list li {
+	padding-bottom: 7px;
+	clear: both;
+}
+.shipping_list li label {
+	margin-top: 3px;
+}
+#from1 {
+	padding: 0 10px;
+	float: left;
+	width: 100%;
+	width: 943px;
+}
+#from2, #from3 {
+	padding: 0 10px;
+	float: left;
+	background: url(../Images/pay_b.jpg) no-repeat;
+	width: 943px;
+}
+
+#fieldset {
+	float: left;
+	width: 419px;
+}
+#fieldset fieldset {
+	padding: 10px 15px;
+}
+#fieldset legend {
+	margin-left: 20px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #4f4f4f;
+}
+.western_cart {
+	margin-bottom: 10px;
+	float: left;
+	width: 100%;
+}
+
+#Coupon_price {
+	float: right;
+	width: 470px;
+}
+#texcoupon {
+	float: right;
+	margin-bottom: 10px;
+}
+#texcoupon #coup {
+	width: 160px;
+	height: 20px;
+	line-height: 22px;
+	border: 1px #7f807b solid;
+	padding: 0 5px;
+	color: #333333;
+}
+#texcoupon #btn_gcp {
+	background: url(../Images/coupon.gif) no-repeat;
+	width: 107px;
+	height: 25px;
+	border: 0 none;
+	cursor: pointer;
+	margin-top: 4px;
+}
+#texcoupon #btn_gcp:hover
+#Coupon_price .chk_total1 {
+	padding-right: 10px;
+}
+.chk_pay {
+	background-image: url(../Images/order.gif);
+	border: 0 none;
+	cursor: pointer;
+	display: block;
+	height: 34px;
+	width: 124px;
+}
+.pay_t a.edit:hover, .pay_t2 a.edit:hover, #Submit1:hover, #texcoupon #btn_gcp:hover, .chk_pay:hover {
+	background-position: bottom;
+}
+.western_col1 {
+	width: 711px;
+}#sys_num {
+	text-align: left;
+}

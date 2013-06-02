@@ -1,0 +1,165 @@
+<include file="Public:header" />
+<script>
+	$(document).ready(function() {
+		$("#RegSub").click(function() {
+			$.post("__URL__/addUser", $("#Register").serialize(), function(data) {
+				if (data.status == 1) {
+					$.alertz("注册成功");
+					window.location.href = "/Public/login";
+				} else {
+					$.alert(data.info);
+				}
+			}, 'json')
+		});
+		$("#verify").click(function() {
+			var verify = "/Admin/Public/verify/" + new Date();
+			$(this).attr("src", verify);
+		})
+	})
+</script>
+
+<div id="main">
+	<div class="fixed_big_from">
+		<!---------------------------用户注册表单 制作成Widget部分开始--------------------->
+		<form id="Register" method="post" onsubmit="return false;" action="/Register/addUser">
+			<div class="fixed_from reg_midd">
+				<div class="fixed_content">
+					<div class="fixed_title2">
+						Person Information
+					</div>
+					<div class="fixed_middle">
+						<span class="fixed_red">* Required Fields</span>
+						<div class="fixed_font">
+							<label>Username</label>
+							<label>
+								<input name="username" id="username" class="fixed_text inputWarning">
+							</label>
+							<span class="fixed_red">*</span>
+						</div>
+						<div class="fixed_font">
+							<label>Email</label>
+							<label>
+								<input name="email" class="fixed_text inputWarning">
+							</label>
+							<span class="fixed_red">*</span>
+						</div>
+						<div class="fixed_font">
+							<label>Password</label>
+							<input name="password" class="fixed_text" maxlength="32" type="password">
+							<span class="fixed_red">* </span><span class="fixed_gray"> (8characters )</span>
+						</div>
+						<div class="fixed_font">
+							<label>Confirm Password</label>
+							<input class="fixed_text" type="password" name="repassword">
+							<span class="fixed_red">*</span>
+						</div>
+						<div class="fixed_font">
+							<label>Code</label>
+							<input id="code" class="fixed_text" style="width: 50px;" name="verify" type="text" />
+							<img id="verify" align="middle" src="__APP__/admin/Public/verify" />
+							<span class="fixed_red">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="fixed_bottom">
+					<input id="RegSub" class="fixed_btn" value="Register" style="_height:24px" type="submit">
+				</div>
+			</div>
+		</form>
+		<!---------------------------用户注册表单 制作成Widget部分结束--------------------->
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="clear"></div>
+<div id="foot" class="pfoot">
+	<img src="__MYSTYLE__Images/foot_top.jpg" usemap="#Map">
+	<map name="Map" id="Map">
+		<area rel="nofollow" target="_blank" shape="rect" coords="421,21,439,49" href="http://www.facebook.com/">
+		<area rel="nofollow" target="_blank" shape="rect" coords="456,22,477,46" href="http://plus.google.com/">
+		<area rel="nofollow" target="_blank" shape="rect" coords="489,23,508,46" href="http://www.pinterest.com/">
+		<area rel="nofollow" target="_blank" shape="rect" coords="522,21,542,47" href="http://www.twitter.com/">
+	</map>
+	<div id="page">
+
+		<dl>
+			<dt>
+				Corporation Information
+			</dt>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/About-Us.html" rel="nofollow">About Us</a>
+			</dd>
+			<dd>
+				|
+			</dd>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/Safe-Shopping.html" rel="nofollow">Safe Shopping</a>
+			</dd>
+		</dl>
+
+		<dl class="mk_dd1">
+			<dt>
+				Customer Service
+			</dt>
+			<dd>
+				<a target="_top" href="javascript:dialog('/Contact_Add.html?ajax=true','674px','auto',null)" rel="nofollow">Contact Us</a>
+			</dd>
+			<dd>
+				|
+			</dd>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/Privacy-Policy.html" rel="nofollow">Privacy Policy</a>
+			</dd>
+			<dd>
+				|
+			</dd>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/FAQs.html" rel="nofollow">FAQs</a>
+			</dd>
+		</dl>
+
+		<dl class="mk_dd1">
+			<dt>
+				Payment and Shipping
+			</dt>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/OrderPay/CheckOut.aspx" rel="nofollow">Checkout</a>
+			</dd>
+			<dd>
+				|
+			</dd>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/UserCenter/Order/List.aspx" rel="nofollow">My Order</a>
+			</dd>
+		</dl>
+
+		<dl class="mk_dd1">
+			<dt>
+				Company Policy
+			</dt>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/Payment-Returns.html" rel="nofollow">Payment &amp; Returns</a>
+			</dd>
+			<dd>
+				|
+			</dd>
+			<dd>
+				<a target="_top" href="http://www.usefulsunglasses.com/Shipping-Charge.html" rel="nofollow">Shipping Charge</a>
+			</dd>
+		</dl>
+
+	</div>
+
+	<div class="clear"></div>
+	<ul class="sys_links"></ul>
+	<div id="bottom">
+
+		<a target="_top" href="http://www.usefulsunglasses.com/sitemap.html">SiteMap</a><span class="common">Copyright © &nbsp;2012 <a target="_top" href="http://www.usefulsunglasses.com/">Cheap Oakley Sunglasses,Wholesale Oakley Sunglasses,Discount Oakley Sunglasses</a> Store Privacy Policy</span>
+	</div>
+</div>
+<div style="display:none">
+	统计
+</div>
+<div class="clear"></div>
+</div>
+
+</body></html>

@@ -1,0 +1,72 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function(data) {
+        $(".delImg").click(function() {
+            obj = $(this);
+            $.confirm("注意:此操作将删除此图片,包括大小图片(如果有)", function() {
+                $.post("__URL__/delImg", {
+                    "Id" : obj.attr('aid')
+                }, function(data) {
+                    if (data.status == 1) {
+                        obj.parents("tr").remove();
+                    }
+                }, 'json');
+            }, function() {
+                return true;
+            });
+
+        })
+        $("body").on("click", ".main", function() {
+            if ($(this).val()) {
+                $(".main").not(this).attr("checked", false);
+                $.post("__URL__/updateImg", {
+                    'Id' : $(this).attr('aid'),
+                    'ProductId' : $("#pid").val(),
+                }, function(data) {
+                    $.alert(data.info);
+                }, 'json');
+
+            }
+        })
+    })
+</script>
+<body>
+	<table>
+		<tbody>
+			<tr>
+				<td>编号</td>
+				<td>图片</td>
+				<td>模特图</td>
+				<td>操作</td>
+			</tr>
+			<volist name="list" id="vo">
+				<tr class="tableItems">
+					<td> {$vo.id}</td>
+					<td><img width="100px" height="100px" src="/Upload/Product/s_{$vo.Img}" /></td>
+					<td class="useType"><!--通过UserType字段判断图片类型-->
+					<eq name="vo.UseType" value="0">
+						是
+						<else />
+						否
+					</eq></td>
+					<td>
+					<eq name="vo.UseType" value="1">
+						<input type="radio" class="main" aid="{$vo.id}" checked/>
+						主图
+						<else />
+						<input type="radio" class="main" aid="{$vo.id}" />
+						主图
+					</eq> | <span class="del" aid="{$vo.id}">删除</span></td>
+				</tr>
+			</volist>
+			<tr class="hidden">
+				<td></td>
+				<td><img style="width: 100px;height: 100px" id="img" src="" alt="" /></td>
+			</tr>
+		</tbody>
+
+		<input type="hidden" name="ProductId" id="pid" value="{$pid}" />
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        $('body').on("click", "#source ul li", function() {
+            var obj = $(this);
+            $("#target").find("input[name='level[]']:last").each(function() {
+                if ($(this).val() == '') {
+                    $(this).val('[' + obj.text() + ']');
+                    $(this).attr('json', obj.attr("aid"));
+                } else {
+                    $(this).val($(this).val() + '+[' + obj.text() + ']');
+                    $(this).attr('json', $(this).attr('json') + ',' + obj.attr("aid") + '"');
+
+                }
+
+            })
+            // $(this).clone().prependTo("#target ul");
+            $(this).remove();
+        });
+        $('body').on("click", "#target ul li", function() {
+            $(this).clone().prependTo("#source ul");
+            $(this).remove();
+        });
+        $('body').on("change", "select", function() {
+            $.getJSON("__GROUP__/ProductTypeAttr/getAttrList", {
+                "ProductTypeId" : $(this).val(),
+            }, function(data) {
+                if (data.status == 1) {
+                    var html = new String();
+                    $("#source").find("ul").remove();
+                    $("#target").find("input").parent().remove();
+                    html += "<ul>";
+                    $.each(data.data, function(index, item) {
+                        html += "<li aid=" + index + ">" + item + "</li>";
+                    })
+                    html += "</ul>"
+                    $("#source").find("h1").after(html);
+                } else {
+                    $.alert(data.info);
+                }
+            }, 'json');
+
+        })
+
+        $("body").on('click', 'button', function() {
+            $("#target").append("<div style='padding: 10px;'><span style='margin-right: 2px;color:#cccccc;'>目录</span><input style='clear: both; width: 85%; border: 1px solid rgb(204, 204, 204);' type='text' name='level[]' value='' /><input type='image' style='margin-left: 3px;color:#cccccc;' class='delme' onsubmit='return false' alt='x' /></div>");
+
+        })
+        $("body").on('click', '.delme', function() {
+            $(this).parent().remove();
+        })
+        $(".edit").click(function() {
+            var obj = $(this);
+            $.post("__URL__/getinfo", {
+                "Id" : obj.attr("value")
+            }, function(data) {
+                if (data.status == 1) {
+                    $.dialog({
+                        initialize : function() {
+                            editor = KindEditor.create('#content');
+                            $("#Name").val(data.data.Name);
+                            $("#Page_Title").val(data.data.Page_Title);
+                            $("#Page_Keyword").val(data.data.Page_Keyword);
+                            $("#Page_Description").val(data.data.Page_Description);
+                            $("#Page_Url").val(data.data.Page_Url);
+                            editor.html(data.data.Des);
+                            $("#category_seo").find("tr:last").after("<input type='hidden' id='Id' name='Id' value='" + obj.attr("value") + "' />")
+                        },
+                        lock : true,
+                        "title" : "分类seo",
+                        "content" : category_seo,
+                        okValue : "保存",
+                        ok : function() {
+                            editor.sync("#content");
+                            $.post("__URL__/updateCategory", $("#category_seo").serialize(), function(data) {
+                                if (data.status == 1) {
+                                    $.alert(data.info);
+                                } else {
+                                    $.alert(data.info);
+                                }
+
+                            }, 'json');
+                            return false;
+                        },
+                        cancelValue : "取消",
+                        cancel : function() {
+                            this.close();
+                        }
+                    })
+                } else {
+                    $.alert(data.info);
+                }
+            }, 'json')
+        })
+
+        $("#addCategory").click(function() {
+            $.getJSON("__GROUP__/ProductType/getlist1", {}, function(data) {
+                if (data.status == 1) {
+                    var html = new String();
+                    html = '<select name="typelist" style="margin:0px;padding:0;clear:both;">';
+                    html += '<option>请选择类型</option>'
+                    html += data.data.typetree;
+                    html += "</select>";
+                    html += "<button>添加目录</button>"
+                    $.dialog({
+                        initialize : function() {
+                            $("#source").append("<h1>可选目录</h1>");
+                            $("#Category").before(html);
+                        },
+                        width : 800,
+                        height : 400,
+                        lock : true,
+                        title : "目录列表",
+                        content : category,
+                        okValue : "创建目录",
+                        ok : function() {
+                            var array = new Array();
+                            var json = new Array();
+                            $("#target input[name='level[]']").each(function() {
+                                array.push($(this).val());
+                                json.push($(this).attr("json"));
+                            })
+
+                            $.post("__URL__/addCategory", {
+                                'category' : array,
+                                'categoryId' : json,
+                                'ProductTypeId' : $("select").val()
+                            }, function(data) {
+                                if (data.status == 1) {
+                                    // var html = new String();
+                                    // $.each(data.data, function(index, item) {
+                                    // html += '<tr>';
+                                    // html += '<td>' + item + '</td>';
+                                    // html += '<td>' + index + '</td>';
+                                    // html += '<td><a href="javascript:void(0)" aid="' + index + '">删除</a></td>';
+                                    // html += '</tr>';
+                                    // })
+                                    // $("#table").find("tr:first").after(html);
+                                    $.alert(data.info);
+                                } else {
+                                    $.alert(data.info);
+                                }
+                            }, 'json');
+                            return false;
+                        },
+                        cancelValue : "关闭",
+                        cancel : function() {
+                            this.close();
+                        }
+                    })
+                } else {
+                    $.alert(data.info);
+                }
+            }, 'json');
+
+        })
+    })
+
+</script>
+<body>
+	<h1><a href="javascript:void(0)" id="addCategory">创建目录</a></h1>
+	<table id="table">
+		<tr>
+			<td>类名</td>
+			<td>产品数</td>
+			<td>操作</td>
+		</tr>
+		<tr>
+			<td>{$list}</td>
+		</tr>
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo}</td>
+				<td>{$vo.id}</td>
+				<td><a href="javascript:void(0)" aid="{$vo.id}">删除</a></td>
+			</tr>
+		</volist>
+	</table>
+
+</body>
+</html>

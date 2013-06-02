@@ -1,0 +1,128 @@
+<include file="Public:header" />
+<div id="main">
+	<div id="path">
+		<!--面包屑路径-->
+		{:W("Category",array("count"=>10,"Display"=>"nav"))}
+	</div>
+	<div class="left">
+		<div id="left">
+			<b>categories</b>
+			<div class="">
+				<!--产品分类Widget开始--->
+				<ul>
+					{:W("Category",array("count"=>10,"Display"=>"tree"))}
+				</ul>
+				<!--产品分类Widget结束--->
+			</div>
+		</div>
+
+		<!--推荐广告Widget开始-->
+		<div class="adv1">
+			{:W("AdShow",array("count"=>1,"display"=>"Index","width"=>"169px","height"=>"209px"))}
+		</div>
+		<!--推荐广告Widget结束-->
+		<div class="index_hot">
+			<b></b>
+			{:W("ProductClassify",array("count"=>5,"Id"=>25,"display"=>"Index"))}
+		</div>
+		<div class="Chat_Online">
+			<b>Chat Online</b>
+			<a href="msnim:chat?contact=" target="_top" rel="nofollow">MSN: Click Here</a>
+			<a target="_top" href="mailto:amyonlineoutlet24hours@hotmail.com" rel="nofollow">Email: Click Here</a>
+		</div>
+	</div>
+	<div class="right">
+		<div class="gsk_adv">
+			<div style=" width:524px; float:left; overflow:hidden;">
+				<div id="myjQuery">
+					<div style="opacity: 0.957649;" id="myjQueryContent">
+						{:W("AdShow",array("count"=>5,"display"=>"Index","width"=>"529px","height"=>"229px"))}
+					</div>
+					<ul id="myjQueryNav">
+						<li class="">
+							<a target="_top" href="#"></a>
+						</li>
+						<li class="">
+							<a target="_top" href="#"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="rollBox">
+				<b>Best Deals</b>
+				<a target="_top" onmouseout="ISL_StopUp()" onmouseup="ISL_StopUp()" onmousedown="ISL_GoUp()" href="javascript:void(0)" class="Lbtn"></a>
+				<div id="ISL_Cont" class="Cont">
+					<div class="ScrCont">
+						<div id="top_products_show">
+							<ul class="gsk_productlist" iconlist="">
+								<li class="gsk_pro_img">
+									<a target="_top" title="Chanel Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Active-Rectangle-Sunglasses-p-3067.html"> <img class="gsk_imgclass" title="Chanel Active Rectangle Sunglasses" alt="Chanel Active Rectangle Sunglasses" src="__MYSTYLE__Images/SG0000001366_1.jpg"> </a>
+								</li>
+
+								<li class="gsk_pro_name">
+									<a target="_top" title="Chanel Active Rectangle Sunglasses" href="http://www.usefulsunglasses.com/Chanel-Active-Rectangle-Sunglasses-p-3067.html"> Chanel Active Rectangle Sunglasses</a>
+								</li>
+								<li><img src="__MYSTYLE__Images/4star.jpg">
+								</li>
+								<li class="gsk_pro_price">
+									<span class="gsk_sys_cur sys_cur">$</span><span class="gsk_sys_p sys_p">14.99</span>
+								</li>
+							</ul>
+						</div>
+						{:W("ProductClassify",array('count'=>10,'Id'=>25,'display'=>'rollBox'))}
+
+						<div id="Lists">
+
+							<ul class="gsk_productlist" iconlist="">
+								<li class="gsk_pro_img">
+									<a target="_top" title="Dior Active Mask Sunglasses" href="http://www.usefulsunglasses.com/Dior-Active-Mask-Sunglasses-p-4155.html"> <img class="gsk_imgclass" title="Dior Active Mask Sunglasses" alt="Dior Active Mask Sunglasses" src="__MYSTYLE__Images/SG0000002983_1.jpg"> </a>
+								</li>
+
+								<li class="gsk_pro_name">
+									<a target="_top" title="Dior Active Mask Sunglasses" href="http://www.usefulsunglasses.com/Dior-Active-Mask-Sunglasses-p-4155.html"> Dior Active Mask Sunglasses</a>
+								</li>
+								<li><img src="__MYSTYLE__Images/4star.jpg">
+								</li>
+								<li class="gsk_pro_price">
+									<span class="gsk_sys_cur sys_cur">$</span><span class="gsk_sys_p sys_p">14.99</span>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+				</div>
+				<a target="_top" onmouseout="ISL_StopDown()" onmouseup="ISL_StopDown()" onmousedown="ISL_GoDown()" href="javascript:void(0)" class="Rbtn"></a>
+			</div>
+
+		</div>
+		<div class="index_new_adv">
+			<!--横幅广告Widget开始-->
+			{:W("AdShow",array("count"=>1,"display"=>"Index","width"=>"779px","height"=>"41px"))}
+			<!--横幅广告Widget结束-->
+		</div>
+
+		<div class="index_new">
+			<b><img src="__MYSTYLE__Images/hot_b.jpg" alt="#"></b>
+			<!--产品开始-->
+			<div class="index_new_mian">
+				{:W("ProductClassify",array('count'=>10,'Id'=>26,'display'=>'Index'))}
+			</div>
+			<!--产品结束-->
+
+		</div>
+		<div class="index_new">
+			<b><img src="__MYSTYLE__Images/new_b.jpg" alt="#"></b>
+			<div class="index_new_mian">
+				{:W("ProductClassify",array('count'=>12,'Id'=>25,'display'=>'Index'))}
+			</div>
+		</div>
+	</div>
+	<div id="indexdes" style=" display: "></div>
+	<img src="__MYSTYLE__Images/china.gif">
+	<script src="__MYSTYLE__Js/mini_site_playing.js" type="text/javascript"></script>
+	<script src="__MYSTYLE__Js/product-lrscroll.js" type="text/javascript"></script>
+</div>
+<div class="clear"></div>
+<include file="Public:footer" />

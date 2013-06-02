@@ -1,0 +1,93 @@
+﻿<style>
+.user_right {padding-right:5px;}
+.user_right table{border-collapse: collapse;width:100%;overflow:hidden;line-height:20px;}
+.user_right th{text-align:left;padding: 0 10px 0 0;}
+.user_right td{padding: 0 10px 0 0;}
+.user_right dl{border: 1px solid #D3E9FD;margin: 0 0 10px;overflow: hidden;}
+.user_right dt{ background-color:#D3E9FD;color: #333;font-size: 14px;font-weight: bold;padding: 5px 18px;}
+.user_right dd{padding: 5px 18px 10px;}
+</style>
+<div class="user_right">
+            <div style="background-color:#FFFBF2;border: 1px solid #F6E0AF;font-size: 12px;margin: 0 0 10px;overflow: hidden;padding: 8px 16px;"><b style="float:left;">Order Status : <span class="fixed_red">#{info.PayStatusDes}</span></b><span style="float:right">
+#{OrderOp}
+</span></div>
+<dl>
+<dt>Order Info</dt>
+<dd>OrderId : #{info.OrderId} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Order Time : #{info.OrderTime}</dd>
+<dt>Delivery Address</dt>
+<dd><table>
+    <tr>
+        <td style="width:110px;">Your Name:</td>
+        <td>#{info.C_FirstName} #{info.C_SecondName}</td>
+    </tr>
+    <tr>
+        <td>Street Address:</td>
+        <td>#{info.C_Address}</td>
+    </tr>
+    <tr>
+        <td>City:</td>
+        <td>#{info.C_City}</td>
+    </tr>
+    <tr>
+        <td>State:</td>
+        <td>#{info.C_State}</td>
+    </tr>
+    <tr>
+        <td>Country:</td>
+        <td>#{info.C_Country}</td>
+    </tr>
+    <tr>
+        <td>Telephone:</td>
+        <td>#{info.C_Tel}</td>
+    </tr>
+    <tr>
+        <td>Post/Zip Code:</td>
+        <td>#{info.C_PostCode}</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>#{info.C_Email}</td>
+    </tr>
+</table></dd>
+<dt>Products Info</dt>
+<dd><table>
+    <tr>
+    <th></th>
+        <th>
+            ITEM
+        </th>
+        <th>
+            ITEM-PRICE
+        </th>
+        <th>
+            QTY
+        </th>
+        <th>
+            PRICE
+        </th>
+    </tr>
+    <!-- BEGIN products -->
+    <tr>
+        <td><a href="/Product/#{product.Id}/Show.aspx">
+                <img width="50" height="50" src="#{product.Img_0}"></a></td>
+        <td>
+            
+                <a href="/Product/#{product.Id}/Show.aspx">#{product.Name}</a>
+                <br />
+                #{product.Attr}
+        </td>
+        <td>
+            #{product.Price}
+        </td>
+        <td>
+            #{product.Num}
+        </td>
+        <td>
+            #{product.Subtotal}
+        </td>
+    </tr>
+    <!-- END products -->
+</table></dd>
+</dl>               
+
+</div>

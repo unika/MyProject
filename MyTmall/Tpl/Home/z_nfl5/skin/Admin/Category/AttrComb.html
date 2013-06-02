@@ -1,0 +1,44 @@
+﻿<script type="text/javascript" src="/static/js/jqui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.sortable.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $(".selAttr").sortable({
+            connectWith: '.selAttr'
+        });
+
+    });
+</script>
+<style>
+.selAttr{ float: left; width:200px; border: 1px solid #617775; padding:5px; margin:10px ; background-color:White}
+.attr{  cursor:pointer; background-color:#CCCCCC; margin:2px; text-align:center}
+</style>
+<div>
+    <div class="adminMainPanel">
+        <div class="selAttr">
+            <!-- BEGIN attrs -->
+            <div class="attr" >#{attr.Name}</div>
+            <!-- END attrs -->
+        </div>
+        <div class="selAttr seldAttr">
+            
+        </div>
+        <input id="Button1" type="button" value="[保存]"  style=" width:95%; height:30px;" onclick="save();"/>
+        <script>
+            function save() {
+                var val = "";
+                $(".seldAttr .attr").each(function () {
+                    val = val + "["+$(this).html()+"]"+"+";
+                });
+                if (val.length > 0) {
+                    val = val.substr(0, val.length - 1);
+                }
+                top.$("input[name='#{f}']").val(val);
+                top.$("textarea[name='#{f}']").val(val);
+                window.parent.wojilu.ui.box.hideBox();
+            }
+        </script>
+    </div>
+</div>

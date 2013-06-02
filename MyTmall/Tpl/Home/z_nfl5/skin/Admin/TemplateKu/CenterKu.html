@@ -1,0 +1,39 @@
+﻿<div>
+
+    <div class="adminMainPanel">
+
+        <div style=" margin:20px 0px;"><a href="/Admin/TemplateKu/List.aspx">本地模版列表</a>--------------><a href="/Admin/TemplateKu/CenterKu.aspx">从模版库中安装</a></div>
+        
+            <form method="get" action="#{ActionLink}" >
+                #{type}
+                <input type="text" name="q"  value="#{q}"/>
+                <input id="Button1" type="submit" value="搜索"  />
+            </form>
+
+        <ul class="mbul">
+            <!-- BEGIN tkus -->
+            <li class="mbli">
+                <a href="#{t.PicPath}" target=_blank><img src="#{t.PicPath_1}" /></a>
+                <div>
+                    #{t.Designer}｜ #{t.Name}(#{t.Type})
+                    ｜ <a href="#{t.Install}" onclick=" return confirm('你确定要安装吗？')" target=_blank>安装</a>
+                </div>
+            </li>
+            <!-- END tkus -->
+        </ul>
+        
+    </div>
+</div>
+<style>
+    .mbli
+    {
+        float: left;
+        border: 1px solid #898C95;
+        margin-right: 10px;
+    }
+    .mbli div
+    {
+        text-align: center;
+        background-color: #ECF4FF;
+    }
+</style>

@@ -1,0 +1,79 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            调整产品价格</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <div style="color: red; border: 1px solid #617775; padding: 10px; margin-bottom: 10px;
+                background-color: #ffffff">
+                产品价格调整。<font style="font-size: 20px;">(注：请谨慎使用！！！！！！)</font>
+            </div>
+            <table style="width: 700px">
+                <tr>
+                    <td>
+                        <form method="post" action="AdjustPrice.aspx?adjMth=1" id="ifrm" class="ajaxPostForm">
+                        产品价格 = 现有产品价格 X
+                        <input name="adjustParam.Discount" type="text" class="tipInput" style="width: 50px;" />
+                        <select id="Select1" name="adjustParam.AddType">
+                            <option value="1">加</option>
+                            <option value="0">减</option>
+                        </select>
+                        <input name="adjustParam.MinAdd" type="text" class="tipInput" style="width: 50px;" />~
+                        <input name="adjustParam.MaxAdd" type="text" class="tipInput" style="width: 50px;" />
+                        <input id="Submit4" type="submit" value="确定"  onclick="return confirm('你确定吗？')"/>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="post" action="AdjustPrice.aspx?adjMth=2" id="Form1" class="ajaxPostForm">
+                        产品价格 =
+                        <select id="Select2" name="adjustParam.PriceType">
+                            <option value="Price1">产品库商城价格</option>
+                            <option value="Price2">产品库官网价格</option>
+                        </select> X
+                        <input name="adjustParam.Discount" type="text" class="tipInput" style="width: 50px;" />
+                        <select id="Select3" name="adjustParam.AddType">
+                            <option value="1">加</option>
+                            <option value="0">减</option>
+                        </select>
+                        <input name="adjustParam.MinAdd" type="text" class="tipInput" style="width: 50px;" />~
+                        <input name="adjustParam.MaxAdd" type="text" class="tipInput" style="width: 50px;" />
+                        <input id="Submit2" type="submit" onclick="return confirm('你确定吗？')"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="formPanel">
+            <div style="color: red; border: 1px solid #617775; padding: 10px; margin-bottom: 10px;
+                background-color: #ffffff">
+                市场价格调整。<font style="font-size: 20px;">(注：请谨慎使用！！！！！！)</font>
+            </div>
+            <table style="width: 700px">
+                <tr>
+                    <td>
+                        <form method="post" action="AdjustMkPrice.aspx?adjMth=1" id="Form2" class="ajaxPostForm">
+                        市场价 = 现有产品价格 ÷
+                        <input name="adjustParam.MkDiscount" type="text" class="tipInput" style="width: 50px;" />
+                        <input id="Submit3" type="submit" onclick="return confirm('你确定吗？')"/>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form method="post" action="AdjustMkPrice.aspx?adjMth=2" id="Form3" class="ajaxPostForm">
+                        市场价 =
+                        <select id="Select6" name="adjustParam.PriceType">
+                            <option value="Price2">产品库官网价格</option>
+                        </select>
+                        <input id="Submit1" type="submit" onclick="return confirm('你确定吗？')"/>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</div>

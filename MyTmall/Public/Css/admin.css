@@ -1,0 +1,136 @@
+/****************************************
+ 后台css文件
+ ***************************************
+ */
+body {
+	margin: 0px;
+	background-color: #EEF2FB;
+}
+.input1 {
+	width: 60%;
+	border: 1px solid #003366;
+}
+a {
+	text-decoration: none;
+	color: #000000;
+	cursor: pointer;
+}
+h1 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+}
+/*
+ * 信息提示类
+ *
+ */
+.tip {
+	color: #99888C;
+	font-family: arial;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+/*当前模板*/
+.currenttp {
+	border: 1px solid gray;
+	clear: both;
+	line-height: 33px;
+	padding: 10px;
+	position: absolute;
+	top: 57px;
+	width: 80%;
+}
+/*本地模板*/
+.local {
+	float: left;
+	margin-top: 230px;
+	width: 320px;
+}
+
+#tplist {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#tplist li {
+	float: left;
+	width: 320px;
+	list-style: none;
+}
+.currenttp div {
+	float: left;
+	clear: right;
+	width: 160px;
+}
+
+div p {
+	margin: 0 0 0 5px;
+}
+.currenttp img, .local img {
+	float: left;
+	clear: right;
+	width: 160px;
+}
+.local div {
+	float: right;
+	width: 155px;
+	margin-left: 5px;
+}
+.attr {
+	border: 1px solid #CCCCCC;
+	margin: 2px 0;
+	padding: 3px;
+	width: 70%;
+}
+.warring {
+	color: #FF3333;
+}
+.pass {
+	color: #00DD00;
+}
+.del {
+	cursor: pointer;
+}
+.edit {
+	cursor: pointer;
+}
+table {
+	width: 100%;
+}
+.page {
+	border: 1px solid #CCCCCC;
+	margin: auto;
+	padding: 2px;
+	text-align: center;
+	width: 98%;
+}
+#source, #target {
+	width: 350px;
+	min-height: 400px;
+	border: 1px solid rgb(204, 204, 204);
+	float: left;
+	margin: 5px;
+}
+#source ul, #target ul {
+	margin: 0px;
+	padding: 0px;
+}
+#source li, #target li {
+	cursor: pointer;
+	height: 24px;
+	line-height: 24px;
+	list-style: none outside none;
+	margin: 2px 0 2px 5px;
+}
+#Category h1 {
+	background: none repeat scroll 0 0 #CCCCCC;
+	font-family: arial;
+	font-size: 16px;
+	font-weight: normal;
+	height: 28px;
+	line-height: 28px;
+	margin: 0;
+	text-indent: 8px;
+}
+

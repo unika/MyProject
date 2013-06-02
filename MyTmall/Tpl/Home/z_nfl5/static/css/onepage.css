@@ -1,0 +1,12 @@
+.fhe_main_L{ width:171px; float:left;}
+.fhe_menuy_L{ width:168px; margin-left:1px; border:1px solid #d5d5d5; font-size:11px;}
+.fhe_menuy_L h2{ display:block; width:168px; height:33px; background:url(../img/onepage/menuy_Lh2_fhe.jpg) repeat-x; font-size:11px; text-indent:6px;line-height:33px; text-transform:uppercase;}
+.fhe_menuy_L #fhe_nav{ padding:0 6px; width:156px; overflow:hidden; padding-bottom:10px;}
+.fhe_menuy_L a{ width:156px; height:23px; line-height:23px; border-bottom:1px solid #d5d5d5; display:block; font-weight:bold;}
+
+
+.fhe_main_R{ width:764px; overflow:hidden; float:right;}
+h4.static_h4 {color: black;float:none;width:700px;font-size: 24px;line-height: 24px;padding: 10px 0;}
+.fhe_main_R dt{font-weight:bold;}
+.fhe_main_R li{padding-bottom:5px;font-weight:bold;}
+.fhe_main_R dd{padding-bottom:10px;}

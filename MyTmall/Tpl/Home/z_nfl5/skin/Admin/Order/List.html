@@ -1,0 +1,56 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            订单列表</div>
+    </div>
+    <div class="adminMainPanel">
+        
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <thead>
+            <tr>
+                <td colspan=9>
+                <form method="get" action="#{ActionLink}"  name="qfrom">
+                订单号：  <input id="Text1" type="text"  name="orderId" value="#{orderId}"/>
+                <input id="Submit1" type="submit" value="查询"  />
+                </form>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="tableHeader">
+                    <td>
+                        订单编号
+                    </td>
+                    <td>
+                        用户信息
+                    </td>
+                    <td>
+                        订单金额
+                    </td>
+                    <td>
+                        下单时间
+                    </td>
+                    <td>导入</td>
+                </tr>
+                <!-- BEGIN orders -->
+                <tr class="tableItems">
+                    <td>
+                        #{order.OrderId}
+                    </td>
+                    <td>
+                        #{order.C_Email}
+                    </td>
+                    <td>
+                        #{order.OrderPrice}
+                    </td>
+                    <td>
+                        #{order.OrderTime}
+                    </td>
+                    <td><a href="#{order.SyncToCt}">导入</a></td>
+                </tr>
+                <!-- END orders -->
+            </tbody>
+        </table>
+        <div>#{pager}</div>
+    </div>
+</div>

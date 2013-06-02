@@ -1,0 +1,41 @@
+﻿
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            添加邮费产品</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+
+                <tr>
+                    <td>
+                        产品名称：
+                    </td>
+                    <td>
+                        <input name="name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价钱：
+                    </td>
+                    <td>
+                        <input name="price" type="text" class="tipInput" style="width: 100px;" id="ppr" />
+                        <span class="valid" mode="border" rule="money"></span>美元
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

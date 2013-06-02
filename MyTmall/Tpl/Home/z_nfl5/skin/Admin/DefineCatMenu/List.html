@@ -1,0 +1,113 @@
+﻿<script type="text/javascript" src="/static/js/jqui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.sortable.js"></script>
+<script type="text/javascript">
+    // Return a helper with preserved width of cells
+    var fixHelper = function (e, ui) {
+        //console.log(ui)  
+        ui.children().each(function () {
+            $(this).width($(this).width());     //在拖动时，拖动行的cell（单元格）宽度会发生改变。在这里做了处理就没问题了  
+        });
+        return ui;
+    };
+
+
+    jQuery(function () {
+        jQuery("#dataAdminList tbody").sortable({                //这里是talbe tbody，绑定 了sortable  
+            helper: fixHelper,                                  //调用fixHelper  
+            axis: "y",
+            start: function (e, ui) {
+                ui.helper.css({ "background": "#fff" })     //拖动时的行，要用ui.helper  
+                return ui;
+            },
+            stop: function (e, ui) {
+                //ui.item.removeClass("ui-state-highlight"); //释放鼠标时，要用ui.item才是释放的行  
+
+
+
+                return ui;
+            }
+        }).disableSelection();
+    })
+
+    function saveOrder() {
+        if (!confirm("你确定要保存吗？"))
+        { return; }
+
+        var catIds = "";
+        $(".tableItems").each(function () {
+            catIds = catIds + $(this).attr("catId") + ",";
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "SaveOrder.aspx".toAjax(),
+            data: "menuId=" + $("#catMenuSel").val() + "&catIds=" + catIds,
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function (msg) {
+                alert("系统异常");
+            }
+        });
+
+    }
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            分类菜单列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="4">
+                    <a href="AddMenu.aspx" class="frmBox" title="新增菜单">新增菜单</a> ｜ #{catMenuSel}
+                    <a href="AddCat.aspx" class="frmBox" title="新增分类">编辑菜单</a> ｜ 
+                    <a href="javascript:void(0)" onclick="del()">删除</a> ｜ 
+                    <a href="javascript:void(0)" onclick="saveOrder()">保存顺序</a>
+
+                    <script>
+                        function del() {
+                            var id = $("#catMenuSel").val();
+                            if (confirm("你确定要删除吗？")) {
+                                document.location.href = "/Admin/DefineCatMenu/" + id + "/DeleteIden.aspx";
+                            }
+                        }
+
+                        $("#catMenuSel").change(
+                            function () {
+                                var id = $("#catMenuSel").val();
+                                document.location.href = "/Admin/DefineCatMenu/" + id + "/List.aspx";
+                            }
+                        );
+
+                    </script>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    分类ID
+                </td>
+                <td>
+                    分类名
+                </td>
+
+            </tr>
+            <tbody>
+                <!-- BEGIN menus -->
+                <tr class="tableItems" catId="#{menu.Category.Id}">
+                    <td>
+                        #{menu.Category.Id}
+                    </td>
+                    <td>
+                        #{menu.Category.Name}
+                    </td>
+
+                </tr>
+                <!-- END menus -->
+            </tbody>
+        </table>
+    </div>
+</div>

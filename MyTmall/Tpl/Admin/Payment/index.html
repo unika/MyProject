@@ -1,0 +1,109 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function(data) {
+        $(".add").click(function() {
+            var mydialog = $.dialog;
+            mydialog({
+                title : "支付方式",
+                content : payment,
+                lock : true,
+                button : [{
+                    focus : true,
+                    value : "上传logo",
+                    callback : function() {
+                        $.dialog({
+                            title : "支付公司logo",
+                            content : uploadimage("__URL__/uploadTofile"),
+                            okValue : "上传",
+                            ok : function() {
+                                $("#image").submit();
+                                return false;
+                            },
+                            cancelValue : "关闭",
+                            cancel : function() {
+                                this.close();
+                            }
+                        })
+                        return false;
+                    }
+                }, {
+                    value : "添加",
+                    callback : function() {
+                        $.post("__URL__/insert", $("#payment").serialize(), function(data) {
+                            if (data.status == 1) {
+                                var html = new String();
+                                html = '<tr>';
+                                if (data.data.logo != "") {
+                                    html += '<td><img src="/Upload/Payment/' + data.data.logo + '" style="width:160px;" /></td>';
+                                } else {
+                                    html += '<td><img src="/Upload/noimage.png" style="width:160px;" /></td>';
+                                }
+                                html += '<td>' + data.data.Name + '</td>';
+                                html += '<td>' + data.data.Price + '</td>';
+                                html += '<td>' + data.data.Status + '</td>';
+                                html += '<td>' + data.data.Name + '</td>';
+                                html += '<td><a class="del" href="javascript:void(0)" aid="' + data.data.id + '">删除</a>';
+                                html += '</td>';
+                                html += '</tr>';
+                                $("#form1").find("tr:first").after(html);
+                                //
+                                // $.alert(data.info);
+                            } else {
+                                $.alert(data.info);
+                            }
+
+                        }, 'json');
+                        return false;
+                    }
+                }, {
+                    value : "取消",
+                    callback : function() {
+                        this.close();
+                    }
+                }],
+
+            });
+
+        });
+        $("body").on("click", ".del", function() {
+            var obj = $(this);
+            $.confirm("确认要删除吗?", function() {
+                $.post("__URL__/del", {
+                    "id" : obj.attr("aid"),
+                }, function(data) {
+                    if (data) {
+                        obj.parents("tr").remove();
+                    } else {
+                        $.alert("没有找到数据");
+                    }
+                }, 'json');
+            })
+        })
+    }); 
+</script>
+</head>
+
+<body>
+	<h1><a class="add" href="javascript:void(0)">添加支付方式 </a></h1>
+	<table id="form1">
+		<tr>
+			<td>Logo</td><td>支付公司</td><td>价格</td><td>是否启用</td><td>价格波动</td><td>操作</td>
+		</tr>
+		<volist name="list" id="vo">
+			<tr>
+				<td>
+				<empty name="vo.logo">
+					<img src="/Upload/noimage.png" style="width:160px;" />
+					<else />
+					<img src="/Upload/Payment/{$vo.logo}" style="width:160px;" />
+
+				</empty></td><td>{$vo.Name}</td><td>{$vo.Price}</td><td>{$vo.Status}</td><td>{$vo.DynamicPrice}</td><td><a class="del" aid="{$vo.id}" href="javascript:void(0)">删除</a></td>
+			</tr>
+		</volist>
+
+	</table>
+	<div id="page">
+		{$page}
+	</div>
+</body>
+</html>

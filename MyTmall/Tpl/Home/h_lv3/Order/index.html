@@ -1,0 +1,343 @@
+<include file="Public:header" />
+<script>
+	$(document).ready(function() {
+		print_country("sys_country");
+		$("#sys_country").val("");
+		var index = $("#sys_country ").get(0).selectedIndex;
+		print_state('sys_state', index);
+		$("#sys_state").val("");
+		$("#Submit1").click(function() {
+			$("#from2").show();
+		})
+		$("#Submit2").click(function() {
+			$("#from3").show();
+		})
+	})
+	//将收货地址复制为付款地址
+	function sync_shipping_address(chk) {
+		if (chk.checked) {
+			$("input[name='billing.FirstName']").val($("input[name='C_FirstName']").val());
+			$("input[name='billing.SecondName']").val($("input[name='C_SecondName']").val());
+			$("input[name='billing.Address']").val($("input[name='C_Address']").val());
+			$("input[name='billing.City']").val($("input[name='C_City']").val());
+			$("input[name='billing.PostCode']").val($("input[name='C_PostCode']").val());
+			$("input[name='billing.Tel']").val($("input[name='C_Tel']").val());
+			$("input[name='billing.Email']").val($("input[name='C_Email']").val());
+			$("#sys_country_billing").val($("#sys_country").val());
+			var index = $("#sys_country_billing ").get(0).selectedIndex;
+			print_state('sys_state_billing', index);
+			$("#sys_state_billing").val($("#sys_state").val());
+		} else {
+			$("input[name='billing.FirstName']").val('');
+			$("input[name='billing.SecondName']").val('');
+			$("input[name='billing.Address']").val('');
+			$("input[name='billing.City']").val('');
+			$("input[name='billing.PostCode']").val('');
+			$("input[name='billing.Tel']").val('');
+			$("input[name='billing.Email']").val('');
+			$("#sys_country_billing").val('');
+			var index = $("#sys_country_billing ").get(0).selectedIndex;
+			print_state('sys_state_billing', index);
+			$("#sys_state_billing").val('');
+		}
+	}
+
+	//验证优惠券的有效性
+	function ValidateCoupon() {
+		var coupon = $("input[name=txtCoupon]").val();
+		if (coupon == "" || coupon == "Enter your coupon number") {
+			alert('Please enter your coupon number');
+			return;
+		}
+		var req = "/ShoppingCart/ValidateCoupon.aspx?coupon=" + coupon;
+		$("#coup").attr("disabled", "true");
+		$.ajax({
+			type : "POST",
+			url : req,
+			data : "coupon=" + coupon,
+			success : function(data) {
+				if (data == "ok") {
+					alert("APPLY COUPON SUCCEED");
+					document.location.href = "Security_Checkout_Step_C.aspx";
+				} else {
+					alert(data);
+				}
+			},
+			error : function() {
+				alert("System is abnormal");
+			},
+			complete : function() {
+				$("#coup")[0].disabled = false;
+			}
+		});
+
+	}
+
+</script>
+<div id="main">
+	<link rel="stylesheet" href="__MYSTYLE__/pay.css" type="text/css">
+	<form method="post" action="/Order/checkout" id="pay_from1">
+		<div id="from1">
+			<div class="pay_t">
+				1. Shipping Information
+			</div>
+			<div class="pay_l">
+				<br>
+				<p>
+					<span class="pay_t1">Shipping Address</span>Exact and complete information is appreciated, or it will fail to delivery to you.
+				</p>
+				<br>
+				<ul>
+					<li>
+						<span class="name">First Name:<i class="fixed_red">*</i></span>
+						<input id="C_FirstName" name="C_FirstName" value="{$firstName}" type="text">
+
+					</li>
+
+					<li>
+						<span class="name">Last Name:<i class="fixed_red">*</i></span>
+						<input id="C_SecondName" name="C_SecondName" value="{$secondName}" type="text">
+
+					</li>
+
+					<li>
+						<span class="name">Address:<i class="fixed_red">*</i></span>
+						<input id="C_Address" name="C_Address" size="80" value="{$address}" type="text">
+
+					</li>
+
+					<li>
+						<span class="name">City:<i class="fixed_red">*</i></span>
+						<input id="C_City"  name="C_City" value="{$city}" type="text">
+
+					</li>
+
+					<li>
+						<span class="name">Country:<i class="fixed_red">*</i></span>
+						<select onchange="print_state('sys_state',this.selectedIndex);" id="sys_country" name="C_Country">
+							<option value="">Select Country</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="American Samoa">American Samoa</option><option value="Angola">Angola</option><option value="Anguilla">Anguilla</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bermuda">Bermuda</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia And Herzegowina">Bosnia And Herzegowina</option><option value="Brunei Darussalam">Brunei Darussalam</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cayman Islands">Cayman Islands</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="China">China</option><option value="Chile">Chile</option><option value="Christmas Island">Christmas Island</option><option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo The Democratic Republic">Congo The Democratic Republic</option><option value="Cook Islands">Cook Islands</option><option value="Costa Rica">Costa Rica</option><option value="Cote d Ivoire (Ivory Coast)">Cote d Ivoire (Ivory Coast)</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Dominican Republic">Dominican Republic</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Estonia">Estonia</option><option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France (Includes Monaco)">France (Includes Monaco)</option><option value="French Guiana">French Guiana</option><option value="Gambia">Gambia</option><option value="Germany">Germany</option><option value="Gibraltar">Gibraltar</option><option value="Greece">Greece</option><option value="Greenland">Greenland</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guyana">Guyana</option><option value="Guam">Guam</option><option value="Haiti">Haiti</option><option value="Hong Kong">Hong Kong</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Japan">Japan</option><option value="Jamaica">Jamaica</option><option value="Jersey">Jersey</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kuwait">Kuwait</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Macao">Macao</option><option value="Macedonia">Macedonia</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Martinique">Martinique</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Myanmar (Burma)">Myanmar (Burma)</option><option value="Netherlands">Netherlands</option><option value="Netherlands Antilles">Netherlands Antilles</option><option value="New Caledonia">New Caledonia</option><option value="New Zealand">New Zealand</option><option value="Nigeria">Nigeria</option><option value="Norway">Norway</option><option value="Pakistan">Pakistan</option><option value="Palestinian Territory Occupied">Palestinian Territory Occupied</option><option value="Panama">Panama</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Puerto Rico">Puerto Rico</option><option value="Paraguay">Paraguay</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russian">Russian</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Scotland">Scotland</option><option value="Serbia">Serbia</option><option value="Singapore">Singapore</option><option value="Slovak Republic">Slovak Republic</option><option value="Slovenia">Slovenia</option><option selected="selected" value="South Africa">South Africa</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syrian Arab Republic">Syrian Arab Republic</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor Leste">Timor Leste</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguai">Uruguai</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Wales">Wales</option><option value="Yugoslavia">Yugoslavia</option><option value="Zambia">Zambia</option>
+						</select>
+					</li>
+					<li>
+						<span class="name">State/province:<i class="fixed_red">*</i></span>
+						<input id="sys_state" name="C_State"  size="50" type="text" value="">
+					</li>
+					<li>
+						<span class="name">Post/Zip Code:<i class="fixed_red">*</i></span>
+						<input id="C_PostCode" name="C_PostCode" value="{$postCode}" type="text">
+					</li>
+					<li>
+						<span class="name">TEL:<i class="fixed_red">*</i></span>
+						<input id="C_Tel" name="C_Tel" value="{$tel}" type="text">
+					</li>
+
+					<li>
+						<span class="name">Email:<i class="fixed_red">*</i></span>
+						<input id="C_Email" name="C_Email" value="{$email}" type="text">
+
+					</li>
+				</ul>
+			</div>
+			<div class="pay_r">
+				<br>
+				<p>
+					<span class="pay_t1">Billing Address</span>
+					<br>
+					<input id="copyinfo" onclick="sync_shipping_address(this)" type="checkbox">
+					&nbsp; My billing address is the same as my shipping address.
+				</p>
+				<br>
+				<ul>
+					<li>
+						<span class="name">First Name:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.FirstName" name="billing.FirstName" value="" />
+
+					</li>
+
+					<li>
+						<span class="name">Last Name:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.SecondName" name="billing.SecondName" value="" />
+
+					</li>
+
+					<li>
+						<span class="name">Address:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.Address" name="billing.Address" size="80" value="" />
+
+					</li>
+
+					<li>
+						<span class="name">City:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.City" name="billing.City" value=""  />
+
+					</li>
+
+					<li>
+						<span class="name">Country:<i class="fixed_red">*</i></span>
+						<select onchange="print_state('sys_state_billing',this.selectedIndex);" id="sys_country_billing" name="billing.Country">
+							<option value="">Select Country</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="American Samoa">American Samoa</option><option value="Angola">Angola</option><option value="Anguilla">Anguilla</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bermuda">Bermuda</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia And Herzegowina">Bosnia And Herzegowina</option><option value="Brunei Darussalam">Brunei Darussalam</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Cayman Islands">Cayman Islands</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="China">China</option><option value="Chile">Chile</option><option value="Christmas Island">Christmas Island</option><option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo The Democratic Republic">Congo The Democratic Republic</option><option value="Cook Islands">Cook Islands</option><option value="Costa Rica">Costa Rica</option><option value="Cote d Ivoire (Ivory Coast)">Cote d Ivoire (Ivory Coast)</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Dominican Republic">Dominican Republic</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Estonia">Estonia</option><option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France (Includes Monaco)">France (Includes Monaco)</option><option value="French Guiana">French Guiana</option><option value="Gambia">Gambia</option><option value="Germany">Germany</option><option value="Gibraltar">Gibraltar</option><option value="Greece">Greece</option><option value="Greenland">Greenland</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guyana">Guyana</option><option value="Guam">Guam</option><option value="Haiti">Haiti</option><option value="Hong Kong">Hong Kong</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Japan">Japan</option><option value="Jamaica">Jamaica</option><option value="Jersey">Jersey</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kuwait">Kuwait</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Macao">Macao</option><option value="Macedonia">Macedonia</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Martinique">Martinique</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Myanmar (Burma)">Myanmar (Burma)</option><option value="Netherlands">Netherlands</option><option value="Netherlands Antilles">Netherlands Antilles</option><option value="New Caledonia">New Caledonia</option><option value="New Zealand">New Zealand</option><option value="Nigeria">Nigeria</option><option value="Norway">Norway</option><option value="Pakistan">Pakistan</option><option value="Palestinian Territory Occupied">Palestinian Territory Occupied</option><option value="Panama">Panama</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Puerto Rico">Puerto Rico</option><option value="Paraguay">Paraguay</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russian">Russian</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Scotland">Scotland</option><option value="Serbia">Serbia</option><option value="Singapore">Singapore</option><option value="Slovak Republic">Slovak Republic</option><option value="Slovenia">Slovenia</option><option selected="selected" value="South Africa">South Africa</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syrian Arab Republic">Syrian Arab Republic</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor Leste">Timor Leste</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguai">Uruguai</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Wales">Wales</option><option value="Yugoslavia">Yugoslavia</option><option value="Zambia">Zambia</option>
+						</select>
+					</li>
+					<li>
+						<span class="name">State/province:<i class="fixed_red">*</i></span>
+						<input type="text" id="sys_state_billing" name="billing.State"  value="" size="50" />
+
+					</li>
+
+					<li>
+						<span class="name">Post/Zip Code:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.PostCode" name="billing.PostCode" value="" id="Text2" />
+
+					</li>
+
+					<li>
+						<span class="name">TEL:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.Tel" name="billing.Tel" value=""/>
+
+					</li>
+
+					<li>
+						<span class="name">Email:<i class="fixed_red">*</i></span>
+						<input type="text" id="billing.Email" name="billing.Email"  value=""/>
+					</li>
+				</ul>
+				<input class="Submit1" id="Submit1" style="width:84px; float:right; text-align:right;" />
+			</div>
+
+		</div>
+
+		<div id="from2">
+			<div class="pay_t2">
+				2. Shipping &amp; Payment Method
+			</div>
+			<div class="shipping_list">
+				<span class="tt">Shipping Method</span>
+				<ul style="width:700px; float:left;">
+					<!--物流公司开始-->
+					<volist name="dlist" id="vo">
+						<li>
+							<input type="radio" checked="" id="deli3" name="DeliveryId" value="{$vo.id}">
+							<label for="deli3"> &nbsp; {$vo.Name}<span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span> ${$vo.Price} </label>
+						</li>
+					</volist>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="shipping_list">
+				<span class="tt">Payment Method</span>
+				<ul style="width:700px; float:left;">
+					<volist name="plist" id="vo">
+						<li>
+							<input type="radio" checked="" name="PayCardId" value="{$vo.id}">
+							<label for="cardId4"><img align="middle" style="width: 80px;" alt="{$vo.Name}" src="/Upload/Payment/{$vo.logo}"></label>
+							<label>{$vo.Iden}</label>
+
+						</li>
+					</volist>
+
+				</ul>
+			</div>
+			<input value="" id="Submit2" class="Submit1">
+		</div>
+
+		<div id="from3">
+
+			<div class="pay_t3">
+				3. Order Review
+			</div>
+
+			<div class="western_cart">
+				<ul>
+					<li class="western_col1 western_col1_item">
+						ITEM
+					</li>
+					<li class="western_col2">
+						QTY
+					</li>
+					<li class="western_col3">
+						PRICE
+					</li>
+				</ul>
+				<div id="sys_num">
+					<ol>
+						<!--循环读取购物车内的商品开始-->
+						<volist name="goods" id="vo">
+							<li class="western_col1">
+								<a target="_top" href="" title="{$vo.item_name}"> <img style=" width:45px; float:left; padding-right:20px;" title="{$vo.item_name}" alt="{$vo.item_name}" src="{$vo.item_image}"></a>
+								<span> <a target="_top" href="" title="{$vo.item_name}">{$vo.item_name}</a>
+									<br>
+								</span>
+							</li>
+							<li class="western_col2">
+								{$vo.item_num}
+							</li>
+							<li class="western_col3">
+								{$vo.item_price}
+							</li>
+						</volist>
+						<!--循环读取购物车内的商品结束-->
+					</ol>
+
+					<i>Total QTY:{$total_num}&nbsp;&nbsp;&nbsp;<a target="_top" href="/Cart/">Edit</a></i>
+				</div>
+			</div>
+
+			<div id="fieldset">
+				<fieldset>
+					<legend>
+						Delivery/Shipping Information:
+					</legend><b>Your Name:</b> {$username}
+					<br>
+					<b>Street Address:</b> {$address}
+					<br>
+					<b>City:</b> {$city}
+					<br>
+					<b>State:</b> {$state}
+					<br>
+					<b>Country:</b> {$country}
+					<br>
+					<b>TEL:</b> {$tel}
+					<br>
+					<b>Post/Zip Code:</b> {$postCode}
+					<br>
+					<b>Email:</b> {$email}
+					<br>
+
+					<a target="_top" style="float: right;" href="Security_Checkout_Step_A.aspx"><i>Edit</i></a>
+				</fieldset>
+			</div>
+			<div id="Coupon_price">
+				<div id="texcoupon" style="display:">
+					Coupon number:<span class="warning">{$Coupon.No}</span>
+					<!-- <input id="coup" name="txtCoupon" value="Enter your " onfocus="if (this.value == 'Enter your coupon number') this.value = '';" onblur="if (this.value == '') this.value = 'Enter your coupon number';" type="text">
+					<input id="btn_gcp" value="" onclick="ValidateCoupon()" type="button"> -->
+				</div>
+
+				<ul class="chk_total">
+					<li>
+						<span class="chk_total1">Sub-Total:</span><b id="sys_subtotal">${$total_price}</b>
+					</li>
+					<li>
+						<span class="chk_total1">Coupon:</span><span class="warning"> -<b id="sys_Coupon">${$Coupon.Price}</b></span>
+					</li>
+					<li>
+						<span class="chk_total1">Shipping Fee:</span><b id="sys_ShippingFee">$</b>
+					</li>
+
+					<li class="chk_coupon">
+						<b class="chk_total1">Total Amount:</b><b id="sys_grandtotal">{$total_num}</b>
+					</li>
+					<li style=" float:right;">
+						<input name="checkoutBt" class="chk_pay" value="" type="submit">
+						<br>
+						<span style=" float:right; display:block; width:400px;">Every order you place with us is safe and secure.</span>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+<div class="clear"></div>
+<include file="Public:footer" />

@@ -1,0 +1,33 @@
+﻿<html>
+<head>
+    <title>loading, please wait...</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="#{Action}" name="pay_checkout" id="pay_checkout">
+        <input type="hidden" name="TradeInfo" value="#{TradeInfo}" />
+    </form>
+    <iframe height="0" width="0" name="ifrm_pay_checkout" id="ifrm_pay_checkout" style="display: none"></iframe>
+    <script type="text/javascript">
+        if (window.XMLHttpRequest) {
+            document.getElementById("pay_checkout").target = 'ifrm_pay_checkout';
+        }
+        document.getElementById("pay_checkout").submit();
+        window.status = 'https://security.credit-pay.com/sslpayment/InterfaceMix';
+</script>
+</body>
+</html>

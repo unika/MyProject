@@ -1,0 +1,46 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑产品折扣</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 50%">
+                <tr>
+                    <td>
+                        产品Id：
+                    </td>
+                    <td>
+                        <input name="productId" type="text" class="tipInput" style="width: 200px;" value="#{productid}"/>
+                        <span class="valid" mode="border"></span><font onclick="adddis()" style=" color:red; cursor:pointer">＋</font>
+
+                        <script>
+                            function adddis() {
+                                var copy = "<tr>" + $(".distr").first(0).html() + "</tr>";
+                                $(".distr").last().after(copy);
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <!-- BEGIN dises -->
+                <tr class="distr">
+                    <td></td>
+                    <td >
+                        数量：<input name="num" type="text" value="#{dis.Num}" class="tipInput" style="width: 50px;" />
+                        折扣：<input name="discount" type="text" value="#{dis.Discount}" class="tipInput" style="width: 50px;" />
+                    </td>
+                </tr>
+                <!-- END dises -->
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

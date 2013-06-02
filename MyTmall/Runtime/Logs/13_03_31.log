@@ -1,0 +1,285 @@
+[ 2013-03-31T20:35:59+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001234s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001515s ]
+SQL: SHOW COLUMNS FROM `shop_product` [ RunTime:0.025975s ]
+SQL: SELECT shop_Product.id as id,shop_Productimg.id as imgid,`DbNum`,`Name`,`Img`,`Price`,`ProductImgId`,`Status`,`MarketPrice` FROM `shop_product` LEFT JOIN shop_Productimg on shop_Product.id=ProductId WHERE ( Status=1 ) LIMIT 50   [ RunTime:0.021814s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.004180s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004451s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.063509s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063775s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000916s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000937s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000775s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001144s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004463s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001313s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001580s ]
+
+[ 2013-03-31T20:36:13+08:00 ] 127.0.0.1 /index.php/admin
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001551s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003340s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001094s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001362s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001186s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001452s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.029765s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030077s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000738s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000756s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000455s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000979s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003559s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001087s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001323s ]
+
+[ 2013-03-31T20:36:14+08:00 ] 127.0.0.1 /index.php/admin/Public/top
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001462s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001751s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002542s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002830s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.003383s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003707s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.033670s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033966s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000761s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000852s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000477s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000963s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003688s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001068s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001303s ]
+
+[ 2013-03-31T20:36:14+08:00 ] 127.0.0.1 /index.php/admin/Public/main
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.003203s ]
+INFO: [ route_check ] --END-- [ RunTime:0.003504s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.002776s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003082s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.002430s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002771s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.078663s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.078966s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001163s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001097s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000764s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001284s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005007s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001458s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001724s ]
+
+[ 2013-03-31T20:36:14+08:00 ] 127.0.0.1 /index.php/admin/Public/left
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.006026s ]
+INFO: [ route_check ] --END-- [ RunTime:0.006303s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001305s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001565s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001154s ]
+INFO: [ view_template ] --END-- [ RunTime:0.004368s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.038804s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039140s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.002193s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.002071s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001376s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.002966s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.009443s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.002189s ]
+INFO: [ view_end ] --END-- [ RunTime:0.002466s ]
+
+[ 2013-03-31T20:36:16+08:00 ] 127.0.0.1 /index.php/admin/System/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001673s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001945s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001320s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001583s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001428s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001733s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.045788s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046074s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001039s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001076s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.006219s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001386s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.010428s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001444s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001689s ]
+
+[ 2013-03-31T20:36:18+08:00 ] 127.0.0.1 /index.php/admin/User/regUser
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001401s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001673s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.007407s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007528s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000760s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001029s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.014434s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014722s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000737s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000771s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000469s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000972s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003590s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001099s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001338s ]
+
+[ 2013-03-31T20:36:19+08:00 ] 127.0.0.1 /index.php/admin/User/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001392s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001658s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001312s ]
+SQL: SHOW COLUMNS FROM `shop_user` [ RunTime:0.010248s ]
+SQL: SELECT * FROM `shop_user`  [ RunTime:0.000435s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001301s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001555s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.057917s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058190s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000759s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000778s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000473s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000977s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003640s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001102s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001342s ]
+
+[ 2013-03-31T20:36:20+08:00 ] 127.0.0.1 /index.php/admin/User/regUser
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001407s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001679s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001083s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001339s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001287s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001570s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.014179s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015675s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000291s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001046s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000623s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001263s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004632s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001263s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001544s ]
+
+[ 2013-03-31T20:36:24+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001514s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001792s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001329s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.018481s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.022519s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000321s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.007568s ]
+INFO: [ view_template ] --END-- [ RunTime:0.007832s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.035816s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036157s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000741s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000768s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000471s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000984s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003608s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001100s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001339s ]
+
+[ 2013-03-31T20:36:30+08:00 ] 127.0.0.1 /index.php/admin/Product/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001789s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002066s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001065s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001329s ]
+SQL: SHOW COLUMNS FROM `shop_product` [ RunTime:0.002375s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_product` LIMIT 1   [ RunTime:0.000316s ]
+SQL: SELECT shop_Product.id as id,shop_Productimg.id as imgid,shop_Product.Name as product_name,shop_Producttype.id as typeid,shop_Producttype.name as Type_name,`Status`,`DbNum`,`Img`,`Price`,`ProductImgId`,`ProductTypeId`,`AddTime`,`Status`,`MarketPrice` FROM `shop_product` LEFT JOIN shop_Productimg on shop_Product.id=ProductId LEFT JOIN shop_Producttype on shop_Product.ProductTypeId=shop_Producttype.id LIMIT 0,25   [ RunTime:0.046462s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001827s ]
+INFO: [ view_template ] --END-- [ RunTime:0.002127s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.033904s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.034182s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000854s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000792s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000464s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000990s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003746s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001163s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001404s ]
+
+[ 2013-03-31T20:36:33+08:00 ] 127.0.0.1 /index.php/admin/Product/add
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001397s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001669s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001130s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001393s ]
+SQL: SHOW COLUMNS FROM `shop_producttype` [ RunTime:0.002657s ]
+SQL: SELECT * FROM `shop_producttype`  [ RunTime:0.001734s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001289s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001550s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.044697s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045004s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000797s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000776s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.001752s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001181s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005260s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001131s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001380s ]
+

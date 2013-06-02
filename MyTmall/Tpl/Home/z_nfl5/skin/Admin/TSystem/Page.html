@@ -1,0 +1,46 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            <a href="/Admin/TSystem/Page.aspx">修改页面模版</a>｜
+            <a href="/Admin/TSystem/Css.aspx">修改Css模版</a>｜
+            <a href="/Admin/TSystem/Js.aspx">修改Js模版</a>｜
+            <a href="/Admin/TemplateKu/List.aspx">一键换模版</a>
+        </div>
+    </div>
+    <div class="adminMainPanel">
+        <script>
+				<!--
+            var setting = {
+               
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+
+                callback: {
+                    onClick: zTreeOnClick
+                }
+            };
+
+            var zNodes = [#{nodes}];
+
+            function zTreeOnClick(event, treeId, treeNode) {
+
+
+            };
+
+
+            $(document).ready(function () {
+                $.fn.zTree.init($("#treeFile"), setting, zNodes);
+            });
+		//-->
+	</script>
+
+    <ul id="treeFile" class="ztree"></ul>
+    </div>
+</div>

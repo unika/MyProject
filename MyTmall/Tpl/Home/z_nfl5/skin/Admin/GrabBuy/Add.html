@@ -1,0 +1,76 @@
+﻿<script src="~js/My97DatePicker/WdatePicker.js?v=#{jsVersion}" type="text/javascript"></script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            新增产品抢购</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 50%">
+                <tr>
+                    <td>
+                        产品Id：
+                    </td>
+                    <td>
+                        <input name="productId" type="text" class="tipInput" style="width: 200px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        开始时间(站点所在地区的时间)：
+                    </td>
+                    <td>
+                        <input name="productGrabBuy.StartTime" type="text" class="tipInput" style="width: 200px;" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        结束时间(站点所在地区的时间)：
+                    </td>
+                    <td>
+                        <input name="productGrabBuy.EndTime" type="text" class="tipInput" style="width: 200px;" onClick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        产品价格：
+                    </td>
+                    <td>
+                        <input name="productGrabBuy.Price" type="text" class="tipInput" style="width: 200px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        抢购总数：
+                    </td>
+                    <td>
+                        <input name="productGrabBuy.TotalNum" type="text" class="tipInput" style="width: 200px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        已出售总数：
+                    </td>
+                    <td>
+                        <input name="productGrabBuy.SaleNum" type="text" class="tipInput" style="width: 200px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

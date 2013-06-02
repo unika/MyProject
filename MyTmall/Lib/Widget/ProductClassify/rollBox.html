@@ -1,0 +1,22 @@
+<php>
+	foreach($product as $row){
+</php>
+<div id="Lists">
+	<ul class="gsk_productlist" iconlist="">
+		<li class="gsk_pro_img">
+			<a target="_top" title="{$row.Name}" href="/Product/show/Id/{$row.Id}"> <img class="gsk_imgclass" title="{$row.Name}" alt="{$row.Name}" src="{$row.Img}"> </a>
+		</li>
+
+		<li class="gsk_pro_name">
+			<a target="_top" title="{$row.Name}" href="/Product/show/Id/{$row.Id}"> {$row.Name}</a>
+		</li>
+		<li><img src="/Tpl/Home/h_lv3/Public/Images/{$row.score}star.jpg">
+		</li>
+		<li class="gsk_pro_price">
+			<span class="gsk_sys_cur sys_cur">$</span><span class="gsk_sys_p sys_p">{$row.Price}</span>
+		</li>
+	</ul>
+</div>
+<php>
+	}
+</php>

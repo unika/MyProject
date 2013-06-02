@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="__PUBLIC__/Js/jquery.js" type="text/javascript"></script>
+		<script>
+			$(document).ready(function() {
+				$(".delgoods").click(function() {
+					var num = $(this).parent().find(".num").val();
+					if (num > 1) {
+						num--;
+						$(this).parent().find(".num").val(num);
+						$.post("__URL__/delGoods", {
+							'id' : $(this).attr("aid"),
+							'num' : num,
+						}, function(data) {
+							$("#total_num").empty().text(data.total_num);
+							$("#total_price").empty().text(data.total_price);
+						}, 'json');
+
+					} else {
+						if (confirm("确定要删除吗")) {
+							$.get("__URL__/delCart", {
+								'id' : $(this).attr("aid"),
+							}, function(data) {
+								$("#total_num").empty().text(data.total_num);
+								$("#total_price").empty().text(data.total_price);
+
+							}, 'json');
+							$(this).parent().parent().remove();
+						}
+
+					}
+
+				})
+
+				$(".addgoods").click(function() {
+					var num = $(this).parent().find(".num").val();
+					num++;
+					$(this).parent().find(".num").val(num);
+
+					$.post("__URL__/delGoods", {
+						'id' : $(this).attr("aid"),
+						'num' : num,
+					}, function(data) {
+						$("#total_num").empty().text(data.total_num);
+						$("#total_price").empty().text(data.total_price);
+					}, 'json');
+
+				})
+			})
+		</script>
+		<title>index</title>
+		<style>
+			table {
+				border: 1px solid gray;
+				margin: auto;
+			}
+			a {
+				color: #000000;
+				text-decoration: none;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="loginbar">
+			<empty name="Think.session.username">
+				<a href="__APP__/Public/login">login</a>
+				<a href="__APP__/User/regUser">register</a>
+				<else />
+				Welcome! <span><a href="__APP__/User/">{$Think.session.username}</a></span>
+				Item<span>[]</span>
+				<a href="__APP__/Public/logout">logout</a>
+			</empty>
+		</div>
+		<form action="__APP__/Order" method="post">
+			<table>
+				<tr>
+					<td>商品编号</td>
+					<td>商品名称</td>
+					<td>数量</td>
+					<td>价格</td>
+				</tr>
+				<volist name="goods" id="vo">
+					<tr>
+						<td id="item_id[]">{$vo.item_id}</td>
+						<td id="item_name[]">{$vo.item_name}</td>
+						<td><a href="javascript:void(0)" aid="{$vo.item_id}" class="delgoods">-</a>
+						<input class="num" type="text" value="{$vo.item_num}" />
+						<a href="javascript:void(0)" aid="{$vo.item_id}" class="addgoods">+</a></td>
+						<td id="item_price[]">{$vo.item_price}</td>
+						<td><a href="__URL__/delCart/id/{$vo.item_id}">删除</a></td>
+					</tr>
+				</volist>
+				<tr>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>总数<span id="total_num"> {$total_num} </span></td>
+					<td >总价<span id="total_price"> {$total_price} </span></td>
+				</tr>
+				<tr>
+					<td colspan="3"></td>
+					<td><a href="__URL__/emptyCart">清空购物车</a>
+					<input type="submit" value="确认订单" />
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</body>
+</html>

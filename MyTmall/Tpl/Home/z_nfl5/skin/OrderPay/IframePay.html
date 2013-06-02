@@ -1,0 +1,31 @@
+﻿<script>
+    $("input[name='currencylist']").parent().hide();
+    $("#currencylist").parent().hide();
+
+
+</script>
+
+<div id="cashIframeBorder" style="height:auto; margin:0 auto; background-color:#FFFFFF;">
+	<iframe id="cashIframe" frameborder="0" scrolling="no" width="100%" height="2000px" onload="reinitIframe()" src="#{payurl}"></iframe>
+</div>
+<script language="javascript">
+    var iframe = $("#cashIframe")[0];
+
+    if (iframe.attachEvent) {
+        iframe.attachEvent("onload", function () {
+           
+
+        });
+    } else {
+        iframe.onload = function () {
+            
+        };
+    }
+    function reinitIframe() {
+        scrollTo(0, 0);
+    }
+    $(document).ready(function () {
+        $("#nfl_foot").hide();
+        $(".pfoot").hide();
+    });
+</script>

@@ -1,0 +1,152 @@
+﻿<script src="/static/js/TQEditor/TQEditor.js" type="text/javascript"></script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            添加(#{TypeName})产品类型-产品</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        产品属性：
+                    </td>
+                    <td>
+                        #{forms}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        产品名称：
+                    </td>
+                    <td>
+                        <input name="product.Name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价钱：
+                    </td>
+                    <td>
+                        <input name="product.Price" type="text" class="tipInput" style="width: 100px;" id="ppr" />
+                        <span class="valid" mode="border" rule="money"></span>美元
+                        <script>
+                            $("#ppr").keyup( function() { caclMarkPrice(); } );
+
+                            function caclMarkPrice() {
+                                var price = $("#ppr").val();
+                                if (price == "") {
+                                    $("#pmpr").val("");
+                                };
+
+                                $("#pmpr").val((price/#{MarketPriceRebate}).toFixed(2));
+                            }
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        市场价钱：
+                    </td>
+                    <td>
+                        <input name="product.MarketPrice" type="text" class="tipInput" style="width: 100px;"
+                            id="pmpr" />
+                        <span class="valid" mode="border" rule="money"></span>美元
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        库存：
+                    </td>
+                    <td>
+                        <select id="ddlDbNum" name="product.DbNum">
+                            <option value="1">有货</option>
+                            <option value="0">无货</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        状态：
+                    </td>
+                    <td>
+                        <select id="Select1" name="product.Status">
+                            <option value="1">正常</option>
+                            <option value="0">已下架</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        产品描述：
+                    </td>
+                    <td>
+                        <textarea id="e18" cols="120" rows="40" name="product.Des"></textarea>
+                        <script type="text/javascript" defer="true">
+                            new tqEditor('e18', {
+                                toolbar: 'full',
+                                imageUploadUrl: '/Admin/TqEditor/FileUpload.aspx',
+                                imageFileTypes: '*.jpg;*.gif;*.png;*.jpeg',
+                                flashUploadUrl: '/Admin/TqEditor/FileUpload.aspx',
+                                videoUploadUrl: '/Admin/TqEditor/FileUpload.aspx',
+                                musicUploadUrl: '/Admin/TqEditor/FileUpload.aspx',
+                                linkUploadUrl: '/Admin/TqEditor/FileUpload.aspx',
+                                linkFileSize: '800MB'
+                            });
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面标题：
+                    </td>
+                    <td>
+                        <input name="product.Page_Title" type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面关键字：
+                    </td>
+                    <td>
+                        <input name="product.Page_Keyword" type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        页面描述：
+                    </td>
+                    <td>
+                        <input name="product.Page_Description" type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        URL：
+                    </td>
+                    <td>
+                        <input name="product.Page_Url" type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        产品关联标识：
+                    </td>
+                    <td>
+                        <input name="product.SerialIden" type="text" class="tipInput" style="width: 500px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

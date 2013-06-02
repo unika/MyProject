@@ -1,0 +1,155 @@
+<include file="Public:header" />
+<script>
+	$(document).ready(function() {
+		$(".del").click(function() {
+			$.post("__URL__/del", {
+				'id' : $(this).attr("aid")
+			}, function(data) {
+				$.alert(data.info);
+			}, 'json');
+			$(this).parent().parent().remove();
+		})
+		$(".edit").click(function() {
+			$.post("__URL__/getinfo", {
+				'id' : $(this).attr("aid")
+			}, function(data) {
+				if (data.status = 1) {
+					$.dialog({
+						initialize : function() {
+							$("#Name").val(data.data.Name);
+							$("#Url").val(data.data.Url);
+							$("#Link").val(data.data.Link);
+							$("#start_time").val(data.data.start_time);
+							$("#end_time").val(data.data.end_time);
+							$("#img").attr("src", "/Upload/" + data.data.image);
+							$("#Name").after("<input type='hidden' name='id'id='id' value='" + data.data.id + "' />");
+							$("#start_time").datepicker({
+								dateFormat : "yy-mm-dd"
+							});
+							$("#end_time").datepicker({
+								dateFormat : "yy-mm-dd"
+							});
+						},
+						title : "广告编辑",
+						content : ad,
+						button : [{
+							focus : true,
+							value : "更换图片",
+							callback : function() {
+								$.dialog({
+									id : "upload",
+									title : "选择上传文件",
+									//content : '<iframe id="iframe" src="__GROUP__/Public/upload" frameborder="0"></iframe>',
+									content : uploadfile('__URL__/upload'),
+									okValue : "上传",
+									ok : function() {
+										$("#iframe").contents().find("#upload").submit();
+										return false;
+									},
+								})
+								return false;
+							}
+						}, {
+							value : "更新",
+							callback : function() {
+								$.post("__URL__/update", $("#ad").serialize(), function(data) {
+									$.alert(data.info);
+								}, 'json');
+
+							}
+						}, {
+							value : "取消",
+							callback : function() {
+
+							}
+						}]
+					});
+				} else {
+					$.alert($data.info);
+				}
+
+			}, 'json')
+
+		})
+
+		$("#add").click(function() {
+			$.dialog({
+				initialize : function() {
+					$("#start_time").datepicker({
+						dateFormat : "yy-mm-dd"
+					});
+					$("#end_time").datepicker({
+						dateFormat : "yy-mm-dd"
+					});
+				},
+				title : "添加广告",
+				content : ad,
+				button : [{
+					focus : true,
+					value : "上传图片",
+					callback : function() {
+						$.dialog({
+							id : "upload",
+							title : "选择上传文件",
+							//content : '<iframe id="iframe" src="__GROUP__/Public/upload" frameborder="0"></iframe>',
+							content : uploadimage('__URL__/uploadtTofile'),
+							okValue : "上传",
+							ok : function() {
+								$("#image").submit();
+								return false;
+							},
+						})
+						return false;
+					}
+				}, {
+					value : "添加",
+					callback : function() {
+						$.post("__URL__/insert", $("#ad").serialize(), function(data) {
+							$.alert(data.info);
+						}, 'json');
+					}
+				}],
+			});
+		})
+	})
+</script>
+<a id="add" href="javascript:void(0)">添加广告</a>
+<table>
+	<tr>
+		<td>广告</td>
+		<td>链接</td>
+		<td>图片</td>
+		<td>开始时间</td>
+		<td>结束时间</td>
+		<td>状态</td>
+		<td>操作</td>
+	</tr>
+	<volist name="list" id="vo">
+		<tr>
+			<td>{$vo.Name}</td>
+			<td>{$vo.Url}</td>
+			<td><img src="/Upload/Admanager/{$vo.image}" style="width:160px;height: 160px" /></td>
+			<td>{$vo.start_time}</td>
+			<td>{$vo.end_time}</td>
+			<td>
+			<switch name="vo.valid" >
+				<case value="1">
+					<span style="color: green"> 广告进行中</span>
+				</case>
+				<case value="2">
+					<span style="color: red"> 广告已结束</span>
+				</case>
+				<default />
+				<span style="color: black">广告未开始</span>
+			</switch></td>
+			<td>{$vo.click}</td>
+
+			<td><a class="del" aid={$vo.id} href="javascript:void(0)">删除</a>&nbsp;<a class="edit" aid={$vo.id} href="javascript:void(0)">编辑</a></td>
+		</tr>
+	</volist>
+</table>
+<div id="page">
+	{$page}
+</div>
+</body>
+</html>

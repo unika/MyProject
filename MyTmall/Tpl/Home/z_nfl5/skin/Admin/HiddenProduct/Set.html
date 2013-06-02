@@ -1,0 +1,55 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            隐藏产品设置</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+                <table style="width: 90%">
+                <tr>
+                    <td style="width:100px">
+                        设置随机数量：
+                    </td>
+                    <td>
+                        <input id="ranpn" type="text" class="tipInput" style="width: 50px;" />
+                        <input id="Button1" type="button" value="确定"  onclick="getRanPids()"/>
+
+                        <br /><br />注：该站总共有#{tpn}个产品，建议隐藏数量不要超过#{hpn}个。<br />
+
+                        <font style=" color:Red">请在设置好目录分类后进行操作。</font>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <textarea id="pids" cols="100" rows="20" name="pids">#{pids}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input id="Submit1" type="submit" value="保存" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function getRanPids() {
+        var ranpn = $("#ranpn").val();
+        if (ranpn == "") {
+            alert("请输入需要隐藏的产品数量");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "GetRandPids.aspx",
+            data: "ranpn=" + ranpn,
+            success: function (msg) {
+                $("#pids").val(msg);
+            }
+        });
+
+    }
+</script>

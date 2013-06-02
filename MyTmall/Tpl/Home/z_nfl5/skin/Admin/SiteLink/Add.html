@@ -1,0 +1,63 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            新增友链</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        名称：
+                    </td>
+                    <td>
+                        <input name="siteLink.Name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        地址：
+                    </td>
+                    <td>
+                        <input name="siteLink.Link" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        链接类型：
+                    </td>
+                    <td>
+                        <select id="Select1" name="siteLink.Target">
+                            <option value="_blank">弹出新页面</option>
+                            <option value="_top">当前新打开</option>
+                        </select>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        链接位置：
+                    </td>
+                    <td>
+                        <select id="Select2" name="siteLink.Posit">
+                            <option value="0">首页</option>
+                            <option value="1">全站</option>
+                        </select>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

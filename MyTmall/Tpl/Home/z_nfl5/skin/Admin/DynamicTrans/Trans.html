@@ -1,0 +1,30 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            动静态转换</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <div style="color: red; border: 1px solid #617775; padding: 10px; margin-bottom: 10px;
+                background-color: #ffffff">
+                动静态转换将会使URL结构发生变化。<font style="font-size: 20px;">(注：请谨慎使用！！！！！！)</font>
+            </div>
+            <table style="width: 700px">
+                <tr>
+                    <td>
+                        <form method="post" action="#{ActionLink}" id="ifrm" class="ajaxPostForm">
+                            <select id="Select1" name="IsDynamicSite">
+                                <option value="true">动态</option>
+                                <option value="false">静态</option>
+                            </select>
+                            <input id="Submit1" type="submit" value="submit" onclick="return confirm('你确定要转换吗？')"/>
+                            <script>
+                                $("#Select1").val("#{IsDynamicSite}");
+                            </script>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

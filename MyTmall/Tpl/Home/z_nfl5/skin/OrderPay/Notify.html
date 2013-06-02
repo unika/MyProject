@@ -1,0 +1,24 @@
+﻿<style>
+    #main
+    {
+        background: #fff;
+    }
+</style>
+<div style="margin: 100px; color: Red">
+    <center>
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: center;">
+                    #{payinfo}
+                </td>
+            </tr>
+            <tr style=" display:#{repay}">
+                <td style="text-align: center;">
+                    <img src="/static/img/paypal.gif" />
+                    <br />
+                    <input id="Submit1" type="button" value=" use paypal to checkout "  onclick="document.location='repay.aspx?orderid=#{orderid}'"/>
+                </td>
+            </tr>
+        </table>
+    </center>
+</div>

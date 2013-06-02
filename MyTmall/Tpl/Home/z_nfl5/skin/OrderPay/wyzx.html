@@ -1,0 +1,252 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>payment</title>
+    <script src="~js/jquery.js?v=#{jsVersion}" type="text/javascript"></script>
+    <link href="/static/wyzx/css/index.css?v=#{jsVersion}" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/wyzx/js/mix.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/wyzx/js/keyboard.js" charset="UTF-8"></script>
+    <link rel="stylesheet" href="/static/wyzx/css/keyboard.css" type="text/css" />
+    <script src="~js/countries.js" type="text/javascript"></script>
+</head>
+<body onload="">
+    <div id="warp">
+        <div id="header">
+            <div id="logo" style="padding-left: 0px;">
+                <div id="logo_left">
+                    <img src="/static/wyzx/images/logo.png" width="326" height="49">
+                </div>
+            </div>
+        </div>
+        <div id="maincontent">
+            <div class="left">
+                <div id="payment">
+                    <div id="pay_left" class="float">
+                        <img src="/static/wyzx/images/pay_left.gif" width="12" height="109">
+                    </div>
+                    <div id="pay_center" class="float">
+                        <div id="pay_cen_title">
+                            <img src="/static/wyzx/images/small_menu.gif"><span>Payment Amount:</span><b style="font-weight: bold;">#{payInfo.Price}
+                                #{payInfo.Currency} </b>
+                        </div>
+                        <div id="pay_cen_nr">
+                            <img src="/static/wyzx/images/shuo.jpg">&nbsp;&nbsp;Your payment details will be
+                            encrypted <span style="color: rgb(46, 143, 196); font-weight: bold;">securely</span>
+                            by 128bit <span style="color: rgb(46, 143, 196); font-weight: bold;">VeriSign SSL</span>.</div>
+                    </div>
+                    <div id="pay_right" class="float">
+                        <img src="/static/wyzx/images/pay_right.gif" width="12" height="109">
+                    </div>
+                </div>
+                <div class="basic">
+                    <h3 id="basic_title">
+                        <img src="/static/wyzx/images/small_menu.gif">
+                        <strong>Basic Information</strong> &nbsp;&nbsp;&nbsp; <span id="errorMsgId" style="text-align: left;
+                            font-weight: bold; color: red;"></span>
+                    </h3>
+                    <div id="basic_nr">
+                        <ul>
+                            <li>
+                                <label>
+                                    Card Number:</label>
+                                <input name="CardNo" id="cardNo" class="basic_input" onkeyup="" type="text" />
+                                <img id="vistaPic" src="/static/wyzx/images/left_ico01.jpg" width="32" height="20" />
+                                <img id="vistaLoss" style="display: none;" src="/static/wyzx/images/visa_loss.jpg"
+                                    width="32" height="20" />
+                                <img style="display: none;" id="masterPic" src="/static/wyzx/images/left_ico02.jpg"
+                                    width="32" height="20" />
+                                <img id="masterLoss" style="display: none;" src="/static/wyzx/images/master_loss.jpg"
+                                    width="32" height="20" />
+                                <img id="jcbPic" src="/static/wyzx/images/jcb.gif" width="32" height="20" />
+                                <img id="jcbLoss" style="display: none;" src="/static/wyzx/images/jcb_loss.gif" width="32"
+                                    height="20" />
+                                <img id="amexPic" src="/static/wyzx/images/amex.gif" width="32" height="20" />
+                                <img id="amexLoss" style="display: none;" src="/static/wyzx/images/amex_loss.gif"
+                                    width="32" height="20" />
+                            </li>
+                            <li>
+                                <label>
+                                    Expiration Date:</label>
+                                <select name="CardExpireMonth" id="cardExpireMonth" style="width: 40px; padding: 0px;
+                                    margin-right: 2px;">
+                                    <option selected="selected" value="">--</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select name="CardExpireYear" id="cardExpireYear" style="width: 50px; padding: 0px;
+                                    margin-right: 2px;">
+                                    <option selected="selected" value="">----</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2013">2013</option>
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2020">2020</option>
+                                </select>
+                                <i id="cvvTxt" style="width: 40px; margin-right: 2px;">C V V:</i>
+                                <input name="Cvv2" id="cvv2" style="width: 30px; margin-right: 2px;" class="keyboardInput basic_input"
+                                    type="password" />
+         
+                                <img src="/static/wyzx/images/left_ico03.jpg" style="cursor: pointer;" alt="" />
+                                <a href="#" onclick="" style="margin-left: 4px;">What?</a> <span id="helpsoftkey">
+                                </span></li>
+                            <li>
+                                <label>
+                                    Issuing Bank:</label>
+                                <input name="IssuingBank" id="IssuingBank" class="basic_input" type="text" />
+                                <a href="#" title="Name of the bank which issued the credit card(e.g. HSBC)">What?</a>
+                            </li>
+                            <li>
+                                <label>
+                                    First Name:</label>
+                                <input name="FirstName" id="firstName" value=" " class="basic_input" type="text" />
+                            </li>
+                            <li>
+                                <label>
+                                    Last Name:</label>
+                                <input name="LastName" id="lastName" value=" " class="basic_input" type="text" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="cl">
+                    </div>
+                </div>
+                <div class="basic_nr_bottom">
+                    <div id="nr_b_title">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="/static/wyzx/images/small_menu.gif" />
+                        <strong>Please check your billing address .</strong>
+                    </div>
+                    <div id="nr_b_center">
+                        <div id="cen_left">
+                            <ul>
+                                <li>
+                                    <label>
+                                        Street:</label>
+                                    <input class="basic_input" name="Address" id="Address" value="#{payInfo.Customer.Address}" type="text" />
+                                </li>
+                                <li>
+                                    <label>
+                                        City/Town:</label>
+                                    <input class="basic_input" name="City" id="City" value="#{payInfo.Customer.City}" type="text" />
+                                </li>
+                                <li>
+                                    <label>
+                                        State/Province:</label>
+                                    <select name="customer.State" id="sys_state">
+                                    </select>
+                                    <script language="javascript">
+                                        $(document).ready(function () {
+                                            print_country("sys_country");
+                                            $("#sys_country").val("#{payInfo.Customer.Country}");
+                                            var index = $("#sys_country ").get(0).selectedIndex;
+                                            print_state('sys_state', index);
+                                            $("#sys_state").val("#{payInfo.Customer.State}");
+                                        });
+                                    </script>
+                                </li>
+                                <li>
+                                    <label>
+                                        Country/Region:</label>
+                                    <select onchange="print_state('sys_state',this.selectedIndex);" id="sys_country"
+                                        name="customer.Country">
+                                    </select>
+                                </li>
+                                <li>
+                                    <label>
+                                        Zip(Postal) Code:</label>
+                                    <input class="basic_input" name="Zip" id="Zip" value="#{payInfo.Customer.PostCode}" type="text" />
+                                </li>
+                                <li>
+                                    <label>
+                                        Email:</label>
+                                    <input class="basic_input" name="Email" id="Email" value="#{payInfo.Customer.Email}" type="text" />
+                                </li>
+                                <li>
+                                    <label>
+                                        Phone:</label>
+                                    <input class="basic_input" name="Phone" id="Phone" value="#{payInfo.Customer.Tel}" type="text" />
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="cl">
+                    </div>
+                </div>
+                <div class="btn">
+                    Please confirm the information above and click the button to pay.<br />
+                    <input name="button" style="cursor: pointer;" id="buttonSt" value="" type="submit" />
+                </div>
+                <div style="text-align: right; margin-bottom: 10px; padding-right: 20px;">
+                </div>
+            </div>
+            <!--end left-->
+            <div class="right">
+                <div id="r_top">
+                    <img src="/static/wyzx/images/right_top_bj.gif" width="11" height="699">
+                </div>
+                <div id="r_center">
+                    <div id="order">
+                        <div id="order_title">
+                            <img src="/static/wyzx/images/order_title.gif" /><span>Your Order Information</span>
+                        </div>
+                        <div id="order_nr">
+                            <dl>
+                                <dd>
+                                    Order No.:<span style="color: rgb(181, 19, 19); font-weight: bold;">#{payInfo.OrderId}</span>
+                                </dd>
+
+                            </dl>
+                        </div>
+                    </div>
+                    <div id="text">
+                        Please confirm your order information above. Once the payment is proceeded, we will
+                        send an email to you , your email is <span style="color: rgb(34, 111, 187);">#{payInfo.Customer.Email}</span>
+                        .
+                    </div>
+                    <div id="dueprice">
+                        Due to the foreign exchange rate, the amount displayed on your statement might be
+                        a little bit different from the real price.</div>
+                    <div style="width: 100%; text-align: center; clear: both;">
+                        <div style="padding-top: 10px;">
+                            <a href="https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&amp;dn=security.credit-pay.com&amp;lang=en"
+                                title="Click to Verify - This site has chosen a VeriSign SSL Certificate to improve Web site security"
+                                target="_blank">
+                                <img src="/static/wyzx/images/vlogo.gif" alt="Click to Verify - This site has chosen a VeriSign SSL Certificate to improve Web site security"
+                                    width="110" height="50"></a>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <a href="https://sealserver.trustwave.com/cert.php?customerId=w6oj3BxxrlKua6RZrnFEuSvaFoIqDb&amp;size=105x54&amp;style=normal"
+                                title="This site protected by Trustwave's Trusted Commerce program" target="_blank">
+                                <img src="/static/wyzx/images/trustwave.png" alt="This site protected by Trustwave's Trusted Commerce program"></a>
+                        </div>
+                        <img src="/static/wyzx/images/verified.jpg" alt="verified" height="100" />
+                    </div>
+                </div>
+                <div id="r_bottom">
+                    <img src="/static/wyzx/images/right_bottom_bj.gif" width="11" height="699" />
+                </div>
+            </div>
+            <div class="cl">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

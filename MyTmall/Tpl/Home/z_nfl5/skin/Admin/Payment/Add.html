@@ -1,0 +1,68 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            新增支付通道</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        通道名称：
+                    </td>
+                    <td>
+                        <input name="payment.Name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        状态：
+                    </td>
+                    <td>
+                        <select id="Select1" name="payment.Status">
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        附加信息：
+                    </td>
+                    <td>
+                        <textarea id="TextArea1" cols="150" rows="5" name="payment.Attachment"></textarea>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        手续费：
+                    </td>
+                    <td>
+                        <input name="payment.Price" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        标识：
+                    </td>
+                    <td>
+                        <input name="payment.Iden" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

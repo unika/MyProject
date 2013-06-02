@@ -1,0 +1,103 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        //增加活动
+        $("#add").click(function() {
+            var mydialog = $.dialog({
+                initialize : function() {
+                    $("#end_time").datepicker({
+                        dateFormat : "yy-mm-dd"
+                    });
+                    $(".hidden").attr("style", "display:none");
+                },
+                title : "添加优惠券",
+                content : coupon,
+                lock : true,
+                button : [{
+                    disabled : true,
+                    value : "上传优惠券图片",
+                    callback : function() {
+                        var second = $.dialog({
+                            id : "upload",
+                            title : "选择上传文件",
+                            content : '',
+                            okValue : "上传",
+                            ok : function() {
+                                $("#iframe").contents().find("#upload").submit();
+                                return false;
+                            },
+                        })
+                        return false;
+                    }
+                }, {
+                    focus : true,
+                    value : "生成",
+                    callback : function() {
+                        $.post("__URL__/addCoupon", $("#coupon").serialize(), function(data) {
+                            $.alert(data.info);
+                            return false;
+                        }, 'json');
+
+                    }
+                }, {
+                    value : "取消",
+                    callback : function() {
+                        this.content()
+                    }
+                }]
+            });
+        })
+        $(".del").click(function() {
+            var obj = $(this);
+            $.post("__URL__/delCoupon", {
+                "id" : $(this).attr("aid")
+            }, function(data) {
+                $.alert(data.info);
+            }, 'json')
+            $(this).parents("tr").remove();
+        });
+        //增加产品
+
+    })
+</script>
+
+<body>
+	<a id="add" href="javascript:void(0)">添加优惠券</a>
+	<table>
+		<tr>
+			<td>优惠券编号</td>
+			<td>名称</td>
+			<td>金额</td>
+			<td>失效时间</td>
+			<td>状态</td>
+			<td>操作</td>
+		</tr>
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo.Id}</td>
+				<td>{$vo.No}</td>
+				<td>{$vo.Price}</td>
+				<td>{$vo.ExpireTime}</td>
+				<td>
+				<switch name="vo.Status" >
+					<case value="0">
+						<span class="warring">已失效</span>
+					</case>
+					<case value="1">
+						<span class="green">未使用</span>
+					</case>
+					<case value="2">
+						<span class="pass">已过期</span>
+					</case>
+					<default />
+					未使用
+				</switch></td>
+				<td><a href="javascript:void(0)" class="del" aid="{$vo.Id}">删除</a></td>
+			</tr>
+		</volist>
+	</table>
+	<div class="page">
+		{$page}
+	</div>
+</body>
+</html>

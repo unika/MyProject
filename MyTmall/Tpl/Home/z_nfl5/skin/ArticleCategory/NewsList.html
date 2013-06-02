@@ -1,0 +1,19 @@
+﻿<div id="vdz_right">
+    <div class="vdz_path">
+        Your Position:<a href="/">Home</a> &gt; <a href="/ArticleCategory/List.aspx">Store News</a>
+    </div>
+    <div class="vdz_border">
+        <!-- BEGIN articlecats -->
+            <div class="vdz_news_b_title">
+                <span><a  href="/ArticleCategory/#{articleCategory.Id}/List.aspx">
+                    #{articleCategory.Name}</a></span> <em><a href="/ArticleCategory/#{articleCategory.Id}/List.aspx">more&gt;&gt;</a></em>
+            </div>
+                <ul class="vdz_news_b_info">
+                    <!-- BEGIN articles -->
+                    <li><span>•<a href="/Article/#{article.Id}/Show.aspx"  title="#{article.Title}">#{article.Title}</a></span><em>#{article.PubTime}</em></li>
+                    <!-- END articles -->
+                </ul>
+        <!-- END articlecats -->
+        <div class="clear">
+       </div> </div>
+</div>

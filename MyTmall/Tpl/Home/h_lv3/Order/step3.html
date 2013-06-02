@@ -1,0 +1,161 @@
+<include file="Public:header" />
+<div id="main">
+	<link rel="stylesheet" href="__MYSTYLE__/pay.css" type="text/css">
+	<form method="post" action="__URL__/OrderPay" id="pay_from1">
+	<!-- <form method="post" action="https://payment.payitrust.com/Payment/PayPage.aspx" id="pay_from1"> -->
+		<div id="from3">
+			<div class="pay_t3">
+				3. Order Review
+			</div>
+
+			<div class="western_cart">
+				<ul>
+					<li class="western_col1 western_col1_item">
+						ITEM
+					</li>
+					<li class="western_col2">
+						QTY
+					</li>
+					<li class="western_col3">
+						PRICE
+					</li>
+				</ul>
+				<div id="sys_num">
+					<ol>
+						<!--循环读取购物车内的商品开始-->
+						<volist name="goods" id="vo">
+							<li class="western_col1">
+								<a target="_top" href="/Product/show/id/{$vo.item_id}" title="{$vo.item_name}"> <img style=" width:45px; float:left; padding-right:20px;" title="{$vo.item_name}" alt="{$vo.item_name}" src="{$vo.item_image}"></a>
+								<span> <a target="_top" href="/Product/show/id/{$vo.item_id}" title="{$vo.item_name}">{$vo.item_name}</a>
+									<br/>
+									<foreach name="vo.item_attrValue" item="subvo">
+										<span id="remark" name="remark">{$subvo}</span>
+									</foreach> </span>
+								<br>
+							</li>
+
+							<li class="western_col2">
+								{$vo.item_num}
+							</li>
+							<li class="western_col3">
+								{$vo.item_price}
+							</li>
+						</volist>
+						<!--循环读取购物车内的商品结束-->
+					</ol>
+
+					<i>Total QTY:{$total_num}&nbsp;&nbsp;&nbsp;Total Price:{$total_price}&nbsp;&nbsp;&nbsp;<a target="_top" href="/Cart/">Edit</a></i>
+				</div>
+			</div>
+
+			<div id="fieldset">
+				<fieldset>
+					<legend>
+						Delivery/Shipping Information:
+					</legend><b>Your Name:</b> <?php echo $_POST['C_Username']?>
+					<br>
+					<b>Street Address:</b> <?php echo $_POST['C_Address'] ?>
+					<br>
+					<b>City:</b><?php echo $_POST['C_City'] ?>
+					<br>
+					<b>State:</b><?php echo $_POST['C_State'] ?>
+					<br>
+					<b>Country:</b> <?php echo $_POST['C_Country'] ?>
+					<br>
+					<b>TEL:</b> <?php echo $_POST['C_Tel'] ?>
+					<br>
+					<b>Post/Zip Code:</b> <?php echo $_POST['C_PostCode'] ?>
+					<br>
+					<b>Email:</b> <?php echo $_POST['C_Email'] ?>
+					<br>
+
+					<a target="_top" style="float: right;" href="__URL__/stepA"><i>Edit</i></a>
+				</fieldset>
+			</div>
+			<div id="Coupon_price">
+				<div id="texcoupon" style="display:">
+					Coupon number:<span class="warning">{$Coupon.No}</span>
+					<!-- <input id="coup" name="txtCoupon" value="Enter your " onfocus="if (this.value == 'Enter your coupon number') this.value = '';" onblur="if (this.value == '') this.value = 'Enter your coupon number';" type="text">
+					<input id="btn_gcp" value="" onclick="ValidateCoupon()" type="button"> -->
+				</div>
+
+				<ul class="chk_total">
+					<li>
+						<span class="chk_total1">Coupon:</span>$<b id="sys_Coupon"><span class="warning">-
+							<empty name="Coupon.Price">
+								0.00
+								<else/>
+								{$Coupon.Price}
+							</empty></span></b>
+					</li>
+					<li>
+						<span class="chk_total1">Shipping Fee:</span><b id="sys_ShippingFee">${$shippingfee}</b>
+					</li>
+					<li>
+						<span class="chk_total1">Sub-Total:</span><b id="sys_subtotal">${$sub_total}</b>
+					</li>
+					<li class="chk_coupon">
+						<b class="chk_total1">Total Amount:</b><b id="sys_grandtotal">{$total_num}</b>
+					</li>
+
+					<li style=" float:right;">
+						<input name="checkoutBt" class="chk_pay" value="" type="submit">
+						<br>
+						<span style=" float:right; display:block; width:400px;">Every order you place with us is safe and secure.</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-----------------------------------------------------------------------隐藏的表单部分开始----------------------->
+
+		<input id="deliveryname" name="deliveryname" value="<?php echo utf8_htmldecode($deliveryname); ?>" type="hidden">
+		<input id="deliveryaddress" name="deliveryaddress" value="<?php echo utf8_htmldecode($deliveryaddress); ?>" type="hidden">
+		<input id="deliverycity"  name="deliverycity" value="<?php echo utf8_htmldecode($deliverycity); ?>" type="hidden">
+		<input id="deliverycountry" name="deliverycountry" value="<?php echo utf8_htmldecode($deliverycountry); ?>" type="hidden">
+
+		<!-- 省份洲注意前面传值 -->
+		<input id="deliveryprovince" name="deliveryprovince" value="<?php echo utf8_htmldecode($deliveryprovince); ?>" type="hidden">
+		<input id="deliverypost" name="deliverypost" value="<?php echo utf8_htmldecode($deliverypost); ?>" type="hidden">
+		<input id="deliveryphone" name="deliveryphone" value="<?php echo utf8_htmldecode($deliveryphone); ?>" type="hidden">
+		<input id="deliveryemail" name="deliveryemail" value="<?php echo utf8_htmldecode($deliveryemail); ?>" type="hidden">
+		<input id="billaddress" name="billaddress" value="<?php echo utf8_htmldecode($billaddress); ?>" type="hidden" />
+		<input id="billcity" name="billcity" value="<?php echo utf8_htmldecode($billcity); ?>" type="hidden" />
+		<input id="billcountry" name="billcountry" value="<?php echo utf8_htmldecode($billcountry); ?>" type="hidden">
+		<!-- 省份洲注意前面传值 -->
+		<input id="billprovince" name="billprovince" value="<?php echo utf8_htmldecode($billprovince); ?>" type="hidden" />
+		<input id="billpost" name="billpost" value="<?php echo utf8_htmldecode($billpost); ?>" type="hidden" />
+		<input id="billphone" name="billphone" value="<?php echo utf8_htmldecode($billphone); ?>" type="hidden"/>
+		<input id="billemail" name="billemail" value="<?php echo utf8_htmldecode($billemail); ?>" type="hidden" />
+		<input id="merchantid" name="merchantid" type="hidden" value="<?php echo utf8_htmldecode($merchantid); ?>"/>
+		<input type="hidden" name="orderid" id="orderid" size="40" value="<?php echo utf8_htmldecode($orderid); ?>"/>
+		<input id="orderdate" name="orderdate" type="hidden" value="<?php echo utf8_htmldecode($orderdate); ?>" />
+		<input id="currency" name="currency" type="hidden" value="<?php echo utf8_htmldecode($currency); ?>" />
+		<input name="orderamount" id="orderamount" type="hidden" value="<?php echo utf8_htmldecode($orderamount); ?>"/>
+		<input name="encoding" type="hidden" id="encoding"  value="<?php echo utf8_htmldecode($encoding); ?>" />
+		<input id="transtype" name="transtype" type="hidden" value="<?php echo utf8_htmldecode($transtype); ?>" />
+		<input id="language" name="language" type="hidden" value="<?php echo utf8_htmldecode($language); ?>" />
+		<input name="payamount" id="payamount" type="hidden" value="<?php echo utf8_htmldecode($payamount); ?>"/>
+		<input name="signature" id="signature" type="hidden" value="<?php echo utf8_htmldecode($signature); ?>"/>
+		<!--产品循环-->
+		<foreach name="product" key="key" item="vo">
+			<input id="{$key}" name="{$key}" type="hidden" value="{$vo}" />
+		</foreach>
+		<!--产品循环-->
+		<input id="shippingfee" name="shippingfee" type="hidden" value="<?php echo utf8_htmldecode($shippingfee); ?>" />
+		<input id="version" name="version" type="hidden" value="<?php echo utf8_htmldecode($version); ?>" />
+		<input name="callbackurl" type="hidden" id="callbackurl"  value="<?php echo utf8_htmldecode($callbackurl); ?>"/>
+		<input id="browserbackurl" name="browserbackurl" type="hidden"  value="<?php echo utf8_htmldecode($browserbackurl); ?>"/>
+		<input id="accessurl" name="accessurl" type="hidden" value="<?php echo utf8_htmldecode($accessurl); ?>"/>
+		<!--备注循环-->
+		<foreach name="remark" key="key" item="vo">
+			<input id="{$key}" name="{$key}" value="{$vo}" type="hidden" />
+		</foreach>
+		<!--产备注循环-->
+		<!-----------------------------------------------------------------------隐藏的表单部分结束------------------------>
+
+	</form>
+</div>
+</div>
+<div class="clear"></div>
+<include file="Public:footer" />

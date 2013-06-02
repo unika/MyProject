@@ -1,0 +1,117 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        $(".tp").click(function() {
+            $.get("__URL__/update_tpl", {
+                'tpname' : $(this).attr('name')
+            }, function(data) {
+
+            }, 'json');
+        })
+        $(".choose").click(function() {
+            var obj = $(this);
+            if ($(this).val()) {
+                $.post("__URL__/update", {
+                    'tpname' : $(this).attr('name')
+                }, function(data) {
+                    // obj.parent().find(".status").text("已启用");
+                    // obj.parents().parent().removeClass().addClass("current");
+                    // $(".choose").not(obj).attr("checked", false);
+                    // $(".choose").not(obj).parent().parent().removeClass().addClass("local");
+                    // $(".choose").not(obj).parent().find(".status").text("未启用");
+                    // $.alert(data.info);
+                    if (data.status == 1) {
+                        obj.parent().find(".status").text("已启用");
+                        obj.parents("div").removeClass().addClass("current");
+                        $(".choose").not(obj).attr("checked", false);
+                        $(".choose").not(obj).parents("div").removeClass().addClass("local");
+                        $(".choose").not(obj).parent().find(".status").text("未启用");
+                        $.alert(data.info);
+                    } else {
+                        $.alert(data.info);
+                    }
+
+                }, 'json');
+            }
+        })
+
+        $("#add").click(function() {
+            $.dialog({
+                title : "选择模板",
+                content : '<iframe id="iframe" src="__GROUP__/Template/upload" frameborder="0"></iframe>',
+                okValue : "上传",
+                ok : function() {
+                    $("#iframe").contents().find("#upload").submit();
+                    return false;
+                },
+                cancelValue : "取消",
+                cancel : function() {
+                    this.close()
+                },
+            })
+
+        })
+        $("img").click(function() {
+            var img = $(this);
+            $.dialog({
+                title : "模板图片",
+                content : "<img style='width:700px;'  src='" + img.attr("src") + "' />",
+            })
+        })
+    })
+</script>
+<body>
+	<h1><a href="javascript:void(0)" id="add">上传模板</a></h1>
+	<h2 class="tip">当前模板</h2>
+	<volist name="list" id="vo">
+		<eq name="vo.tp_name" value="$theme">
+			<div class="currenttp">
+				<img style="width:160px;height:160px;" src="/Tpl/Home/{$vo.tp_name}/{$vo.image}"/>
+				<p>
+					<span class="tip">模板名</span> {$vo.tp_name}
+				</p>
+				<p>
+					<span class="tip">作者</span>{$vo.author}
+				</p>
+				<p>
+					<span class="tip">启用日期</span> {$vo.date}
+				</p>
+				<p>
+					<span class="tip">版本号</span> {$vo.version}
+				</p>
+				<p>
+					<span class="tip">状态</span>
+					<input type="radio" class="choose" name="{$vo.tp_name}" checked="" >
+					<span class="status">已启用</span>
+				</p>
+			</div>
+		</eq>
+	</volist>
+
+	<volist name="list" id="vo">
+		<neq name="vo.tp_name" value="$theme">
+			<div class="local">
+				<img style="width:160px;height:160px;" src="/Tpl/Home/{$vo.tp_name}/{$vo.image}"/>
+
+				<p>
+					<span class="tip">模板名</span> {$vo.tp_name}
+				</p>
+				<p>
+					<span class="tip">作者</span>{$vo.author}
+				</p>
+				<p>
+					<span class="tip">启用日期</span> {$vo.date}
+				</p>
+				<p>
+					<span class="tip">版本号</span> {$vo.version}
+				</p>
+				<p>
+					<span class="tip">状态</span>
+					<input type="radio" class="choose" name="{$vo.tp_name}">
+					<span class="status">未启用</span>
+				</p>
+			</div>
+		</neq>
+	</volist>
+</body>
+</html>

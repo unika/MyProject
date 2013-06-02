@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>index</title>
+		<link href="__PUBLIC__/Css/admin.css" type="text/css" rel="stylesheet" />
+
+	</head>
+	<body>
+		<h3>编辑产品类型</h3>
+		<form action="__URL__/update" method="post">
+			<input type="hidden" name="id" value="{$id}" />
+			<input type="text" name="name" value="{$name}" />
+			<select name="pid">
+				<option value="0">顶级类型</option>
+				<!-- 可以修改为类型 -->
+				{$typetree}
+
+			</select>
+			<select name="ProductAttrValue_id">
+				<option>1</option>
+				<option value="{$ProductAttrValue_id}"></option>
+			</select>
+			<select name="AttrValue_id">
+				<option value="{$AttrValue_id}"></option>
+				<option>2</option>
+			</select>
+			<input type="submit" value="提交" />
+		</form>
+	</body>
+</html>

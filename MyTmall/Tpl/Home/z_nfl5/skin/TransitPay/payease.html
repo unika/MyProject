@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form name="pay" method="post" action="http://www.5upay.com/prs/e_user_payment.checkit">
+    <input type="hidden" name="v_mid" value='#{payEase.MerNo}' />
+    <input type="hidden" name="v_oid" value='#{payEase.OrderId}' />
+    <input type="hidden" name="v_rcvname" value='#{payEase.UserName}' />
+    <input type="hidden" name="v_rcvaddr" value='#{payEase.Adddress}' />
+    <input type="hidden" name="v_rcvtel" value='#{payEase.Tel}' />
+    <input type="hidden" name="v_rcvpost" value='#{payEase.PostCode}' />
+    <input type="hidden" name="v_amount" value='#{payEase.Amount}' />
+    <input type="hidden" name="v_ymd" value='#{payEase.DataNow}' />
+    <input type="hidden" name="v_ordername" value='#{payEase.UserName}' />
+    <input type="hidden" name="v_moneytype" value='1' />
+    <input type="hidden" name="v_url" value='#{payEase.ReturnUrl}' />
+    <input type="hidden" name="v_md5info" value='#{payEase.MD5info}' />
+    <input type="hidden" name="v_orderstatus" value="1" />
+    <input type="hidden" name="v_shipstreet" value="#{payEase.Adddress}" />
+    <input type="hidden" name="v_shipcity" value="#{payEase.City}" />
+    <input type="hidden" name="v_shipstate" value="#{payEase.State}" />
+    <input type="hidden" name="v_shippost" value="#{payEase.PostCode}" />
+    <input type="hidden" name="v_shipcountry" value="#{payEase.Country}" />
+    <input type="hidden" name="v_shipphone" value="#{payEase.Tel}" />
+    <input type="hidden" name="v_shipemail" value="#{payEase.Email}" />
+    <input type="hidden" name="v_billstreet" value="#{payEase.Adddress}" />
+    <script language="javascript" type="text/javascript">
+        document.forms["pay"].submit();
+    </script>
+    </form>
+</body>
+</html>

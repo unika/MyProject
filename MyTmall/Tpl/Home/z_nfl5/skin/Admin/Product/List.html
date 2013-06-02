@@ -1,0 +1,274 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<style>
+    ul.ztree
+    {
+        margin-top: 10px;
+        border: 1px solid #617775;
+        background: #f0f6e4;
+        width: 500px;
+        height: 360px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+</style>
+<script>
+<!--
+		var setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: onClick
+			}
+		};
+ 
+		var zNodes =#{nodes};
+ 
+		
+		function onClick(e, treeId, treeNode) {
+
+			var zTree = $.fn.zTree.getZTreeObj("treeType"),
+			nodes = zTree.getSelectedNodes(),
+			v = "";
+			nodes.sort(function compare(a,b){return a.id-b.id;});
+			for (var i=0, l=nodes.length; i<l; i++) {
+				v += nodes[i].name + ",";
+			}
+			if (v.length > 0 ) v = v.substring(0, v.length-1);
+			var cityObj = $("#typeSel");
+			cityObj.attr("value", v);
+		}
+ 
+		function showMenu() {
+			var cityObj = $("#typeSel");
+			var cityOffset = $("#typeSel").offset();
+			$("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+ 
+			$("body").bind("mousedown", onBodyDown);
+		}
+		function hideMenu() {
+			$("#menuContent").fadeOut("fast");
+			$("body").unbind("mousedown", onBodyDown);
+		}
+		function onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" || event.target.id == "menuContent" || $(event.target).parents("#menuContent").length>0)) {
+				hideMenu();
+			}
+		}
+ 
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeType"), setting, zNodes);
+		});
+
+
+        //----------------------------------------------------------------------------------------------------------------//
+       var cat_setting = {
+			view: {
+				dblClickExpand: false
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				onClick: cat_onClick
+			}
+		};
+ 
+		var cat_zNodes =#{cat_nodes};
+ 
+		
+		function cat_onClick(e, treeId, treeNode) {
+            if(treeNode.isParent)
+            {
+                return;
+            }
+			var zTree = $.fn.zTree.getZTreeObj("treeCat"),
+			nodes = zTree.getSelectedNodes(),
+			v = "";
+			nodes.sort(function compare(a,b){return a.id-b.id;});
+			for (var i=0, l=nodes.length; i<l; i++) {
+				v += nodes[i].name + ",";
+			}
+			if (v.length > 0 ) v = v.substring(0, v.length-1);
+            var reg = /（\d+）/gi;
+            v = v.replace(reg,"");
+            $("#ncat").attr("value",v);
+            $("#ncatId").attr("value",nodes[0].id);
+            hideCat();
+
+		}
+ 
+		function showCat() {
+			var cityObj = $("#ncat");
+			var cityOffset = $("#ncat").offset();
+			$("#catContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+ 
+			$("body").bind("mousedown", cat_onBodyDown);
+		}
+		function hideCat() {
+			$("#catContent").fadeOut("fast");
+			$("body").unbind("mousedown", cat_onBodyDown);
+		}
+		function cat_onBodyDown(event) {
+			if (!(event.target.id == "menuBtn" || event.target.id == "catContent" || $(event.target).parents("#catContent").length>0)) {
+				hideCat();
+			}
+		}
+ 
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeCat"), cat_setting, cat_zNodes);
+		});
+		//--> 
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            产品列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="Table1">
+            <tr>
+                <td>
+                    <form id="myform" method="get" action="#{searchAction}">
+                    类型：<input value="#{stype}" id="typeSel" type="text" readonly value="" style="width: 120px;"
+                        onclick="showMenu();" name="stype" />
+                    产品名称：<input  type="text" style="width: 120px;" id="sname" name="sname" value="#{sname}" />
+                    <input id="Submit1" type="submit" value="搜索" />
+                    <div id="menuContent" class="menuContent" style="display: none; position: absolute;">
+                        <ul id="treeType" class="ztree" style="margin-top: 0; width: 300px;">
+                        </ul>
+                    </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+        <form id="Form1" method="post" action="#{importAction}" class="ajaxPostForm">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="8">
+                    
+                    全选：<input id="selectAll" type="checkbox" />
+                    产品导入到：<input id="ncat" type="text" readonly value="" style="width: 120px;" onclick="showCat();"
+                        name="ncat" /><span class="valid" mode="border"></span>
+                    <input id="ncatId" type="hidden" name="ncatId" />
+                    <input id="Submit2" type="submit" value="导入选择项" name="s1"/>
+                    <input id="Button1" type="button" value="导入条件项"  onclick="ImportByCondition()"/>
+                    <script>
+                        function ImportByCondition() {
+                            var stype = $("#typeSel").val();
+                            var sname = $("#sname").val();
+                            var ncatId = $("#ncatId").val();
+                            if (sname == "") {
+                                alert("产品名称不能为空");
+                                return;
+                            }
+                            if (ncatId == "") {
+                                alert("产品导入目标不能为空");
+                                return;
+                            }
+                            if (!confirm("你确定要导入吗？")) return;
+
+                            $.ajax({
+                                type: "POST",
+                                url: "#{ImportByConditionAction}?ajax=true",
+                                data: "stype=" + stype + "&sname=" + sname + "&ncatId=" + ncatId,
+                                success: function (msg) {
+                                    alert(msg);
+                                },
+                                Error: function (msg) {
+                                    alert("导入失败");
+                                }
+                            });
+
+                        }
+                    </script>
+                    <div id="catContent" class="menuContent" style="display: none; position: absolute;">
+                        <ul id="treeCat" class="ztree" style="margin-top: 0; width: 300px;">
+                        </ul>
+                    </div>
+                </td>
+                <td style="text-align: right; padding-right: 10px;">
+                    <a href="#{addlink}">新增产品</a>｜<a href="ShippingFee.aspx">新增补差价产品</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    产品名称
+                </td>
+                <td>
+                    产品价格
+                </td>
+                <td>
+                    产品图片
+                </td>
+                <td>
+                    产品类型
+                </td>
+                <td>
+                    库存
+                </td>
+                <td>
+                    产品上架时间
+                </td>
+                <td>
+                    产品状态
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN products -->
+            <tr class="tableItems">
+                <td>
+                    <input id="Checkbox1" type="checkbox" name="pids" value="#{product.Id}" />
+                    #{product.Id}
+                </td>
+                <td>
+                    #{product.Name}
+                </td>
+                <td>
+                    #{product.Price}
+                </td>
+                <td>
+                    <img src="#{product.Img}" width="100px" height="100px" />
+                </td>
+                <td>
+                    #{product.ProductType.Name}
+                </td>
+                <td>
+                    #{product.DbNum}
+                </td>
+                <td>
+                    #{product.AddTime}
+                </td>
+                <td>
+                    #{product.StatusDes}
+                </td>
+                <td>
+                    <a href="#{product.Attr}" class="frmBox">查看属性</a>｜<a href="#{product.Edit}">编辑</a>｜
+                    <a href="#{product.Copy}">复制</a>｜ <a href="#{product.Delete}" onclick="return confirm('你确定要删除吗？')">删除</a>｜<a
+                        href="#{product.ImgList}" class="frmBox">图片</a>｜
+                        <a href="#{product.Classify}" class="frmBox">产品归类</a>
+                </td>
+            </tr>
+            <!-- END products -->
+        </table>
+        </form>
+        <div>
+            #{pager}</div>
+    </div>
+</div>

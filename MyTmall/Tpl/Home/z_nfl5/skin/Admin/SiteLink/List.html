@@ -1,0 +1,59 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            友情链接管理</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="7" style="text-align: right; padding-right: 10px;">
+
+                    <a href="#{Add}">新增友情链接</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    友链名
+                </td>
+                <td>
+                    链接地址
+                </td>
+                <td>
+                    链接类型
+                </td>
+                <td>
+                    链接位置
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN links -->
+            <tr class="tableItems">
+                <td>
+                    #{link.Id}
+                </td>
+                <td>
+                    #{link.Name}
+                </td>
+                <td>
+                    #{link.Link}
+                </td>
+                <td>
+                    #{link.Target}
+                </td>
+                <td>
+                    #{link.PositionDes}
+                </td>
+                <td>
+                    <a href="#{link.Edit}">编辑</a>｜<a href="#{link.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END links -->
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿<style>
+    .tit
+    {
+        width: 200px;
+    }
+    legend
+    {
+        font-size: 15px;
+        background-color: #C3D5ED;
+    }
+    fieldset
+    {
+        margin: 10px;
+        background-color: #ffffff;
+    }
+</style>
+<form method="post" action="#{ActionLink}" id="repSelAction">
+<div class="adminMainPanel">
+<fieldset>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 70px;">
+                替换方式:
+            </td>
+            <td>
+                <select id="repType" name="repType">
+                    <option value="0">占位符替换</option>
+                    <option value="1">加前加后</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                文字库类型:
+            </td>
+            <td>
+                #{resType}
+                <input id="Hidden1" type="hidden" name="metaType" value="#{metaType}" />
+                <input id="Hidden2" type="hidden" name="catIds" value="#{catIds}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <input id="Submit1" type="submit" value="下一步" onclick="repTypeSel()" />
+            </td>
+        </tr>
+    </table>
+    </fieldset>
+</div>
+</form>
+<script>
+    function repTypeSel() {
+        var repType = $("#repType").val();
+
+        if (repType == "1") {
+            $("#repSelAction").attr("action", "/Admin/SEO/MetaSet_b_a.aspx");
+        }
+        else {
+            $("#repSelAction").attr("action", "/Admin/SEO/MetaSet_b_b.aspx");
+        }
+        $("#repSelAction").submit();
+    }
+    $(document).ready(function () {
+        if ("#{metaType}"=="url") {
+            $("#repType option[value='0']").remove(); 
+        }
+    })
+</script>

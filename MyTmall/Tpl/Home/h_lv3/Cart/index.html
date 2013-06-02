@@ -1,0 +1,276 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function() {
+        $(".delgoods").click(function() {
+            var obj = $(this);
+            var num = parseInt($(this).parents("tr").find(".num").val());
+            if (num > 1) {
+                num--;
+                $(this).parents("tr").find(".num").val(num);
+                $.post("__URL__/delgood", {
+                    'key' : $(this).attr("aid"),
+                    'number' : num,
+                }, function(data) {
+                    if (data.status == 1) {
+                        $("#item").text(data.data.total_number);
+                        $("#Total_num").text(data.data.total_number);
+                        $("#Total_price").text(data.data.total_price);
+                        $("#sys_Subtotal").text(data.data.total_price);
+                        $("#sys_GrandTotal").text(parseFloat($("#Total_price").text() - $("#sys_Coupon").text()).toFixed(2));
+                    } else {
+                        $.alert(data.info);
+                    }
+                }, 'json');
+            } else {
+                $.confirm("确定要删除吗", function() {
+                    $.post("__URL__/remove", {
+                        'key' : obj.attr("aid"),
+                    }, function(data) {
+                        if (data.status == 1) {
+                            obj.parents("tr").remove();
+                            $("#item").text(data.data.total_number);
+                            $("#Total_num").text(data.data.total_number);
+                            $("#Total_price").text(data.data.total_price);
+                            $("#sys_Subtotal").text(data.data.total_price);
+                            $("#sys_GrandTotal").text(parseFloat($("#Total_price").text() - $("#sys_Coupon").text()).toFixed(2));
+                        } else {
+                            $.alert(data.info);
+                        }
+                    }, 'json');
+
+                }, function() {
+                    this.close()
+                })
+            }
+        })
+        $(".remove").click(function() {
+            $.post("__URL__/remove", {
+                'key' : $(this).attr("aid"),
+            }, function(data) {
+                if (data.status == 1) {
+                    $("#item").text(data.data.total_num);
+                    $("#Total_num").text(data.data.total_num);
+                    $("#Total_price").text(data.data.total_price);
+                    $("#sys_Subtotal").text(data.data.total_price);
+                    $("#sys_GrandTotal").text(data.data.total_price);
+                } else {
+                    $.alert(data.info);
+                }
+
+            }, 'json');
+            $(this).parents("tr").remove();
+        })
+        $(".addgoods").click(function() {
+            var num = $(this).parents("tr").find(".num").val();
+            num = parseInt(num) + 1;
+            $(this).parents("tr").find(".num").val(num);
+            $.post("__URL__/addgood", {
+                'key' : $(this).attr("aid"),
+                'number' : num,
+            }, function(data) {
+                if (data.status == 1) {
+                    $("#item").text(data.data.total_number);
+                    $("#sys_Coupon").text(data.data.coupon_price);
+                    $("#Total_num").text(data.data.total_number);
+                    $("#Total_price").text(data.data.total_price);
+                    $("#sys_Subtotal").text(data.data.total_price);
+                    $("#sys_GrandTotal").text(parseFloat($("#Total_price").text() - $("#sys_Coupon").text()).toFixed(2));
+                }
+            }, 'json');
+        })
+
+        $("#empty").click(function() {
+            $.post("__URL__/clearCart", {}, function(data) {
+                if (data.status == 1) {
+                    $("#item").text(0);
+                    $("#Total_num").text(0);
+                    $("#Total_price").text(parseFloat(0).toFixed(2));
+                    $("#sys_Subtotal").text(parseFloat(0).toFixed(2));
+                    $("#sys_GrandTotal").text(parseFloat(0).toFixed(2));
+                } else {
+                    $.alert(data.info);
+                }
+            }, "json")
+        })
+    })
+    function gopay() {
+        $("#cart_info").submit();
+    }
+
+</script>
+<div id="main">
+	<div id="main2">
+		<div id="shop_l">
+			<div class="cart_top">
+				<div class="fixed_title"><img src="__MYSTYLE__Images/shoppingnag.jpg">
+				</div>
+				<div class="checkbotton">
+					<img class="cart_checkout" alt="Proceed to Checkout" onclick="gopay();" src="__MYSTYLE__Images/securecheck.jpg">
+					<img alt="continue" onclick='document.location.href="/"' class="cart_btn" src="__MYSTYLE__Images/continue.jpg">
+				</div>
+			</div>
+			<!---购物车Widget开始-->
+			<div id="cart_table">
+				<form id="cart_info" action="/Order/step1" method="post">
+					<table id="sys_num">
+						<thead>
+							<tr>
+								<!-- <th style="text-indent: 0px; text-align: center" class="cart_table1_th1"> &nbsp;</th> -->
+								<th class="cart_table1_th2"> Product Pic </th>
+								<th class="cart_table1_th2"> Product Name </th>
+								<th class="cart_table1_th4"> Product AttrValue </th>
+								<th class="cart_table1_th4"> Unit Price </th>
+								<th class="cart_table1_th5"> QTY </th>
+								<th class="cart_table1_th8"> Subtotal </th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--循环读取购物车内的商品开始-->						
+							<foreach name="goods" item="vo" key="key">
+								<tr>
+									<!--购物车图片-->
+									<td><a target="_top" href="/Product/show/Id/{$vo.Id}"> <img src="{$vo.image}" width="64"></a></td>
+									<td><a target="_top" href="/Product/show/Id/{$vo.Id}">{$vo.product_name}</a>
+									<br>
+									<br>
+									<div style=" padding-top:6px; float:left;">
+										<a style=" text-decoration:underline;" href="#" target="_top">Edit</a>&nbsp; <a target="_top"  class="remove" aid="{$key}" style="text-decoration:underline;" href="javascript:void(0);">Remove</a>
+									</div></td>
+									<td>
+										<foreach name="vo.attrvalue" key="keys" item="subvo">
+											<p>
+											{$subvo}
+											</p>
+										</foreach>
+									
+									
+									</td>
+									<td style="padding: 0;text-align: center;width: 100px;"> {$vo.price} </td>
+									<td style="padding: 0;text-align: center;width: 100px;">
+									<table style="display:inline;">
+										<tbody>
+											<tr id="num">
+												<td>
+												<input class="num" value="{$vo.number}" size="5" style="text-align: center" onkeyup="" class="line" id="sys_1_Num">
+												</td>
+												<td>
+												<div style="padding-bottom: 2px">
+													<a href="javascript:void(0);" class="addgoods" aid="{$key}" style="display: block;"> <img  src="__MYSTYLE__Images/good_detail_up.gif" style="cursor: pointer;" /></a>
+													<a href="javascript:void(0);"  class="delgoods" aid="{$key}" style="display: block;"> <img  src="__MYSTYLE__Images/good_detail_down.gif" style="cursor: pointer;" /></a>
+												</div></td>
+											</tr>
+										</tbody>
+									</table></td>
+									<td id="sys_1_Subtotal" style="padding: 0;text-align: center;width: 100px;"> {$vo.price} </td>
+								</tr>
+							</foreach>
+							<!--循环读取购物车内的商品结束-->
+						</tbody>
+					</table>
+					<div class="clear"></div>
+			</div>
+			<div class="cart_col5">
+				<div class="cart_discount">
+					<b>Discount Codes</b>
+					<input id="Text1" class="input-text" name="Coupon" value="Enter your coupon code :" type="text">
+					<button id="btnValidate" type="button" onclick="validCoupon('Text1')" class="cart_btn"><img src="__MYSTYLE__Images/apply.jpg" alt="">
+					</button>
+					<div class="clear"></div>
+					<span class="valid" mode="border"></span>
+				</div>
+				<dl class="cart_total">
+
+					<!--优惠券-->
+					<dd>
+						<b>Coupon</b><b>$<span id="sys_Coupon">
+							<empty name="coupon_price">
+								0.00
+								<else/>
+								{$coupon_price}
+							</empty> </span></b>
+					</dd>
+					<!--优惠券-->
+
+					<dd>
+						<b>Total_num</b><b><span id="Total_num">
+							<empty name="total_number">
+								0
+								<else/>
+								{$total_number}
+							</empty> </span></b>
+					</dd>
+
+					<dd>
+						<b>Total_price</b><b>$<span id="Total_price" >
+							<empty name="total_price">
+								0.00
+								<else/>
+								{$total_price}
+							</empty> </span></b>
+					</dd>
+
+					<dd>
+						<b>Subtotal</b><b>$<span id="sys_Subtotal">
+							<empty name="total_price">
+								0.00
+								<else/>
+								{$total_price}
+							</empty> </span></b>
+					</dd>
+					<!--应该减优惠券-->
+					<dd class="cart_strong">
+						<b>Grand Total:</b><b class="red2">$<span id="sys_GrandTotal">
+							<empty name="Grand_Total">
+								{$total_price}
+								<else/>
+								{$Grand_Total}
+							</empty> </span></b>
+					</dd>
+					<!--应该减优惠券-->
+					<dt><img alt="continue" onclick='document.location.href="/"' class="cart_btn" src="__MYSTYLE__Images/continue.jpg"><img class="cart_checkout" alt="Proceed to Checkout" onclick="gopay();" src="__MYSTYLE__Images/securecheck.jpg">
+					</dt>
+				</dl>
+			</div>
+			<div class="clear"></div>
+			<!---购物车Widget结束-->
+			</form>
+			<button id="empty">
+				清空购物车
+			</button>
+		</div>
+
+		<div id="shop_r">
+			<!--同类商品推荐Widget-->
+			<p class="may2_t">
+				MAY WE SUGGEST
+			</p>
+			<div class="may2">
+
+				<div class="list">
+					<a target="_top" class="may2_img" title="Oakley Frogskin Lifestyle Oversize Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Frogskin-Lifestyle-Oversize-Sunglasses-p-5549.html"><img title="Oakley Frogskin Lifestyle Oversize Sunglasses" alt="Oakley Frogskin Lifestyle Oversize Sunglasses" src="__MYSTYLE__Images/SG0000000480_1.jpg"></a>
+					<a target="_top" class="may2_name" title="Oakley Frogskin Lifestyle Oversize Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Frogskin-Lifestyle-Oversize-Sunglasses-p-5549.html">Oakley Frogskin Lifestyle Oversize Sunglasses</a>
+
+					<div class="may2_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+
+				</div>
+
+				<div class="list">
+					<a target="_top" class="may2_img" title="Oakley Plaintiff Lifestyle Oversize Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Plaintiff-Lifestyle-Oversize-Sunglasses-p-5704.html"><img title="Oakley Plaintiff Lifestyle Oversize Sunglasses" alt="Oakley Plaintiff Lifestyle Oversize Sunglasses" src="__MYSTYLE__Images/SG0000000325_1.jpg"></a>
+					<a target="_top" class="may2_name" title="Oakley Plaintiff Lifestyle Oversize Sunglasses" href="http://www.usefulsunglasses.com/Oakley-Plaintiff-Lifestyle-Oversize-Sunglasses-p-5704.html">Oakley Plaintiff Lifestyle Oversize Sunglasses</a>
+
+					<div class="may2_price">
+						<span class="sys_cur">$</span><span class="sys_p">15.99</span>
+					</div>
+				</div>
+			</div>
+			<!--同类商品推荐Widget-->
+			<div class="may2_b"></div>
+		</div>
+	</div>
+
+</div>
+
+<div class="clear"></div>
+<include file="Public:footer" />

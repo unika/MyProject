@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="__PUBLIC__/Js/jquery.js"></script>
+
+		<title>UserInfo Center</title>
+
+		<style>
+			li {
+				list-style: none;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div>
+			<ul>
+				<li>
+					<a href="__APP__">首页</a>
+					<a href="__APP__/Product">产品中心</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="userInfo">
+			<empty name="Think.session.username">
+				<a href="__APP__/Public/login">login</a>
+				<else />
+				{$username}
+				<a href="__APP__/Public/logout">logout</a>
+			</empty>
+
+		</div>
+		<a href="__APP__/User/password"> 密码修改 </a>
+		<a href="__APP__/User/email"> 邮箱修改 </a>
+		<a href="__APP__/Order"> 查看订单 </a>
+		<a href="__APP__/Cart"> 购物车 </a>
+	</body>
+</html>

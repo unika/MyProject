@@ -1,0 +1,46 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            首页链接替换</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="3" >
+                    <form method="post" action="#{ActionLink}">
+                    <a href="ExtractHref.aspx" onclick="javascript:return confirm('你确定要替换所有首页链接吗？')">替换所有链接</a>｜
+                        <input name="num" type="text" class="tipInput" style="width: 50px;" /><span class="valid" mode="border"></span>
+                        <input id="Submit1" type="submit" value="恢复" onclick="return confirm('你确定要恢复吗？')" />
+                        <font style=" color:red">注：如果重新生成了静态，需要重新替换！！！</font>
+                    </form>
+
+                    
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    原链接
+                </td>
+                <td>
+                    替换后链接
+                </td>
+            </tr>
+            <!-- BEGIN hrefs -->
+            <tr class="tableItems">
+                <td>
+                #{indexHrefRep.Id}
+                </td>
+                <td>
+                    #{indexHrefRep.OriLink}
+                </td>
+                <td>
+                    #{indexHrefRep.NewLink}
+                </td>
+            </tr>
+            <!-- END hrefs -->
+        </table>
+    </div>
+</div>

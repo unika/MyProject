@@ -1,0 +1,71 @@
+<include file="Public:header" />
+<script>
+    $(document).ready(function(data) {
+        $(".add").click(function() {
+            var mydialog = $.dialog;
+            mydialog({
+                title : "添加物流",
+                okValue : "添加",
+                content : delivery,
+                lock : true,
+                ok : function() {
+                    $.post("__URL__/insert", $("#delivery").serialize(), function(data) {
+                        if (data.status == 1) {
+                            alert(data.info.message);
+                        } else {
+                            alert(data.info.message);
+                        }
+                    }, 'json');
+
+                },
+                cancelValue : "取消",
+                cancel : function() {
+                    this.close();
+
+                }
+            });
+
+        });
+        $(".del").click(function() {
+            var id = $(this).attr("aid");
+            $.confirm("确认要删除吗?", function() {
+                $.post("__URL__/del", {
+                    "id" : id
+                }, function(data) {
+                    if (data) {
+                        $.alert(data.info.message);
+                    } else {
+                        $.alert("没有找到数据");
+                    }
+                }, 'json');
+
+            }, function() { value:"取消"
+
+            })
+        })
+    }); 
+</script>
+<body>
+	<h1><a class="add" href="javascript:void(0)"> 添加物流信息 </a></h1>
+	<table>
+		<tr>
+			<td>物流名称</td><td>价格</td><td>状态</td><td>价格波动</td><td>操作</td>
+		</tr>
+
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo.Name}</td><td>{$vo.Price}</td><td>
+				<eq name="vo.Status" value="0">
+					<span class="warring">禁用</span>
+					<else/>
+					<span class="green"> 启用</span>
+				</eq></td><td>{$vo.DynamicPrice}</td><td><a class="del" aid="{$vo.id}" href="javascript:void(0)">删除</a></td>
+			</tr>
+		</volist>
+
+	</table>
+	<div id="page">
+		{$page}
+	</div>
+</body>
+</html>

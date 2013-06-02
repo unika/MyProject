@@ -1,0 +1,42 @@
+﻿<script src="~js/My97DatePicker/WdatePicker.js?v=#{jsVersion}" type="text/javascript"></script>
+<div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="4">
+                    <form method="get" action="#{ActionLink}" name="qfrom">
+                    开始时间：<input id="Text2" type="text" onclick="WdatePicker()" name="st" value="#{st}" />
+                    结束时间：<input id="Text3" type="text" onclick="WdatePicker()" name="et" value="#{et}" />
+                    <input id="Hidden1" type="hidden" name="pic" value="#{pic}"/>
+
+                    <input id="Submit1" type="submit" value="query" />
+                    </form>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+            <td>编号</td>
+                <td>
+                    IP
+                </td>
+                <td>
+                    点击时间
+                </td>
+            </tr>
+            <!-- BEGIN ads -->
+            <tr class="tableItems">
+                <td>
+                    #{ad.Id}
+                </td>
+                   <td>
+                    #{ad.Ip}
+                </td>
+                <td>
+                    #{ad.ClickTime}
+                </td>
+            </tr>
+            <!-- END ads -->
+        </table>
+        <div>
+            #{pager}</div>
+    </div>
+</div>

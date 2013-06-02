@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script src="__PUBLIC__/Js/jquery.js"></script>
+
+		<title>regUser</title>
+
+		<style>
+			li {
+				list-style: none;
+			}
+		</style>
+		<script>
+			$(document).ready(function() {
+				$("#submit").click(function() {
+					$.post("__URL__/addUser",$("#User").serialize() , function(data) {
+						if (data.status === 0) {
+							return false;
+						}
+						window.location.href = "__URL__/";
+					}, 'json')
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<form action="__URL__/addUser" id="User" method="post" onsubmit="return false">
+			<fieldset title="register">
+				<li>
+					<label>username</label>
+
+					<input id="username" name="username" type="text" />
+				</li>
+				<li>
+					<label>password </label>
+
+					<input id="password" name="password" type="password" />
+				</li>
+				<li>
+					<label>repassword </label>
+
+					<input id="repassword" name="repassword" type="password" />
+				</li>
+				<li>
+					<label>email</label>
+					<input id="email" name="email" type="text" />
+
+				</li>
+
+				<li>
+					<label>Tel</label>
+
+					<input id="tel" name="tel" type="text" />
+				</li>
+				<li>
+					<label>country</label>
+
+					<input id="country" name="country" type="text"/>
+
+				</li>
+				<li>
+					<label>State</label>
+
+					<input id="state" name="state" type="text"/>
+				</li>
+				<li>
+					<label>City</label>
+
+					<input id="city" name="city" type="text"/>
+				</li>
+				<li>
+					<label>code</label>
+					<input id="code" name="verify" type="text" />
+					<img id="verify"  src="__APP__/admin/Public/verify" />
+				</li>
+				<script>
+					$("#verify").click(function() {
+						var html = "__APP__/admin/Public/verify/" + new Date();
+						$(this).attr("src", html);
+					})
+
+				</script>
+
+				<input id="submit"  type="submit" value="register" />
+			</fieldset>
+
+		</form>
+	</body>
+</html>

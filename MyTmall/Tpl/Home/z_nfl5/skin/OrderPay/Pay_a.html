@@ -1,0 +1,92 @@
+﻿ <div class="western">
+ <fieldset style="margin-right:50px;display:#{westernunion-info-display}">
+ <legend> Make Payable To:</legend>
+#{parameter_spct_western}<br>
+  <b class="fixed_red">After the payment, please tell us your Firstname, Lastname, amount, currency and country.</b>
+ </fieldset>
+ <div id="tonghang" style="display:#{westernunion-info-display}">
+
+<fieldset>
+<legend>Example Order:</legend>
+Name#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Team&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size with quantity
+<br>
+4# Favre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vikings&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purple&nbsp;&nbsp;&nbsp;48*10 50*10 52*10 54*10
+<br>
+43# Polamalu Steelers&nbsp;&nbsp;&nbsp;Black&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50*20 52*20
+</fieldset>
+<fieldset>
+<legend>Shipping Info:</legend>
+Name: _____________________________________<br>
+Street Address: ___________________________<br>
+City: _______________ State:______ Zip: __________<br>
+Your Contact Phone number: ________________<br>
+Your Email Address: _______________________<br>
+Shipping Method: __________________________
+</fieldset>
+ </div>
+
+ 
+   <div class="fixed_red" style="display:#{westernunion-info-display}">
+ <div class="clear"></div><br />
+<b>Copy and paste everything and send us an email at #{parameter_msn}</b>
+<br>
+<b>Once you have sent the Western Union payment simply reply to the email and provide us with the MTCN and details which formed like followed 
+and we will process your orders within 24 to 48 hours with tracking number emailed to you.</b>
+<br>
+</div>
+
+
+
+ <div id="shopping_content"> <br />
+ <div style="display:#{westernunion-info-display}">
+<br />
+<b style="font-size:15px;">Shopping Cart Contents:</b><br /><br /></div>
+<div class="western_cart"><ul>
+ <li class="western_col1">ITEM</li>
+ <li class="western_col2">QTY</li>
+ <li class="western_col3">PRICE</li>
+ </ul>
+ <div id="sys_num">
+ 
+
+                            <!-- BEGIN products --> <ol>
+ <li class="western_col1"><img width="35" height="35" style="float:left;" src="#{product.Img_0}">
+   <div style=" float:left; padding-left:10px; width:80%;">#{product.Name}<br />#{product.Attr}</div> </li>
+ <li class="western_col2">#{product.Num}</li>
+ <li class="western_col3">#{product.Subtotal}</li>         
+ </ol>
+                            <!-- END products -->           
+  
+  <i>Total QTY:#{totalQTY}&nbsp;&nbsp;&nbsp;<a href="/ShoppingCart/List.aspx">Edit</a></i>
+ </div>
+   
+
+  </div>
+
+   <fieldset>
+ <legend> Delivery/Shipping Information:</legend>
+  <b>Your Name:</b> #{info.Customer.FirstName} #{info.Customer.SecondName}<br/>
+  <b>Street Address:</b>#{info.Customer.Address}<br/>
+  <b>City:</b>  #{info.Customer.City}<br/>
+  <b>State:</b>  #{info.Customer.State}<br/>
+  <b>Country:</b> #{info.Customer.Country}<br/>
+  <b>Telephone:</b> #{info.Customer.Tel}<br/>
+  <b>Post/Zip Code:</b> #{info.Customer.PostCode}<br/>
+  <b>Email:</b>  #{info.Customer.Email}<br />
+  <i style="text-align:right; display:block; width:400px;"><a href="javascript:history.go(-1);">Edit</a></i>
+ </fieldset>
+
+  <ul class="chk_total">
+                <li><span class="chk_total1">Sub-Total:</span><b id="sys_subtotal">#{CurrencyName} #{Subtotal}</b></li>
+                <li><span class="chk_total1">Coupon:</span> -<b id="sys_Coupon">#{CurrencyName} #{Coupon}</b></li>
+                <li><span class="chk_total1">Shipping Fee:</span> <b id="sys_ShippingFee">#{CurrencyName} #{ShippingFee}</b></li>
+                <li><span class="chk_total1">Insurance Fee:</span> <b id="B3">#{CurrencyName} #{InsuranceFee}</b></li>
+                <li><span class="chk_total1">Payment Fee:</span> <b id="B4">#{CurrencyName} #{PaymentFee}</b></li>
+                <li class="chk_coupon"><b class="chk_total1">Total Amount:</b><b id="sys_grandtotal">#{CurrencyName} #{GrandTotal}</b></li>
+    <li><form action="#{payurl}" method="post" id="Form1" name="tzForm" ><input type="submit" name="checkoutBt" class="chk_pay" value=""/></li> 
+  <li class="chk_small_font">Every order you place with us is safe and secure.</li>
+  </ul>
+ </div> 
+ 
+ 
+ </div>

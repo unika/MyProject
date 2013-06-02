@@ -1,0 +1,53 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            系统参数配置</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="5">
+                <a href="Reflash.aspx">刷新参数</a>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    参数名
+                </td>
+                <td>
+                    参数值
+                </td>
+                <td>
+                    备注
+                </td>
+                <td>
+                    操作
+                </td>
+            </tr>
+            <!-- BEGIN params -->
+            <tr class="tableItems">
+                <td>
+                    #{param.Id}
+                </td>
+                <td>
+                    #{param.Name}
+                </td>
+                <td style="width: 300px">
+                    #{param.Value}
+                </td>
+                <td>
+                    #{param.Remark}
+                </td>
+                <td>
+                    <a href="#{param.Edit}">编辑</a>｜<a href="#{param.Delete}" class="deleteCmd">删除</a>
+                </td>
+            </tr>
+            <!-- END params -->
+        </table>
+        <div>
+            #{pager}</div>
+    </div>
+</div>

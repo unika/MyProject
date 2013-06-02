@@ -1,0 +1,31 @@
+﻿<div style=" width:500px; height:500px; overflow:auto;">
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="tableHeader">
+                <td>
+                    编号
+                </td>
+                <td>
+                    属性名
+                </td>
+                <td>
+                    属性值
+                </td>
+            </tr>
+            <!-- BEGIN attrs -->
+            <tr class="tableItems">
+                <td>
+                    #{attr.Id}
+                </td>
+                <td>
+                    #{attr.TypeAttr.Name}
+                </td>
+                <td style=" width:300px;">
+                    #{attr.AttrValue}
+                </td>
+            </tr>
+            <!-- END attrs -->
+        </table>
+
+    </div>
+</div>

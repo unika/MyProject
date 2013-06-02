@@ -1,0 +1,24 @@
+﻿<div class="fixed_from user_right">
+    <form name="UserForm" action="#{ActionLink}" method="post">
+        <div class="fixed_content">
+            <div class="fixed_title2">
+                Modify Password</div>
+            <div class="fixed_middle">
+                <ol>
+                    <li>Initial Password:</li>
+                    <li>New Password:</li>
+                    <li>Confirm Password:</li>
+                </ol>
+                <ul>
+                    <li><input class="fixed_text2" name="oldPwd" type="password"><span class="valid" mode="border" rule="password"></span></li>
+                    <li><input class="fixed_text2" type="password" name="newPwd" maxlength="32"><span class="valid" mode="border" rule="password"></span><span class="fixed_gray"> ( Use 4 to 32 characters )</span></li>
+                    <li><input class="fixed_text2" name="newPwd1"  type="password"><span class="valid" mode="border" rule="same" target="newPwd"></span></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="fixed_bottom">
+                <input value="" class="user_save" type="submit">
+        </div>
+    </form>
+</div>

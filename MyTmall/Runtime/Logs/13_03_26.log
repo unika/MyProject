@@ -1,0 +1,501 @@
+[ 2013-03-26T21:57:03+08:00 ] ERR: (ThinkException) Model:fill_date您所请求的方法不存在！
+[ 2013-03-26T21:57:03+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001259s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001408s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001004s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001107s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004088s ]
+NOTIC: [8] Undefined index:  file D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 56 行.
+NOTIC: [8] Undefined index:  line D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 57 行.
+NOTIC: [2] file() [<a href='function.file'>function.file</a>]: Filename cannot be empty D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 58 行.
+NOTIC: [8] Undefined index:  file D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index:  line D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Array to string conversion D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index:  file D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index:  line D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index:  class D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index:  type D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Array to string conversion D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Array to string conversion D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Array to string conversion D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index:  file D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [8] Undefined index:  line D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 62 行.
+NOTIC: [4096] Object of class AdmanagerAction could not be converted to string D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 64 行.
+NOTIC: [8] Undefined index:  class D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index:  type D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index:  class D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+NOTIC: [8] Undefined index:  type D:\ThinkPHP\Lib\Core\ThinkException.class.php 第 63 行.
+
+[ 2013-03-26T21:58:06+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001001s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001157s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001045s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001156s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004721s ]
+SQL: INSERT INTO `shop_adurl` (`Name`,`Url`,`start_time`,`end_time`,`add_time`,`update_time`) VALUES ('kele','http://www.baidu.com','2013-03-26 21:50:00','2013-03-26 21:50:01','2013-03-26 21:58:06','2013-03-26 21:58:06') [ RunTime:0.033415s ]
+NOTIC: [8] Undefined variable: data E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 24 行.
+
+[ 2013-03-26T21:59:12+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001250s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001397s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000960s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001072s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004184s ]
+SQL: SELECT * FROM `shop_adurl`  [ RunTime:0.000556s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001564s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001720s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.010324s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010469s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000792s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000792s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000656s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000986s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003542s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000995s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001100s ]
+
+[ 2013-03-26T21:59:41+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000997s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001144s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000774s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004608s ]
+SQL: INSERT INTO `shop_adurl` (`Name`,`Url`,`start_time`,`end_time`,`add_time`,`update_time`) VALUES ('abc','http://www.sina.com','2013-03-26 22:50:00','2013-04-26 23:50:00','2013-03-26 21:59:41','2013-03-26 21:59:41') [ RunTime:0.036244s ]
+NOTIC: [8] Undefined variable: data E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 24 行.
+
+[ 2013-03-26T22:00:25+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000948s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001107s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000753s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000887s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004163s ]
+SQL: SELECT * FROM `shop_adurl`  [ RunTime:0.000367s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000568s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000688s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.008458s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008613s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000503s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000450s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000295s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000562s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002108s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000644s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000751s ]
+
+[ 2013-03-26T22:00:43+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001290s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001443s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000950s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001053s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.005127s ]
+SQL: INSERT INTO `shop_adurl` (`Name`,`Url`,`start_time`,`end_time`,`add_time`,`update_time`) VALUES ('abc','http://www.kele.com','2013-03-26 22:50:00','2013-03-26 22:50:00','2013-03-26 22:00:43','2013-03-26 22:00:43') [ RunTime:0.030173s ]
+NOTIC: [8] Undefined variable: data E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 24 行.
+
+[ 2013-03-26T22:00:57+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.002052s ]
+INFO: [ route_check ] --END-- [ RunTime:0.002256s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001128s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001294s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004729s ]
+SQL: SELECT * FROM `shop_adurl`  [ RunTime:0.000374s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001472s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001600s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.010220s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010372s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000788s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000791s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000638s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000904s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003433s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000982s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001093s ]
+
+[ 2013-03-26T22:00:57+08:00 ] ERR: (ThinkException) 无法加载模块:favicon
+[ 2013-03-26T22:01:46+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001431s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001655s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000976s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001144s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004472s ]
+SQL: INSERT INTO `shop_adurl` (`Name`,`Url`,`start_time`,`end_time`,`add_time`,`update_time`) VALUES ('hah','http://aixin','2013-03-26 22:50:00','2013-05-26 22:50:00','2013-03-26 22:01:46','2013-03-26 22:01:46') [ RunTime:0.009177s ]
+NOTIC: [8] Undefined variable: data E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 24 行.
+
+[ 2013-03-26T22:06:59+08:00 ] ERR: [1] Class 'Page' not found E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 9 行.
+[ 2013-03-26T22:07:28+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000918s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001070s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000718s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.010189s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000374s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000245s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001659s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001832s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 66 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.014184s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014370s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000846s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000824s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000651s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000904s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003556s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000988s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001116s ]
+
+[ 2013-03-26T22:08:16+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001295s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001437s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001035s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001150s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004358s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000343s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000270s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001510s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001630s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined variable: page E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 73 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013583s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013726s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000831s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000795s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000638s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000905s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003466s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000986s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001093s ]
+
+[ 2013-03-26T22:08:32+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000900s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001049s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000627s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000750s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004298s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000443s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000372s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000648s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000775s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 68 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.010774s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010922s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000449s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000461s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000300s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000586s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002160s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000720s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000841s ]
+
+[ 2013-03-26T22:12:18+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001260s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001415s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000978s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004402s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000451s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000343s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001520s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001658s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.012931s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013081s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000818s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000822s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000643s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000901s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003501s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000988s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001103s ]
+
+[ 2013-03-26T22:12:35+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001249s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001399s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000948s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001066s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004382s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000391s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000339s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001508s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001638s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.012809s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012999s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000835s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000795s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000643s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000933s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003536s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000991s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001133s ]
+
+[ 2013-03-26T22:12:58+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001290s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001442s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000945s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001067s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004414s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.037751s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000764s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.003156s ]
+INFO: [ view_template ] --END-- [ RunTime:0.003492s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.024425s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024692s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.001160s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.001047s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000813s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.001249s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004715s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001261s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001413s ]
+
+[ 2013-03-26T22:16:05+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001270s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001427s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000959s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001078s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.006765s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000556s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000338s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001526s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001657s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 78 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013280s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013434s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000922s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000806s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000686s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000900s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003644s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000990s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001147s ]
+
+[ 2013-03-26T22:16:06+08:00 ] 127.0.0.1 /index.php/admin/Admanager/del
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001122s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001292s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000760s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000894s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004468s ]
+SQL: DELETE FROM `shop_adurl` [ RunTime:0.062050s ]
+
+[ 2013-03-26T22:17:01+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000900s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001053s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000609s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000727s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004363s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000326s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000205s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000563s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000689s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.011140s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011335s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000444s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000451s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000310s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000554s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002092s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000645s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000764s ]
+
+[ 2013-03-26T22:19:12+08:00 ] 127.0.0.1 /index.php/admin/Admanager/insert
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001343s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001508s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.001056s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001166s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004403s ]
+SQL: INSERT INTO `shop_adurl` (`Name`,`Url`,`start_time`,`end_time`,`add_time`,`update_time`) VALUES ('aaa','http://www.baidu.com','2013-03-26 22:19:00','2013-03-26 22:19:00','2013-03-26 22:19:12','2013-03-26 22:19:12') [ RunTime:0.035085s ]
+NOTIC: [8] Undefined variable: data E:\www\MyTmall\Lib\Action\Admin\AdmanagerAction.class.php 第 29 行.
+
+[ 2013-03-26T22:19:16+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001020s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001186s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000959s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004640s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000455s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000321s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001480s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001615s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index:  image E:\www\MyTmall\Runtime\Cache\admin\d96e7230282f0a3d0c4fd6309f99971d.php 第 82 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013424s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013609s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000827s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000813s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000732s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000931s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003663s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001037s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001156s ]
+
+[ 2013-03-26T22:19:20+08:00 ] 127.0.0.1 /index.php/admin/Admanager/del
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000890s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001034s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000710s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.004290s ]
+SQL: DELETE FROM `shop_adurl` [ RunTime:0.001497s ]
+
+[ 2013-03-26T22:19:44+08:00 ] 127.0.0.1 /index.php/admin/Admanager/index
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.001062s ]
+INFO: [ route_check ] --END-- [ RunTime:0.001338s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000793s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000953s ]
+SQL: SHOW COLUMNS FROM `shop_adurl` [ RunTime:0.051958s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `shop_adurl` LIMIT 1   [ RunTime:0.000641s ]
+SQL: SELECT * FROM `shop_adurl` LIMIT 0,20   [ RunTime:0.000398s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000585s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000715s ]
+INFO: [ view_parse ] --START--
+INFO: Run ParseTemplate Behavior [ RunTime:0.011463s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011657s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000492s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000468s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000320s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000589s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002218s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000686s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000808s ]
+
+[ 2013-03-26T22:19:44+08:00 ] ERR: (ThinkException) 无法加载模块:favicon

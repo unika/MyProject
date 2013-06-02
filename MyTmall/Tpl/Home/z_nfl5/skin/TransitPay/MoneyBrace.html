@@ -1,0 +1,72 @@
+﻿<html>
+<head>
+    <title>loading, please wait...</title>
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="https://payment.moneybrace.com/Payment/PayPage.aspx" name="pay">
+         <input id="version" name="version" type="hidden" value="1.0.0" />
+         <input name="encoding" type="hidden" id="encoding"  value="utf-8" />
+         <input id="merchantid" name="merchantid" type="hidden" value="#{moneybrace.merchantid}" />
+         <input id="transtype" name="transtype" type="hidden" value="IC" />
+         
+         
+
+        <input type="hidden" name="orderid" id="orderid"  value="#{moneybrace.orderid}"/>
+        <input id="orderdate" name="orderdate" type="hidden" value="#{moneybrace.orderdate}" />
+        <input id="Text1" name="currency" type="hidden" value="USD"  />
+        <input name="orderamount" id="orderamount" type="hidden" value="#{moneybrace.orderamount}"/>
+
+        
+        <input name="callbackurl" type="hidden" id="callbackurl" value="#{moneybrace.callbackurl}"/>
+        <input name="browserbackurl" type="hidden" id="browserbackurl" value="#{moneybrace.accessurl}"/>
+        <input id="accessurl" name="accessurl" type="hidden" value="#{moneybrace.accessurl}"/>
+       
+
+        
+        <input id="productname1" name="productname1" type="hidden" value="#{moneybrace.orderid}" />
+        <input id="productsn1" name="productsn1" type="hidden" value="1" />
+        <input id="quantity1" name="quantity1" type="hidden" value="1" />
+        <input id="unit1" name="unit1" type="hidden" value="#{moneybrace.orderamount}" />
+                       
+
+        <input id="deliveryname" name="deliveryname" type="hidden" value="#{moneybrace.deliveryname}" />
+        <input id="deliveryaddress" name="deliveryaddress" type="hidden" value="#{moneybrace.deliveryaddress}" />
+        <input id="deliverycountry" name="deliverycountry" type="hidden" value="#{moneybrace.deliverycountry}" />
+        <input id="deliverycity" name="deliverycity" type="hidden" value="#{moneybrace.deliverycity}" />
+        <input id="deliveryprovince" name="deliveryprovince" type="hidden" value="#{moneybrace.deliveryprovince}" />
+        <input id="deliveryemail" name="deliveryemail" type="hidden" value="#{moneybrace.deliveryemail}" />
+        <input id="deliveryphone" name="deliveryphone" type="hidden" value="#{moneybrace.deliveryphone}" />
+        <input id="deliverypost" name="deliverypost" type="hidden" value="#{moneybrace.deliverypost}" />
+
+        <input id="billemail" name="billemail" type="hidden" value="#{moneybrace.deliveryemail}" />
+        <input id="billphone" name="billphone" type="hidden" value="#{moneybrace.deliveryphone}" />
+        <input id="billaddress" name="billaddress" type="hidden" value="#{moneybrace.deliveryaddress}" />
+        <input id="billcountry" name="billcountry" type="hidden" value="#{moneybrace.deliverycountry}" />
+        <input id="billprovince" name="billprovince" type="hidden" value="#{moneybrace.deliveryprovince}" />
+        <input id="billcity" name="billcity" type="hidden" value="#{moneybrace.deliverycity}" />
+        <input id="billpost" name="billpost" type="hidden" value="#{moneybrace.deliverypost}" />
+
+         <input name="signature" id="signature" type="hidden" value="#{moneybrace.signature}"/>
+
+    </form>
+
+    <script language="javascript" type="text/javascript">
+        document.forms["pay"].submit();
+    </script>
+</body>
+</html>

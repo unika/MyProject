@@ -1,0 +1,29 @@
+﻿<fieldset>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                #{orimeta}<p></p>
+                #{newmeta}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="Button1" type="button" value="确认提交" onclick="OK()"/>
+                <input id="Button2" type="button" value="取消提交" onclick="Cancel()"/>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<script>
+    function OK() {
+
+
+        top.$("#boxFrm1")[0].contentWindow.confirm_sub();
+        
+        window.parent.wojilu.ui.box.hideBox();
+    }
+
+    function Cancel() {
+        window.parent.wojilu.ui.box.hideBox();
+    }
+</script>

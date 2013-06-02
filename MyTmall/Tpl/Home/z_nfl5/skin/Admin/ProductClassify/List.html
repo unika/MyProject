@@ -1,0 +1,163 @@
+﻿<script type="text/javascript" src="/static/js/jqui/jquery.ui.core.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="/static/js/jqui/jquery.ui.sortable.js"></script>
+<script type="text/javascript">
+    // Return a helper with preserved width of cells
+    var fixHelper = function (e, ui) {
+        //console.log(ui)  
+        ui.children().each(function () {
+            $(this).width($(this).width());     //在拖动时，拖动行的cell（单元格）宽度会发生改变。在这里做了处理就没问题了  
+        });
+        return ui;
+    };
+
+
+    jQuery(function () {
+        jQuery("#dataAdminList tbody").sortable({                //这里是talbe tbody，绑定 了sortable  
+            helper: fixHelper,                  //调用fixHelper  
+            axis: "y",
+            start: function (e, ui) {
+                ui.helper.css({ "background": "#fff" })     //拖动时的行，要用ui.helper  
+                return ui;
+            },
+            stop: function (e, ui) {
+                //ui.item.removeClass("ui-state-highlight"); //释放鼠标时，要用ui.item才是释放的行  
+
+
+
+                return ui;
+            }
+        }).disableSelection();
+    })
+
+    function saveOrder() {
+        if (!confirm("你确定要保存吗？"))
+        { return; }
+
+        var pids = "";
+        $(".tableItems").each(function () {
+            pids = pids + $(this).attr("pid") + ",";
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "SaveOrder.aspx".toAjax(),
+            data: "iden=" + $("#classifySel").val() + "&pids=" + pids,
+            success: function (msg) {
+                alert(msg);
+            },
+            error: function (msg) {
+                alert("系统异常");
+            }
+        });
+
+    }
+</script>
+<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            产品列表</div>
+    </div>
+    <div class="adminMainPanel">
+        <table cellspacing="1" cellpadding="3" style="width: 100%;" id="dataAdminList">
+            <tr class="adminBar">
+                <td colspan="4">
+                    <a href="#{addiden}">新增标识</a> ｜ #{classifySel}
+
+                    <input id="Button1" type="button" value="删除标识" onclick="del();" />
+                    <input id="Button3" type="button" value="保存顺序" onclick="saveOrder()"/>
+                    <input id="Button2" type="button" value="删除选中的产品" onclick="delpro();" />
+
+                    <a href="/Admin/ProductClassify/CenterRecommend.aspx?classifyId=#{classifyId}"><font style=" color:Red">导入中心推荐产品</font></a>
+                    <script>
+                        jQuery(function () {
+                            $("#classifySel").change(
+                            function () {
+                                document.location.href = "/Admin/ProductClassify/" + this.value + "/List.aspx";
+                            }
+                            );
+                        });
+                        function del() {
+                            var id = $("#classifySel").val();
+                            if (confirm("你确定要删除吗？")) {
+                                document.location.href = "/Admin/ProductClassify/" + id + "/DeleteInde.aspx";
+                            }
+                        }
+
+                        function delpro() {
+                            var pids = "";
+                            $(".tableItems :checked").each(
+                                function () {
+                                    pids = pids + this.value + ",";
+                                }
+                            );
+                                if (pids == "") {
+                                    alert("请选择要删除的产品");
+                                    return;
+                                }
+
+                                if (!confirm("你确定要删除吗？")) return;
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "DeleteClassifyProduct.aspx?classifyId=#{classifyId}&multDel=1",
+                                    data: "pids=" + pids,
+                                    success: function (msg) {
+                                        alert("Data Saved: " + msg);
+                                        document.location = "/Admin/ProductClassify/#{classifyId}/List.aspx";
+                                    },
+                                    error: function ()
+                                    { alert("系统异常"); }
+                                });
+                        }
+
+                        function selall(chb) {
+
+                            var checked = $(chb).attr("checked");
+
+                            if (checked) {
+                                $(".tableItems input[type='checkbox']").attr("checked",true);
+                            }
+                            else {
+                                $(".tableItems input[type='checkbox']").attr("checked", false);
+                            }
+                         }
+                    </script>
+                </td>
+            </tr>
+            <tr class="tableHeader">
+                <td>
+                    <input id="Checkbox1" type="checkbox" onclick="selall(this)"/>产品Id
+                </td>
+                <td>
+                    产品图片
+                </td>
+                <td>
+                    产品名
+                </td>
+                <td>
+                    删除
+                </td>
+            </tr>
+            <tbody>
+                <!-- BEGIN products -->
+                <tr class="tableItems" pid="#{product.Id}">
+                    <td>
+                        <input id="Checkbox2" type="checkbox"  value="#{product.Id}"/>#{product.Id}
+                    </td>
+                    <td>
+                        <img src="#{product.Img_0}" />
+                    </td>
+                    <td>
+                        #{product.Name}
+                    </td>
+                    <td>
+                        <a href="#{product.Delete}" class="deleteCmd">删除</a>
+                    </td>
+                </tr>
+                <!-- END ts -->
+            </tbody>
+        </table>
+    </div>
+</div>

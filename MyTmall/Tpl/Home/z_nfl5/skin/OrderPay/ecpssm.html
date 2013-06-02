@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>loading, please wait...</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div style="text-align: center; margin: 10px; font-size: 16px; border: 1px solid #AAAAAA;
+        background-color: #EBEBEB; padding: 10px" id="pload">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <img src="/static/img/loading.gif" />
+                </td>
+                <td style="text-align: left">
+                    Page is loading, please wait patiently. Please do not close or refresh this page
+                    during this processing. If error happens while loading, please refresh or return
+                    the previous page and try again.
+                </td>
+            </tr>
+        </table>
+    </div>
+    <form method="post" action="#{ecpssm.Action}" name="pay_checkout" id="pay_checkout">
+    <table>
+        <tr>
+            <td>
+                <input name="ecpssm.ReturnURL" type="hidden" value="#{ecpssm.ReturnURL}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="ecpssm.OrderId" type="hidden" class="input" value="#{ecpssm.OrderId}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="ecpssm.MerNo" type="hidden" class="input" value="#{ecpssm.MerNo}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="ecpssm.Amount" type="hidden" class="input" value="#{ecpssm.Amount}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input name="ecpssm.MD5info" type="hidden" class="input" value="#{ecpssm.MD5info}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingFirstName" value="#{ecpssm.ShippingFirstName}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingLastName" value="#{ecpssm.ShippingLastName}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingEmail" value="#{ecpssm.ShippingEmail}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingPhone" value="#{ecpssm.ShippingPhone}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingZipcode" value="#{ecpssm.ShippingZipcode}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingAddress" value="#{ecpssm.ShippingAddress}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingCity" value="#{ecpssm.ShippingCity}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingSstate" value="#{ecpssm.ShippingSstate}" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" name="ecpssm.ShippingCountry" value="#{ecpssm.ShippingCountry}" />
+            </td>
+        </tr>
+    </table>
+    </form>
+    <iframe height="0" width="0" name="ifrm_pay_checkout" id="ifrm_pay_checkout" style="display: none">
+    </iframe>
+    <script type="text/javascript">
+        if (window.XMLHttpRequest) {
+            document.getElementById("pay_checkout").target = 'ifrm_pay_checkout';
+        }
+        document.getElementById("pay_checkout").submit();
+        window.status = 'https://security.sslepay.com/sslpayment';
+    </script>
+</body>
+</html>

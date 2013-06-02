@@ -1,0 +1,85 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            编辑物流通道</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        名称：
+                    </td>
+                    <td>
+                        <input name="delivery.Name" type="text" class="tipInput" style="width: 450px;" value="#{delivery.Name}" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        描述：
+                    </td>
+                    <td>
+                        <textarea name="delivery.Des" cols="150" rows="5">#{delivery.Des}</textarea>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        状态：
+                    </td>
+                    <td>
+                        <select id="pst" name="delivery.Status">
+                            <option value="1">启用</option>
+                            <option value="0">禁用</option>
+                        </select>
+                        <script>
+                            $("#pst").val("#{delivery.Status}");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        默认选项：
+                    </td>
+                    <td>
+                        <select id="isd" name="delivery.IsDefault">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                        <script>
+                            $("#isd").val("#{delivery.IsDefault}");
+                        </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        价钱：
+                    </td>
+                    <td>
+                        <input name="delivery.Price" type="text" class="tipInput" style="width: 450px;" value="#{delivery.Price}" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        动态价钱：
+                    </td>
+                    <td>
+                        <textarea id="TextArea1"  name="delivery.DynamicPrice" cols="50" rows="7">#{delivery.DynamicPrice}</textarea>
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="编辑" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

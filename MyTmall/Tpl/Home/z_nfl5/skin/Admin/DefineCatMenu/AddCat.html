@@ -1,0 +1,96 @@
+﻿<link rel="stylesheet" href="~js/tree/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="~js/tree/jquery.ztree.core-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.excheck-3.0.js"></script>
+<script type="text/javascript" src="~js/tree/jquery.ztree.exedit-3.0.js"></script>
+<div style=" height:300px; overflow:auto;">
+    <div class="adminMainPanel" >
+        <script>
+		<!--
+            var setting = {
+                check : {
+                    chkboxType : {"Y": "", "N": ""},
+                    chkStyle: "checkbox",
+                    enable: true,
+                    radioType: "level"
+                },
+
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                }
+            };
+
+            var zNodes = #{nodes};
+
+            $(document).ready(function () {
+                var menuId = top.$("#catMenuSel").val();
+                if (menuId == undefined) {
+                    alert("请选择要新增分类的菜单");
+                    window.parent.wojilu.ui.box.hideBox();
+                    return;
+                }
+
+                $.fn.zTree.init($("#catList"), setting,zNodes );
+
+                var treeObj = $.fn.zTree.getZTreeObj("catList");
+
+                var strCatIds = $.ajax({
+                 url: "GetMenuCatIds.aspx?menuId="+menuId,
+                 async: false
+                }).responseText;
+
+
+                eval("var catIds="+strCatIds);
+
+                for (var i = 0; i < catIds.length; i++) {
+                    var node = treeObj.getNodeByParam("id", catIds[i], null);
+
+                    treeObj.checkNode(node, true, true);
+                }
+
+            });
+		//-->
+        </script>
+        <ul id="catList" class="ztree"></ul>
+    </div>
+</div>
+<div style=" text-align:center; height:30px; background-color:#ffffff; line-height:30px;">
+    <input id="Button1" type="button" value="保 存"  onclick="Save()"/>
+</div>
+
+<script>
+    function Save() {
+        var menuId = top.$("#catMenuSel").val();
+
+        if (menuId == undefined) {
+            alert("请选择要新增分类的菜单");
+            return;
+        }
+
+        var treeObj = $.fn.zTree.getZTreeObj("catList");
+
+        var nodes = treeObj.getCheckedNodes(true);
+
+        var catIds = "";
+        for (var i = 0; i < nodes.length; i++) {
+            catIds = catIds + nodes[i].id + ",";
+        }
+        if (catIds == "") {
+            alert("请选择分类");
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "SaveMenuCat.aspx",
+            data: "menuId=" + menuId + "&catIds=" + catIds,
+            success: function (msg) {
+                alert(msg);
+
+                top.document.location = top.document.location;
+            }
+        });
+
+    }
+</script>

@@ -1,0 +1,69 @@
+﻿<div>
+    <div class="adminMainTitle">
+        <div class="adminSidebarTitleInternal">
+            添加标签</div>
+    </div>
+    <div class="adminMainPanel">
+        <div class="formPanel">
+            <form method="post" action="#{ActionLink}">
+            <table style="width: 90%">
+                <tr>
+                    <td>
+                        标签名：
+                    </td>
+                    <td>
+                        <input name="pageTag.Name" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        标签类型：
+                    </td>
+                    <td>
+                        <select id="Select1" name="pageTag.Type">
+                            <option value="0">商品</option>
+                            <option value="1">新闻</option>
+                            <option value="2">商品分类</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        条件：
+                    </td>
+                    <td>
+                        <input name="pageTag.Condition" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        显示数量：
+                    </td>
+                    <td>
+                        <input name="pageTag.Num" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        备注：
+                    </td>
+                    <td>
+                        <input name="pageTag.Remark" type="text" class="tipInput" style="width: 450px;" />
+                        <span class="valid" mode="border"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <input id="Submit1" type="submit" value="新增" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>

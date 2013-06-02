@@ -1,0 +1,92 @@
+/*-------------------ugg-------------------------*/
+#ugg_banner{float:left;}
+#ugg_banner a{display:inline;margin:5px 0;float:right;}
+#ugg_banner .ugg_banner{float:left;}
+
+.left_list{width:171px;float:left;font-size:9px;}
+.left_img{padding:5px;float:left;}
+.left_img img{max-width:70px;float:left;_width:70px;}
+.left_list b{font-size:10px;color:#9A1D26;}
+
+.ugg_list{width:184px;float:left;padding:5px 0 0 5px;text-align:center;height:270px;overflow:hidden;}
+.ugg_list img{max-width:180px;height:180px;_width:180px;padding:2px;}
+.ugg_list a{color:#12293d;display:block;}
+.ugg_list s{color:#396F00;}
+.ugg_list b{color:#f00;font-weight:normal;}
+.ugg_list s.sys_p{padding-right:10px;}
+
+.left_list span img{height:10px;}
+
+/*------------------chanel----gucci-----------------------*/
+#chanel_brand,#gucci_brand{float:left;padding-left:10px;}
+#chanel_banner,#gucci_banner{width:930px;float:left;padding:10px 0}
+#chanel_banner a,#chanel_banner img,#gucci_banner a,#gucci_banner img,.gucci_banner img{float:left;}
+#chanel_banner div,#gucci_banner div{width:423px;height:221px;float:left;background-image:url(../img/chanel/banner5_chanel.jpg);}
+#gucci_banner div{background-image:url(../img/gucci/banner4_gucci.jpg);}
+#chanel_banner div a,#gucci_banner div a{display:inline;margin:104px 10px 0 15px;}
+#chanel_banner div img,#gucci_banner div img{width:78px;float:left;}
+.chanel_banner{display:inline;margin:10px 0 0 10px;}
+
+.chanel_list{width:140px;float:left;padding:10px 5px 10px 8px;height:230px;font-size:11px;}
+
+.chanel_list img{width:140px;}
+.chanel_list a{color:#63727f;text-align:center;display:block;height:208px;overflow:hidden;}
+.chanel_list b{font-weight:normal;color:#ff4848;text-align:right;}
+
+
+.gucci_banner{float:left;background:url(../img/gucci/banner6_gucci.gif) no-repeat right 0;height:157px;width:928px;padding-bottom:15px;}
+.gucci_banner a{float:right;display:inline;margin:10px 12px 0 0;}
+.gucci_banner .gucci_jewels{float:left;margin:0;}
+
+#gucci_brand ol{width:928px;float:left;height:34px;background-image:url(../img/gucci/title_gucci.gif);}
+#gucci_brand ol li{float:left;line-height:30px;padding:0 40px;height:34px;font-weight:bold;cursor:pointer;}
+ol .gucci_choose{background:url(../img/gucci/title_gucci.gif) bottom;color:#fff;}
+#gucci_brand ul{float:left;width:928px;height:230px;overflow:hidden;}
+#gucci_brand ul li{width:100%;float:left;position:absolute;left:-9999px;}
+#gucci_brand ul li.gucci_choose{position:static;left:auto;}
+
+#gucci_brand li a{display:inline;width:143px;float:left;margin:10px 0 0 10px;text-align:center;}
+#gucci_brand li img{width:143px;padding-bottom:10px;}
+
+/*------------------lv---------------------------*/
+#lv_banner{border:1px solid #adcbd0;float:left;padding:10px 5px 5px 6px;}
+#lv_banner p{float:left;width:633px;}
+#lv_banner div{float:left;width:302px;}
+#lv_banner a{float:left;margin:0 0 5px 4px;}
+#lv_banner img{float:left;}
+.lv_box,.lv_box2{border:1px solid #adcbd0;float:left;padding:10px 0 0 10px;width:300px;display:inline;margin-top:6px;height:500px;}
+.lv_box{margin-right:6px;}
+
+.lv_box2 a{margin-top:10px;float:left;}
+.lv_box2 img{float:left;}
+
+.lv_list{width:125px;padding:5px 10px;float:left;font-size:11px;height:215px;}
+.lv_list img{width:125px;float:left;padding-bottom:5px;}
+.lv_list b{color:#f40c5e;font-weight:normal;}
+.lv_list i{font-style:normal;}
+
+/*------------------prada---------------------------*/
+#prada_banner a{float:left;display:inline;margin:5px 0 10px 5px;}
+#prada_banner img{float:left;}
+
+/*-------------------cl--------------------------*/
+.cl_banner1,.cl_banner2,.cl_banner1 img,.cl_banner2 img{float:left;}
+.cl_banner1{display:inline;margin-right:9px;_margin-right:7px;}
+
+/*-------------------burberry-------balenciaga-------------------*/
+#burberry_banner,#balenciaga_banner{float:left;padding-bottom:10px;}
+#burberry_banner a,#burberry_banner img,#balenciaga_banner a,#balenciaga_banner img{float:left;}
+#burberry_banner div,#balenciaga_banner div{float:left;width:400px;height:621px;background-image:url(../img/burberry/banner1_burberry.jpg);padding-left:20px;}
+#balenciaga_banner div{background-image:url(../img/balenciaga/banner1_balenciaga.jpg);}
+#burberry_banner div a,#balenciaga_banner div a{width:168px;margin:50px 11px 0;}
+#burberry_banner div img,#balenciaga_banner div img{width:168px;padding-bottom:10px;}
+#burberry_banner b,#balenciaga_banner b{font-size:16px;width:168px;display:block;} 
+#burberry_banner i,#balenciaga_banner i{font-style:normal;color:#999;}
+
+
+
+
+
+
+
+

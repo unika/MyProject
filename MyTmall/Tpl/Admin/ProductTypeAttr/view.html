@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link href="__PUBLIC__/Css/admin.css" type="text/css" rel="stylesheet" />
+
+		<title>index</title>
+	</head>
+	<body>
+		<h3>添加{产品}类型属性</h3>
+		<form action="__URL__/insert" method="post">
+			<table>
+				<thead>
+					<tr>
+						<td>编号</td>
+						<td>属性名</td>
+						<td>属性类型 </td>
+						<td>默认值</td>
+						<td>输入长度限制</td>
+						<td>是否用户于搜索</td>
+						<td>是否是购买属性</td>
+					</tr>
+				</thead>
+				<tbody>
+
+					<volist name="list" id="vo">
+						<tr>
+							<td>{$vo.id}</td>
+							<td> {$vo.Name} </td>
+							<td> {$vo.ProductTypeId} </td>
+							<td> {$vo.DefaultValue} </td>
+
+							<td>{$vo.IsSearchAttr}
+							{$vo.AttrOrder}
+							{$vo.BuySelStyle}
+							{$vo.MaxLength}</td>
+							<td> {$vo.ParamType}
+							{$vo.ParamValue} </td>
+							<td> {$vo.IsBuyType} </td>
+						</tr>
+					</volist>
+				</tbody>
+			</table>
+		</form>
+	</body>
+</html>
